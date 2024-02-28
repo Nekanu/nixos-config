@@ -9,6 +9,7 @@
     ../features/obs.nix
     ../features/sane.nix
     ../features/yubico.nix
+    ../../../modules/pcloud.nix
   ]
   # Include all desktop environments specified in the `desktopEnvironments` list.
   ++ (map (element: (./. + "/${element}")) desktopEnvironments);
@@ -30,7 +31,7 @@
   boot.plymouth.enable = true;
 
   environment.systemPackages = with pkgs; [
-    unstable.pcloud
+    pcloud
     # inputs.nix-software-center.packages.${system}.nix-software-center
     timeshift
     gparted
