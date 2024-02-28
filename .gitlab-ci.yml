@@ -18,9 +18,9 @@ flake-update:
   stage: build
   image: nixos/nix:latest
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: manual
     - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+      when: manual
   script:
     - nix flake update --extra-experimental-features 'nix-command flakes'
 
