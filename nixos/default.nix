@@ -65,7 +65,7 @@
   system.autoUpgrade = {
     enable = true;
     dates = "daily";
-    flake = "github:joshuanestler/nixos-config";
+    flake = "gitlab:Nekanu/nixos-config";
   };
 
   system.stateVersion = stateVersion;
