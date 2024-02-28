@@ -1,4 +1,4 @@
-{ config, desktopEnvironments, additionalFeatures, hostname, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, ... }: {
+{ config, desktopEnvironments, additionalFeatures, hostname, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, config-repository, ... }: {
   # Import host specific boot and hardware configurations.
   # Only include desktop components if one is supplied.
   # - https://nixos.wiki/wiki/Nix_Language:_Tips_%26_Tricks#Coercing_a_relative_path_with_interpolated_variables_to_an_absolute_path_.28for_imports.29
@@ -65,7 +65,26 @@
   system.autoUpgrade = {
     enable = true;
     dates = "12:00";
-    flake = "gitlab:Nekanu/nixos-config";
+    flake = config-repository;
+    persistent = true;
+  };
+
+  # Home-Manager Auto-Upgrade
+  systemd.timers."home-manager-auto-upgrade" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* 12:00:00";
+      Persistent = true;
+      Unit = "home-manager-auto-upgrade.service";
+    };
+  };
+
+  systemd.services."home-manager-auto-upgrade" = {
+    wantedBy = [ "multi-user.target" "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.home-manager}/bin/home-manager switch -b backup --flake ${config-repository}#${hostname}";
+    };
   };
 
   system.stateVersion = stateVersion;

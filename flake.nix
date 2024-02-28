@@ -1,8 +1,6 @@
 {
   description = "Nekanu's NixOS configuration";
 
-
-
   inputs = {
 
     # Nixpkgs
@@ -58,6 +56,7 @@
         nurpkgs = nixpkgs.legacyPackages.x86_64-linux;
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
+      config-repository = "gitlab:Nekanu/nixos-config";
     in
     rec {
       # Your custom packages
@@ -81,7 +80,7 @@
       nixosConfigurations = {
         harmony = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion rootPath;
+            inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma5" "hyprland" ];
             additionalFeatures = [ "gaming" "virtualisation" ];
             hostname = "harmony";
@@ -99,7 +98,7 @@
 
         opportunity = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion rootPath;
+            inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma5" ];
             additionalFeatures = [ "virtualisation" ];
             hostname = "opportunity";
