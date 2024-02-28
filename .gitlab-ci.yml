@@ -5,10 +5,9 @@ stages:
 # Run nix flake check to ensure that the flake is valid
 flake-check:
   stage: test
-  # Run this job only on commits to main
+  # Run this job only on commits to main or on merge requests to main
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: never
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
   image: nixos/nix:latest
   script:
     - nix flake check --extra-experimental-features 'nix-command flakes'
@@ -34,5 +33,11 @@ flake-update:
     # Commit the updated flake.lock file
     - git add flake.lock
     - git commit -m "Update flake.lock"
-    - git push origin HEAD:main -o merge_request.create -o merge_request.target=main -o merge_request.title="Update flake.lock" -o merge_request.labels="dependencies,automated" -o ci.skip
+    - git push origin HEAD:develop \
+      -o merge_request.create \
+      -o merge_request.target=main \
+      -o merge_request.title="Update flake.lock" \
+      -o merge_request.labels="dependencies,automated" \
+      -o merge_request.merge_when_pipeline_succeeds=true \
+      -o ci.skip
 
