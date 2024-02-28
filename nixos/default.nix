@@ -64,7 +64,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "daily";
+    dates = "12:00";
     flake = "gitlab:Nekanu/nixos-config";
   };
 
