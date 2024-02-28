@@ -20,8 +20,7 @@ flake-update:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
       when: manual
-    - if: $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "web"
-      when: always
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   script:
     - nix flake update --extra-experimental-features 'nix-command flakes'
 
@@ -30,10 +29,11 @@ flake-update:
     - git config --global user.name "Nix-Update-Bot"
     - git remote set-url --push origin "https://$TOKEN_NAME:$ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git"
 
-    # Commit the updated flake.lock file
+    # Create a new branch from main named nix-update-$CI_JOB_ID, publish it and create a merge request back to main 
+    - git checkout -b "nix-update-$CI_JOB_ID"
     - git add flake.lock
     - git commit -m "Update flake.lock"
-    - git push origin HEAD:develop \
+    - git push origin \
       -o merge_request.create \
       -o merge_request.target=main \
       -o merge_request.title="Update flake.lock" \
