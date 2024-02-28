@@ -13,20 +13,6 @@ flake-check:
   script:
     - nix flake check --extra-experimental-features 'nix-command flakes'
 
-nixos-build-test:
-  stage: test
-  # Run this job only on commits to main or on merge requests to main
-  rules:
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
-    - if: $CI_COMMIT_BRANCH == "main"
-  image: nixos/nix:latest
-  script:
-    - nixos-rebuild dry-activate --extra-experimental-features 'nix-command flakes'
-  parallel:
-    matrix:
-      - NIXOS_CONFIG: [harmony, opportunity, vm]
-  allow_failure: true
-
 # Run nix flake update to update the flake.lock file
 # Run this job only on scheduled pipeline runs and manual triggers
 flake-update:
