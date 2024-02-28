@@ -33,7 +33,8 @@ flake-update:
     - git checkout -b "nix-update-$CI_JOB_ID"
     - git add flake.lock
     - git commit -m "Update flake.lock"
-    - git push origin \
+    - |
+      git push origin \
       -o merge_request.create \
       -o merge_request.target=main \
       -o merge_request.title="Update flake.lock" \
