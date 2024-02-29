@@ -13,7 +13,7 @@
       enable = true;
 
       userName = "Joshua Nestler";
-      userEmail = "developer.jn@mailbox.org";
+      userEmail = "development@nekanu.com";
 
       extraConfig = {
         commit.gpgsign = true;
