@@ -19,7 +19,7 @@
         commit.gpgsign = true;
         tag.gpgsign = true;
         gpg.format = "ssh";
-        gpg.ssh.defaultKeyCommand = "ssh-add L";
+        gpg.ssh.defaultKeyCommand = "ssh-add -L";
 
         user.defaultBranch = "main";
       };
