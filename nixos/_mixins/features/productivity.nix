@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-let
-  flatpak = import ./flatpak.nix { inherit pkgs; };
-in
-{
+{ pkgs, ... }: {
   services.flatpak.packages = [
     "com.brave.Browser"
     "org.mozilla.Thunderbird"

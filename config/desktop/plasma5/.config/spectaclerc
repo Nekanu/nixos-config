@@ -1,9 +1,0 @@
-[$Version]
-update_info=spectacle_clipboard.upd:clipboard-settings-change,spectacle_rememberregion.upd:spectacle-migrate-rememberregion
-
-[General]
-autoSaveImage=true
-clipboardGroup=PostScreenshotCopyImage
-
-[Save]
-defaultSaveLocation=file:///home/nekanu/Pictures/Screenshots/

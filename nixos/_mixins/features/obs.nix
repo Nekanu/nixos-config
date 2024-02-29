@@ -1,8 +1,4 @@
-{ config, pkgs, ... }:
-let
-  flatpak = import ./flatpak.nix { inherit pkgs; };
-in
-{
+{ config, pkgs, ... }: {
   # Enable V4L2 loopback device and kernel module
   boot.kernelModules = [ "v4l2loopback" ];
 

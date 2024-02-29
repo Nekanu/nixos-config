@@ -39,5 +39,29 @@
     firefox
   ];
 
+  # Configure Flatpak
+  services.flatpak = {
+    enable = true;
+
+    uninstallUnmanagedPackages = true;
+
+    update.auto = {
+      enable = true;
+      onCalendar = "daily";
+    };
+
+    overrides = {
+      global = {
+        Environment = {
+          # Fix unthemed cursor in Flatpak apps
+          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+
+          # Force correct theme for some GTK apps
+          GTK_THEME = "Adwaita:dark";
+        };
+      };
+    };
+  }; 
+
   # programs.ssh.askPassword = lib.mkForce "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
 }

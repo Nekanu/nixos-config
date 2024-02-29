@@ -24,7 +24,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-software-center.url = "github:vlinkz/nix-software-center";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.2.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
 
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -82,7 +82,7 @@
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma5" "hyprland" ];
-            additionalFeatures = [ "gaming" "virtualisation" ];
+            additionalFeatures = [ "development" "gaming" "virtualisation" ];
             hostname = "harmony";
             username = "nekanu";
             hostid = "a69480bd";
@@ -100,7 +100,7 @@
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma5" ];
-            additionalFeatures = [ "virtualisation" ];
+            additionalFeatures = [ "development" "virtualisation" ];
             hostname = "opportunity";
             username = "nekanu";
             hostid = "2b927153";
@@ -121,9 +121,9 @@
         "nekanu@harmony" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath;
+            inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma5" "hyprland" ];
-            additionalFeatures = [ "gaming" ];
+            additionalFeatures = [ "gaming" "development" ];
             hostname = "harmony";
             username = "nekanu";
           };
@@ -136,9 +136,9 @@
         "nekanu@opportunity" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath;
+            inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma5" ];
-            additionalFeatures = [ ];
+            additionalFeatures = [ "development" ];
             hostname = "opportunity";
             username = "nekanu";
           };

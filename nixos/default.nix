@@ -69,40 +69,5 @@
     persistent = true;
   };
 
-  # Home-Manager Auto-Upgrade
-  systemd.timers."home-manager-upgrade" = {
-    timerConfig = {
-      OnCalendar = "*-*-* 12:00:00";
-      Persistent = true;
-      Unit = "home-manager-upgrade.service";
-    };
-  };
-
-  systemd.services."home-manager-upgrade" = {
-    description = "Upgrade home-manager configuration";
-
-    restartIfChanged = false;
-
-    serviceConfig.Type = "oneshot";
-
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-
-    environment = config.nix.envVars // {
-      inherit (config.environment.sessionVariables) NIX_PATH;
-    } // config.networking.proxy.envVars;
-
-    path = with pkgs; [
-      coreutils
-      config.nix.package.out
-     ];
-
-    script = let
-      home-manager = "${pkgs.home-manager}/bin/home-manager";
-    in ''
-      ${home-manager} switch -b backup --flake ${config-repository}#${username}
-    '';
-  };
-
   system.stateVersion = stateVersion;
 }

@@ -14,7 +14,7 @@
 
     Service = {
       Type = "simple";
-      Restart = "on-failure";
+      Restart = "always";
       RestartSec = 10;
       ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --noninteractive";
     };

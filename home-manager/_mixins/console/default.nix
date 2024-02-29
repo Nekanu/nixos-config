@@ -8,8 +8,7 @@
   home = {
     # A Modern Unix experience
     # https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/
-    packages = with pkgs; [
-      difftastic # Modern Unix `diff`
+    packages = with pkgs.unstable; [
       ffmpeg-headless # Terminal video encoder
       nixpkgs-fmt # Code format Nix
       nixpkgs-review # Nix code review
@@ -17,7 +16,6 @@
       rclone # Terminal cloud storage client
       shellcheck # Code lint Shell
       shfmt # Code format Shell
-      jq
       puppet-bolt
       btop
     ];
@@ -26,13 +24,15 @@
   programs = {
     atuin = {
       enable = true;
+      package = pkgs.unstable.atuin;
+
       enableBashIntegration = true;
       enableFishIntegration = true;
       enableZshIntegration = true;
     };
     bat = {
       enable = true;
-      extraPackages = with pkgs.bat-extras; [
+      extraPackages = with pkgs.unstable.bat-extras; [
         batwatch
         prettybat
       ];

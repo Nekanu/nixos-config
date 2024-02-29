@@ -1,6 +1,19 @@
 { config, lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    
-  ];
+  programs.plasma = {
+    enable = true;
+
+    kwin.titlebarButtons = {
+      left = [ "more-window-actions" ];
+      right = [ "minimize" "maximize" "close" ];
+    };
+
+    workspace = {
+      clickItemTo = "select";
+    };
+
+    # Enable NumLock on startup
+    configFile."kcminputrc".Keyboard.NumLock = 0;
+  };
+
 }

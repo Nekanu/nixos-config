@@ -2,8 +2,8 @@
   imports = [
     ../features/pipewire.nix
     ../features/obs.nix
-    ../features/development.nix
     ../features/protonmail.nix
+    ../features/syncthing.nix
   ]
   ++ (map (desktop: (./. + "/${desktop}")) desktopEnvironments);
 

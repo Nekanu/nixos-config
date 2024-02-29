@@ -1,14 +1,6 @@
-{ config, lib, pkgs, ... }:
-let
-  flatpak = import ./flatpak.nix { inherit pkgs; };
-in
-{
+{ config, lib, pkgs, ... }: {
   services.pcscd.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    # unstable.yubioath-flutter
-  ];
-
+  
   services.flatpak.packages = [
     "com.yubico.yubioath"
   ];

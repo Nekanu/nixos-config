@@ -1,8 +1,4 @@
-{ config, pkgs, desktopEnvironments, ... }:
-let
-  flatpak = import ./flatpak.nix { inherit pkgs; };
-in
-{
+{ config, pkgs, desktopEnvironments, ... }: {
   # Steam
   programs.steam = {
     enable = true;

@@ -27,4 +27,10 @@
 
     fish.enable = true;
   };
+
+  # Allow mounting of drives without sudo
+  services = {
+    gvfs.enable = true;
+    udisks2.enable = true;
+  };
 }
