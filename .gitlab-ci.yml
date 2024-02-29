@@ -26,8 +26,8 @@ flake-update:
     - nix flake update --extra-experimental-features 'nix-command flakes'
 
     # Configure git
-    - git config --global user.email "nix-update.development@nekanu.com"
-    - git config --global user.name "Nix-Update-Bot"
+    - git config user.email "nix-update.development@nekanu.com"
+    - git config user.name "Nix-Update-Bot"
     - git remote set-url --push origin "https://$UPDATE_BOT_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git"
 
     # Create a new branch from main named nix-update-$CI_JOB_ID, publish it and create a merge request back to main 
