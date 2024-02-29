@@ -43,11 +43,14 @@
         # https://github.com/NixOS/nixpkgs/issues/191128#issuecomment-1246030417
         nix-hash-sha256 = "nix-hash --flat --base32 --type sha256";
         nix-gc = "sudo nix-collect-garbage --delete-older-than 14d";
-        rebuild-home = "home-manager switch -b backup --flake $HOME/.config/nixos";
-        rebuild-host = "sudo nixos-rebuild switch --flake github:joshuanestler/nixos-config";
-        rebuild-lock = "pushd $HOME/.config/nixos && nix flake lock --recreate-lock-file && popd";
-        update-nixos-config = "pushd $HOME/.config/nixos && git pull && popd";
-        nixos-update = "pushd $HOME/.nixos && nix flake update && popd && sudo nixos-rebuild switch --flake $HOME/.nixos && home-manager switch -b backup --flake $HOME/.nixos";
+        
+        upgrade-system = "pushd $HOME/.config/nixos && nix flake update && popd \
+                          && sudo nixos-rebuild switch --flake $HOME/.config/nixos \
+                          && home-manager switch -b backup --flake $HOME/.config/nixos";
+
+        upgrade-config = "pushd $HOME/.config/nixos && nix flake update && popd";
+        upgrade-home-manager = "home-manager switch -b backup --flake $HOME/.config/nixos";
+        upgrade-nixos = "sudo nixos-rebuild switch --flake $HOME/.config/nixos";
       };
       
       shellAliases = {
@@ -60,7 +63,6 @@
         more = "bat --paging=always";
         open = "xdg-open";
         pubip = "curl -s ifconfig.me/ip";
-        #pubip = "curl -s https://api.ipify.org";
         top = "btm --basic --tree --hide_table_gap --dot_marker --mem_as_value";
         tree = "exa --tree";
         moon = "curl -s wttr.in/Moon";

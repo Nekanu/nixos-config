@@ -15,11 +15,12 @@
       userName = "Joshua Nestler";
       userEmail = "developer.jn@mailbox.org";
 
-      # extraConfig = {
-      #   commit.gpgsign = true;
-      #   gpg.format = "ssh";
-      #   user.signingkey = "SHA256:tka8jPXlGneuMaQQ8EWCDWJ/aVfMlc3iC1MrX1f4+Jo";
-      # };
+      extraConfig = {
+        commit.gpgsign = true;
+        tag.gpgsign = true;
+        gpg.format = "ssh";
+        user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA6koXfskUzfuq79KJbI3AxDrmxR2K5YYwtl0HaRGYAx development@nekanu.com";
+      };
 
       lfs = {
         enable = true;
