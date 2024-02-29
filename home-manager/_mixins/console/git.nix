@@ -19,6 +19,7 @@
         commit.gpgsign = true;
         tag.gpgsign = true;
         gpg.format = "ssh";
+        
         user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA6koXfskUzfuq79KJbI3AxDrmxR2K5YYwtl0HaRGYAx development@nekanu.com";
       };
 
