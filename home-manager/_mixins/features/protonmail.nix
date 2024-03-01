@@ -18,5 +18,9 @@
       RestartSec = 10;
       ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --noninteractive";
     };
+
+    Install = {
+      WantedBy = [ "multi-user.target" ];
+    };
   };
 }
