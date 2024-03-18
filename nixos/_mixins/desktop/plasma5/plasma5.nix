@@ -18,6 +18,8 @@
       layan-kde
       layan-gtk-theme
       sddm-kcm
+
+      plasma5-wallpapers-dynamic
     ];
   };
 

@@ -21,7 +21,7 @@
     # gradle
 
     # C#
-    dotnet-sdk
+    dotnet-sdk_8
 
     # HashiCorp toolchain
     vagrant # Virtual machines
@@ -48,6 +48,10 @@
 
     # Jetbrains IDEs
     jetbrains-toolbox
+
+    # Postman
+    postman
+    jmeter
   ];
 
   # Environment variables
