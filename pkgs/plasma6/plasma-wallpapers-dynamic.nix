@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     owner = "zzag";
     repo = pname;
     rev = "${version}";
-    hash = "sha256-GXx1h3Q0iautYfC7LBEZDKnEdVA3kAldTh0aSL6VnJw=";
+    hash = "sha256-0pCx6JNyMlx36r59tvId1k6nIdrU9hCpn4ozEiGVagE=";
   };
 
   propagatedUserEnvPkgs = with kdePackages; [
