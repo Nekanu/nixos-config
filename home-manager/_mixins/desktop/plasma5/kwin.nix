@@ -3,34 +3,34 @@
     configFile."kwinrc" = {
 
       NightColor = {
-        Active = true;
-        LatituteFixed = 47.4;
-        LongitudeFixed = 9.47;
-        Mode = "Location";
+        Active.value = true;
+        LatituteFixed.value = 47.4;
+        LongitudeFixed.value = 9.47;
+        Mode.value = "Location";
       };
 
       Plugins = {
-        "blurEnabled" = true;
-        "contrastEnabled" = true;
+        "blurEnabled".value = true;
+        "contrastEnabled".value = true;
       };
 
       # Use "Grid" layout for Task Switcher
       TabBox = {
-        "LayoutName" = "present_windows";
+        "LayoutName".value = "present_windows";
       };
     };
 
     configFile."kwinrulesrc" = {
       # Forces all Firefox Picture-in-Picture windows to be above all other windows
       "1" = {
-        Description = "Picture-In-Picture";
-        above = true;
-        aboverule = 2;
-        title = "Picture-in-Picture";
-        titlematch = 1;
-        types = 1;
-        wmclass = "firefox";
-        wmclassmatch = 1;
+        Description.value = "Picture-In-Picture";
+        above.value = true;
+        aboverule.value = 2;
+        title.value = "Picture-in-Picture";
+        titlematch.value = 1;
+        types.value = 1;
+        wmclass.value = "firefox";
+        wmclassmatch.value = 1;
       };
     };
   };

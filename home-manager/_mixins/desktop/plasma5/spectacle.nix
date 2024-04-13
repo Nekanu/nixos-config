@@ -6,10 +6,10 @@
     };
 
     configFile."spectaclerc" = {
-      "General"."autoSaveImage" = true;
-      "General"."clipboardGroup" = "PostScreenshotCopyImage";
+      "General"."autoSaveImage".value = true;
+      "General"."clipboardGroup".value = "PostScreenshotCopyImage";
       
-      "Save"."defaultSaveLocation" = "file:///home/${username}/Pictures/Screenshots";
+      "Save"."defaultSaveLocation".value = "file:///home/${username}/Pictures/Screenshots";
     };
   };
 }

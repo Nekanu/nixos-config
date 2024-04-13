@@ -1,26 +1,22 @@
 { input, pkgs, ... }: {
-  { inputs, pkgs, ... }: {
-  
+
   environment = {
-    plasma5.excludePackages = with pkgs.libsForQt5; [
+    plasma6.excludePackages = with pkgs.kdePackages; [
       elisa
-      oxygen
       khelpcenter
+      kate
     ];
 
     systemPackages = with pkgs; [
-      libsForQt5.lightly
-      libsForQt5.filelight
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.ksshaskpass
-      libsForQt5.plasma-browser-integration
-      libsForQt5.krfb # VNC server for KDEconnect
+      # kdePackages.lightly
+      kdePackages.filelight
+      kdePackages.qtstyleplugin-kvantum
+      kdePackages.ksshaskpass
+      kdePackages.plasma-browser-integration
+      kdePackages.krfb # VNC server for KDEconnect
+      kdePackages.sddm-kcm
 
-      layan-kde
-      layan-gtk-theme
-      sddm-kcm
-
-      plasma5-wallpapers-dynamic
+      # plasma5-wallpapers-dynamic
     ];
   };
 
@@ -32,27 +28,27 @@
   services = {
     flatpak.enable = true;
 
-    xserver = {
-      enable = true;
-      displayManager = {
-        defaultSession = "plasmawayland";
+    # xserver = {
+    #   enable = true;
+    # };
+
+    displayManager = {
+        defaultSession = "plasma";
 
         sddm = {
           enable = true;
           autoNumlock = true;
+          wayland.enable = true;
         };
       };
 
-      desktopManager = {
-        plasma6 = {
-          enable = true;
-          enableQt5Integration = true;
-        };
+    desktopManager = {
+      plasma6 = {
+        enable = true;
+        enableQt5Integration = true;
       };
     };
   };
 
   i18n.inputMethod.fcitx5.plasma6Support = true;
-}
-
 }

@@ -2,16 +2,16 @@
   # Lightly configuration
   programs.plasma = {
     configFile."lightlyrc" = {
-      "Style"."DolphinSidebarOpacity" = 100;
+      "Style"."DolphinSidebarOpacity".value = 100;
     };
 
     configFile."kdeglobals" = {
       KDE = {
-        widgetStyle = "Lightly";
+        widgetStyle.value = "Lightly";
       };
     };
 
     # Disable File Indexing
-    configFile."baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
+    configFile."baloofilerc"."Basic Settings"."Indexing-Enabled".value = false;
   };
 }

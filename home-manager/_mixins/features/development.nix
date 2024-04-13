@@ -1,24 +1,10 @@
 { config, desktop, lib, pkgs, rootPath, ... }: {
 
   home.packages = with pkgs.unstable; [
-    # LaTeX
-    texlive.combined.scheme-full
-
-    # Node.js
-    nodePackages.nodejs
-    deno
-    yarn
 
     # Python
-    python3Full
-
-    # Rust
-    rustup
-
-    # Java
-    # jdk20
-    # maven
-    # gradle
+    python312Full
+    python312Packages.pip
 
     # C#
     dotnet-sdk_8
@@ -51,7 +37,6 @@
 
     # Postman
     postman
-    jmeter
   ];
 
   # Environment variables

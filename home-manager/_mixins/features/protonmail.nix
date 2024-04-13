@@ -7,9 +7,6 @@
   systemd.user.services."protonmail-bridge" = {
     Unit = {
       Description = "ProtonMail Bridge";
-
-      Wants = [ "network-online.target" "multi-user.target" ];
-      After = [ "network-online.target" "multi-user.target" ];
     };
 
     Service = {
@@ -20,7 +17,7 @@
     };
 
     Install = {
-      WantedBy = [ "multi-user.target" ];
+      WantedBy = [ "default.target" ];
     };
   };
 }

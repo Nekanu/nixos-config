@@ -1,18 +1,18 @@
 {config, ...}:
 let 
 associations = {
-  "text/html" = "firefox.desktop";
-  "x-scheme-handler/http" = "firefox.desktop";
-  "x-scheme-handler/https" = "firefox.desktop";
+  "text/html".value = "firefox.desktop";
+  "x-scheme-handler/http".value = "firefox.desktop";
+  "x-scheme-handler/https".value = "firefox.desktop";
 
-  "inode/directory" = "dolphin.desktop";
+  "inode/directory".value = "dolphin.desktop";
 
-  "application/pdf" = "okular.desktop";
+  "application/pdf".value = "okular.desktop";
 
-  "x-scheme-handler/mailto" = "thunderbird.desktop";
+  "x-scheme-handler/mailto".value = "thunderbird.desktop";
 
-  "text/plain" = "code.desktop";
-  "text/markdown" = "code.desktop";
+  "text/plain".value = "code.desktop";
+  "text/markdown".value = "code.desktop";
 };
 in {
   programs.plasma = {

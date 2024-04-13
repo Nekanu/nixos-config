@@ -13,7 +13,7 @@
     };
 
     # Enable NumLock on startup
-    configFile."kcminputrc".Keyboard.NumLock = 0;
+    configFile."kcminputrc".Keyboard.NumLock.value = 0;
   };
 
 }

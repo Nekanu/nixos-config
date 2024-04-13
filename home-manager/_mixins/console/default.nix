@@ -55,7 +55,11 @@
     };
     eza = {
       enable = true;
-      enableAliases = true;
+      
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+
       icons = true;
     };
     gpg.enable = true;
@@ -82,7 +86,7 @@
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryFlavor = "qt";
+      pinentryPackage = pkgs.pinentry-qt;
     };
   };
 

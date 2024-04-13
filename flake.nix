@@ -27,9 +27,11 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
 
-    plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     # Generator
     nixos-generators = {
@@ -82,7 +84,7 @@
         harmony = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma5" "hyprland" ];
+            desktopEnvironments = [ "plasma6" "hyprland" ];
             additionalFeatures = [ "development" "gaming" "virtualisation" ];
             hostname = "harmony";
             username = "nekanu";
@@ -123,7 +125,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma5" "hyprland" ];
+            desktopEnvironments = [ "plasma6" "hyprland" ];
             additionalFeatures = [ "gaming" "development" ];
             hostname = "harmony";
             username = "nekanu";
