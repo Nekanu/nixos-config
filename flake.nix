@@ -4,12 +4,11 @@
   inputs = {
 
     # Nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     nur.url = github:nix-community/NUR;
 
@@ -17,7 +16,6 @@
     # See https://github.com/NixOS/nixpkgs/issues/226339
     nixpkgs-unstable-pcloud-ok.url = "github:NixOS/nixpkgs/e3652e0735fbec227f342712f180f4f21f0594f2";
 
-    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,15 +37,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # GRUB themes
     grub-themes.url = "github:vinceliuice/grub2-themes";
 
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    tuxedo-nixos = {
+      url = "github:blitz/tuxedo-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-generators, home-manager, nixos-hardware, nix-software-center, nix-flatpak, grub-themes, plasma-manager, nur, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-generators, home-manager, nixos-hardware, nix-software-center, nix-flatpak, grub-themes, plasma-manager, tuxedo-nixos, nur, ... } @ inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -114,6 +112,7 @@
             nur.nixosModules.nur
             nur-modules.repos.LuisChDev.modules.nordvpn
             nix-flatpak.nixosModules.nix-flatpak
+            tuxedo-nixos.nixosModules.default
           ];
         };
       };
@@ -125,7 +124,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
+            desktopEnvironments = [ "plasma5" "plasma6" "hyprland" ];
             additionalFeatures = [ "gaming" "development" ];
             hostname = "harmony";
             username = "nekanu";

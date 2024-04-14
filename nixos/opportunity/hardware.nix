@@ -58,6 +58,10 @@
       driSupport = true;
       driSupport32Bit = true;
     };
+
+    # TUXEDO Laptop
+    tuxedo-keyboard.enable = true;
+    tuxedo-control-center.enable = true;
   };
 
   services.fwupd.enable = true;
