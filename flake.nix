@@ -38,14 +38,9 @@
     };
 
     grub-themes.url = "github:vinceliuice/grub2-themes";
-
-    tuxedo-nixos = {
-      url = "github:blitz/tuxedo-nixos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-generators, home-manager, nixos-hardware, nix-software-center, nix-flatpak, grub-themes, plasma-manager, tuxedo-nixos, nur, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-generators, home-manager, nixos-hardware, nix-software-center, nix-flatpak, grub-themes, plasma-manager, nur, ... } @ inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -112,7 +107,6 @@
             nur.nixosModules.nur
             nur-modules.repos.LuisChDev.modules.nordvpn
             nix-flatpak.nixosModules.nix-flatpak
-            tuxedo-nixos.nixosModules.default
           ];
         };
       };

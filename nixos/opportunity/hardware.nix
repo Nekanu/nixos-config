@@ -61,7 +61,10 @@
 
     # TUXEDO Laptop
     tuxedo-keyboard.enable = true;
-    tuxedo-control-center.enable = true;
+    tuxedo-rs = {
+      enable = true;
+      tailor-gui.enable = true;
+    };
   };
 
   services.fwupd.enable = true;
