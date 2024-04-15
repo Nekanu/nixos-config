@@ -33,14 +33,6 @@
 
     xserver = {
       enable = true;
-      displayManager = {
-        defaultSession = "plasmawayland";
-
-        sddm = {
-          enable = true;
-          autoNumlock = true;
-        };
-      };
 
       desktopManager = {
         plasma5 = {
@@ -50,6 +42,15 @@
           runUsingSystemd = true;
           useQtScaling = true;
         };
+      };
+    };
+
+    displayManager = {
+      defaultSession = "plasmawayland";
+
+      sddm = {
+        enable = true;
+        autoNumlock = true;
       };
     };
   };
