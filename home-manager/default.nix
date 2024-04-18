@@ -68,7 +68,7 @@ in
     Install.WantedBy = [ "timers.target" ];
 
     Timer = {
-      OnCalendar = "*-*-* 12:30:00";
+      OnCalendar = "*-*-* 02:30:00";
       Persistent = true;
       Unit = "home-manager-upgrade.service";
     };

@@ -64,7 +64,7 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "12:00";
+    dates = "02:00";
     flake = config-repository;
     persistent = true;
   };
