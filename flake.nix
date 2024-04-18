@@ -95,7 +95,7 @@
         opportunity = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma5" ];
+            desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [ "development" "virtualisation" ];
             hostname = "opportunity";
             username = "nekanu";
@@ -118,7 +118,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma5" "plasma6" "hyprland" ];
+            desktopEnvironments = [ "plasma6" "hyprland" ];
             additionalFeatures = [ "gaming" "development" ];
             hostname = "harmony";
             username = "nekanu";
@@ -133,7 +133,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma5" ];
+            desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [ "development" ];
             hostname = "opportunity";
             username = "nekanu";
