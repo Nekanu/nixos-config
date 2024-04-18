@@ -7,7 +7,7 @@
 
     configFile."kdeglobals" = {
       KDE = {
-        widgetStyle.value = "Lightly";
+        # widgetStyle.value = "Lightly";
       };
     };
 

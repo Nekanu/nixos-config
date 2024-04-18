@@ -1,8 +1,11 @@
 { config, username, ... }: {
   programs.plasma = {
     
-    spectacle.shortcuts = {
-      "captureRectangularRegion" = "Meta+Shift+S";
+    shortcuts."services/org.kde.spectacle.desktop" = {
+      CurrentMonitorScreenShot = "Print";
+      FullScreenScreenShot = "Shift+Print";
+      WindowUnderCursorScreenShot = "Meta+Shift+W";
+      RectangularRegionScreenShot = "Meta+Shift+S";
     };
 
     configFile."spectaclerc" = {
