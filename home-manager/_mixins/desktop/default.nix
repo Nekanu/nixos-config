@@ -1,5 +1,6 @@
 { config, desktopEnvironments, lib, pkgs, rootPath, ... }: {
   imports = [
+    ../features/firefox.nix
     ../features/pipewire.nix
     ../features/obs.nix
     ../features/protonmail.nix

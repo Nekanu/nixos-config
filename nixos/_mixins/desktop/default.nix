@@ -35,8 +35,6 @@
     # inputs.nix-software-center.packages.${system}.nix-software-center
     timeshift
     gparted
-
-    firefox
   ];
 
   # Configure Flatpak
