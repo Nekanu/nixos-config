@@ -8,6 +8,11 @@
 
     # C#
     dotnet-sdk_8
+    jetbrains.rider
+
+    # Java
+    jdk
+    jetbrains.idea-ultimate
 
     # HashiCorp toolchain
     vagrant # Virtual machines
@@ -31,9 +36,6 @@
 
     # Designing
     plantuml
-
-    # Jetbrains IDEs
-    jetbrains-toolbox
 
     # Postman
     postman
