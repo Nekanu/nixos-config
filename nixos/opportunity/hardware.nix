@@ -19,7 +19,7 @@
   boot.initrd.luks.devices."luks-76561167-a53b-418a-9f75-303a2cbc3c9a".device = "/dev/disk/by-uuid/76561167-a53b-418a-9f75-303a2cbc3c9a";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DACA-23A4";
+    device = "/dev/disk/by-label/BOOT";
     fsType = "vfat";
   };
 
@@ -40,7 +40,7 @@
   hardware = {
     bluetooth = {
       enable = true;
-      powerOnBoot = true;
+      # powerOnBoot = true;
       settings = {
         General = {
           Experimental = true;
