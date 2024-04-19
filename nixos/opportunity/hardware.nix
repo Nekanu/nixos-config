@@ -10,31 +10,26 @@
     ../_mixins/base/pipewire.nix
   ];
   
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/System";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/System";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
+  };
 
-  boot.initrd.luks.devices."luks-a7794be5-718d-4149-b683-8bf9ca32b643".device = "/dev/disk/by-uuid/a7794be5-718d-4149-b683-8bf9ca32b643";
+  boot.initrd.luks.devices."luks-76561167-a53b-418a-9f75-303a2cbc3c9a".device = "/dev/disk/by-uuid/76561167-a53b-418a-9f75-303a2cbc3c9a";
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/DACA-23A4";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/DACA-23A4";
+    fsType = "vfat";
+  };
 
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-label/Home";
-      fsType = "btrfs";
-      mountPoint = "/home";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-label/Home";
+    fsType = "btrfs";
+    mountPoint = "/home";
+  };
 
-  boot.initrd.luks.devices."luks-0fd69ca3-b5bb-42df-a27d-484315f71eec".device = "/dev/disk/by-uuid/0fd69ca3-b5bb-42df-a27d-484315f71eec";
-
-
+  boot.initrd.luks.devices."luks-7d36d3d4-2cb8-4f9a-b9ef-2ccf7d59e02d".device = "/dev/disk/by-uuid/7d36d3d4-2cb8-4f9a-b9ef-2ccf7d59e02d";
 
   swapDevices = [];
 
