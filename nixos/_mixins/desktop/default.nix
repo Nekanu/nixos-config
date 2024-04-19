@@ -30,11 +30,15 @@
   boot.kernelParams = [ "quiet" ];
   boot.plymouth.enable = true;
 
+  programs.xwayland.enable = true;
+
   environment.systemPackages = with pkgs; [
     pcloud
     # inputs.nix-software-center.packages.${system}.nix-software-center
     timeshift
     gparted
+
+    xwaylandvideobridge
   ];
 
   # Configure Flatpak
