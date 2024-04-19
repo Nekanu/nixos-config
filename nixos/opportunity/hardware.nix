@@ -10,10 +10,6 @@
     ../_mixins/base/pipewire.nix
   ];
   
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
   fileSystems."/" =
     {
       device = "/dev/disk/by-label/System";
