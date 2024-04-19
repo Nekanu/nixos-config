@@ -8,6 +8,7 @@
         "usbhid"
         "usb_storage"
         "sd_mod"
+        "thunderbolt"
         "xhci_pci"
       ];
       verbose = false;
