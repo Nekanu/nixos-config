@@ -73,6 +73,9 @@
 
     thermald.enable = true;
 
+    # Disable power-profiles-daemon to avoid conflicts with TLP
+    power-profiles-daemon.enable = false;
+
     tlp = {
       enable = true;
       settings = {
