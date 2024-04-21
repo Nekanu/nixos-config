@@ -11,7 +11,7 @@
   ];
   
   fileSystems."/" = {
-    device = "/dev/disk/by-label/System";
+    device = "/dev/disk/by-uuid/95793cec-9fab-4830-a624-21ae31f71893";
     fsType = "btrfs";
     options = [ "subvol=@" ];
   };
@@ -19,12 +19,12 @@
   boot.initrd.luks.devices."luks-76561167-a53b-418a-9f75-303a2cbc3c9a".device = "/dev/disk/by-uuid/76561167-a53b-418a-9f75-303a2cbc3c9a";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/BOOT";
+    device = "/dev/disk/by-uuid/029E-CEA2";
     fsType = "vfat";
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-label/Home";
+    device = "/dev/disk/by-uuid/f65cd3a0-0a34-4214-b015-b77fd6236228";
     fsType = "btrfs";
     mountPoint = "/home";
   };
