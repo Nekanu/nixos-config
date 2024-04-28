@@ -39,6 +39,10 @@
 
     # Postman
     postman
+
+    # Cryptography Engineering
+    pari
+    openssl
   ];
 
   # Environment variables
