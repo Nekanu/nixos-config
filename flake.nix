@@ -78,7 +78,7 @@
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ "development" "gaming" "virtualisation" "auto-update" ];
+            additionalFeatures = [ "development" "gaming" "virtualisation" ];
             hostname = "harmony";
             username = "nekanu";
             hostid = "a69480bd";
@@ -96,7 +96,7 @@
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" ];
-            additionalFeatures = [ "development" "virtualisation" "auto-update" ];
+            additionalFeatures = [ "development" "virtualisation" ];
             hostname = "opportunity";
             username = "nekanu";
             hostid = "2b927153";
@@ -119,7 +119,7 @@
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ "gaming" "development" "auto-update" ];
+            additionalFeatures = [ "gaming" "development" ];
             hostname = "harmony";
             username = "nekanu";
           };
@@ -134,7 +134,7 @@
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" ];
-            additionalFeatures = [ "development" "auto-update" ];
+            additionalFeatures = [ "development" ];
             hostname = "opportunity";
             username = "nekanu";
           };
