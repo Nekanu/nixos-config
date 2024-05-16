@@ -13,7 +13,7 @@
     enableGhostscriptFonts = true;
     packages = with pkgs; [ 
       terminus_font 
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
     ];
   };
 }
