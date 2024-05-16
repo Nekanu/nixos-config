@@ -3,6 +3,7 @@
     ./fish.nix
     ./git.nix
     ./xdg.nix
+    ./starship.nix
   ];
 
   home = {
@@ -67,7 +68,7 @@
     info.enable = true;
     jq.enable = true;
     powerline-go = {
-      enable = true;
+      enable = false;
       settings = {
         cwd-max-depth = 5;
         cwd-max-dir-size = 12;
