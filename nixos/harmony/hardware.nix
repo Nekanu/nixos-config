@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
@@ -27,7 +26,6 @@
     {
       device = "/dev/disk/by-label/Home";
       fsType = "btrfs";
-      mountPoint = "/home";
     };
 
   fileSystems."/mnt/Games3" = {
@@ -39,8 +37,6 @@
       "nofail"
     ];
   };
-
-  boot.initrd.luks.devices."luks-c74aec2a-b836-4b0c-91e2-8247e09b3a03".device = "/dev/disk/by-uuid/c74aec2a-b836-4b0c-91e2-8247e09b3a03";
 
   # TODO: Re-add if NAS is working
   # fileSystems."/mnt/fortune" = {
