@@ -12,6 +12,10 @@
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;
     packages = with pkgs; [ 
+      # Microsoft fonts
+      corefonts
+      vistafonts
+
       terminus_font 
       (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
     ];

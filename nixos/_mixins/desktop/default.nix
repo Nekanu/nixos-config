@@ -14,19 +14,6 @@
   # Include all desktop environments specified in the `desktopEnvironments` list.
   ++ (map (element: (./. + "/${element}")) desktopEnvironments);
 
-  fonts = {
-    fontDir.enable = true;
-
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
-
-      # Microsoft fonts
-      corefonts
-      vistafonts
-      cascadia-code
-    ];
-  };
-
   boot.kernelParams = [ "quiet" ];
   boot.plymouth.enable = true;
 
