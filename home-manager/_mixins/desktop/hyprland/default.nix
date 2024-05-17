@@ -1,10 +1,23 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }:
 {
   home.packages = with pkgs; [
     # Terminal
     kitty
     # File Manager
     xfce.thunar
+
+    hyprpaper # wallpaper
+    hyprdim # dim inactive windows
+    hyprshot # screenshot
+    hyprlock # lockscreen
+    hyprkeys # keybinds
+    hypridle # idle daemon
+    hyprpicker # color picker
+    hyprcursor # cursor theme
+    hyprland-workspaces # workspaces
+
+    grimblast # screenshot
+    cliphist # clipboard
   ];
 
   programs.kitty = {
@@ -23,18 +36,7 @@
     systemd.enable = true;
 
     plugins = with pkgs; [
-      hyprpaper # wallpaper
-      hyprdim # dim inactive windows
-      hyprshot # screenshot
-      hyprlock # lockscreen
-      hyprkeys # keybinds
-      hypridle # idle daemon
-      hyprpicker # color picker
-      hyprcursor # cursor theme
-      hyprland-workspaces # workspaces
-
-      grimblast # screenshot
-      cliphist # clipboard
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
     ];
 
     settings = {

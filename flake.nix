@@ -31,6 +31,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     # Generator
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -40,7 +46,7 @@
     grub-themes.url = "github:vinceliuice/grub2-themes";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-generators, home-manager, nixos-hardware, nix-software-center, nix-flatpak, grub-themes, plasma-manager, nur, ... } @ inputs:
+  outputs = { self, nixpkgs, ... } @ inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -48,7 +54,7 @@
       ];
       stateVersion = "23.11";
       rootPath = ./.;
-      nur-modules = import nur rec {
+      nur-modules = import inputs.nur rec {
         nurpkgs = nixpkgs.legacyPackages.x86_64-linux;
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
@@ -85,10 +91,9 @@
           };
           modules = [
             ./nixos
-            grub-themes.nixosModules.default
-            nur.nixosModules.nur
-            nur-modules.repos.LuisChDev.modules.nordvpn
-            nix-flatpak.nixosModules.nix-flatpak
+            inputs.grub-themes.nixosModules.default
+            inputs.nur.nixosModules.nur
+            inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 
@@ -103,10 +108,9 @@
           };
           modules = [
             ./nixos
-            grub-themes.nixosModules.default
-            nur.nixosModules.nur
-            nur-modules.repos.LuisChDev.modules.nordvpn
-            nix-flatpak.nixosModules.nix-flatpak
+            inputs.grub-themes.nixosModules.default
+            inputs.nur.nixosModules.nur
+            inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 
@@ -121,10 +125,9 @@
           };
           modules = [
             ./nixos
-            grub-themes.nixosModules.default
-            nur.nixosModules.nur
-            nur-modules.repos.LuisChDev.modules.nordvpn
-            nix-flatpak.nixosModules.nix-flatpak
+            inputs.grub-themes.nixosModules.default
+            inputs.nur.nixosModules.nur
+            inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
         };
       };
@@ -132,7 +135,7 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        "nekanu@harmony" = home-manager.lib.homeManagerConfiguration {
+        "nekanu@harmony" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
@@ -143,11 +146,11 @@
           };
           modules = [ 
             ./home-manager
-            plasma-manager.homeManagerModules.plasma-manager
+            inputs.plasma-manager.homeManagerModules.plasma-manager
           ];
         };
 
-        "nekanu@opportunity" = home-manager.lib.homeManagerConfiguration {
+        "nekanu@opportunity" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
@@ -158,11 +161,11 @@
           };
           modules = [ 
             ./home-manager
-            plasma-manager.homeManagerModules.plasma-manager
+            inputs.plasma-manager.homeManagerModules.plasma-manager
           ];
         };
 
-        "nekanu@vm" = home-manager.lib.homeManagerConfiguration {
+        "nekanu@vm" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
@@ -173,7 +176,7 @@
           };
           modules = [ 
             ./home-manager
-            plasma-manager.homeManagerModules.plasma-manager
+            inputs.plasma-manager.homeManagerModules.plasma-manager
           ];
         };
       };
