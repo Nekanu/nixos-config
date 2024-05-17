@@ -1,20 +1,15 @@
-{ config, inputs, lib, pkgs, username, ... }:
+{ config, inputs, lib, pkgs, username, modulesPath, ... }:
 
 {
   imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
     ../_mixins/base/pipewire.nix
   ];
 
   # VM disk
   fileSystems."/" = {
-    device = "/dev/disk/by-partlabel/root";
+    device = "/dev/disk/by-diskseq/1-part1";
     fsType = "ext4";
-    autoResize = true;
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vfat";
   };
 
   networking.useDHCP = lib.mkDefault true;
