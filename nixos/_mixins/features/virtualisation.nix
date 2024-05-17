@@ -9,8 +9,6 @@
 
     docker-compose
 
-    virt-manager
-
     distrobox
   ];
 
@@ -21,7 +19,7 @@
     };
 
     podman = {
-      #defaultNetwork.settings.dns_enabled = true;
+      # defaultNetwork.settings.dns_enabled = true;
       # dockerSocket.enable = true;
       # dockerCompat = true;
       # enable = true;
@@ -44,5 +42,5 @@
   nixpkgs.config.allowUnfree = true;
 
   # Required for libvirtd
-  programs.dconf.enable = true;
+  programs.virt-manager.enable = true;
 }
