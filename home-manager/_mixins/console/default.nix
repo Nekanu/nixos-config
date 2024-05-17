@@ -38,7 +38,6 @@
         prettybat
       ];
     };
-    command-not-found.enable = true;
     dircolors = {
       enable = true;
       enableBashIntegration = true;
@@ -62,6 +61,7 @@
       enableZshIntegration = true;
 
       icons = true;
+      git = true;
     };
     gpg.enable = true;
     home-manager.enable = true;

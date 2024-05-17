@@ -4,6 +4,7 @@
     ./config.nix
     ./dolphin.nix
     ./file-associations.nix
+    ./konsole.nix
     ./kwin.nix
     ./plasma6.nix
     ./shortcuts.nix

@@ -4,7 +4,7 @@
     enable = true;
 
     kwin.titlebarButtons = {
-      left = [ "more-window-actions" ];
+      left = [  ];
       right = [ "minimize" "maximize" "close" ];
     };
 
