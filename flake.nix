@@ -109,6 +109,24 @@
             nix-flatpak.nixosModules.nix-flatpak
           ];
         };
+
+        vm = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs stateVersion rootPath config-repository;
+            desktopEnvironments = [ "plasma6" "hyprland" ];
+            additionalFeatures = [  ];
+            hostname = "vm";
+            username = "nekanu";
+            hostid = "49334979";
+          };
+          modules = [
+            ./nixos
+            grub-themes.nixosModules.default
+            nur.nixosModules.nur
+            nur-modules.repos.LuisChDev.modules.nordvpn
+            nix-flatpak.nixosModules.nix-flatpak
+          ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -136,6 +154,21 @@
             desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [ "development" ];
             hostname = "opportunity";
+            username = "nekanu";
+          };
+          modules = [ 
+            ./home-manager
+            plasma-manager.homeManagerModules.plasma-manager
+          ];
+        };
+
+        "nekanu@vm" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion rootPath config-repository;
+            desktopEnvironments = [ "plasma6" "hyprland" ];
+            additionalFeatures = [ ];
+            hostname = "vm";
             username = "nekanu";
           };
           modules = [ 
