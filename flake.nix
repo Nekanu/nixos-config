@@ -59,6 +59,13 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
       };
       config-repository = "gitlab:Nekanu/nixos-config";
+
+      defaultSystemModules = [
+        ./nixos
+        inputs.grub-themes.nixosModules.default
+        inputs.nur.nixosModules.nur
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+      ];
     in
     rec {
       # Your custom packages
@@ -80,6 +87,7 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
+
         harmony = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
@@ -118,7 +126,7 @@
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [  ];
+            additionalFeatures = [ "nixos-generators" ];
             hostname = "vm";
             username = "nekanu";
             hostid = "49334979";

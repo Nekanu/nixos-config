@@ -9,7 +9,7 @@
     supportedFilesystems = [ "ext4" "vfat" ];
 
     loader.grub = {
-      enable = true;
+      enable = lib.mkForce true;
       device = "nodev";
     };
   };
