@@ -14,6 +14,13 @@
     jdk
     jetbrains.idea-ultimate
 
+    # C++ / Qt / KDE
+    jetbrains.clion
+    qt6.full
+    cmake
+    gcc
+    kdePackages.extra-cmake-modules
+
     # HashiCorp toolchain
     vagrant # Virtual machines
     terraform # Infrastructure as code
