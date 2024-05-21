@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   sound = {
     enable = true;
     mediaKeys.enable = true;
   };
   hardware = {
-    pulseaudio.enable = false;
+    pulseaudio.enable = lib.mkForce false;
   };
   services = {
     pipewire = {
@@ -33,7 +33,6 @@
   security.rtkit.enable = true;
 
   environment.systemPackages = with pkgs; [
-    easyeffects
     qpwgraph
     pulseaudio
     helvum
