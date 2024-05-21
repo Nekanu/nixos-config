@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   services.flatpak.packages = [
-    "com.discordapp.Discord"
+    "dev.vencord.Vesktop"
     "com.teamspeak.TeamSpeak"
     "org.signal.Signal"
     "im.riot.Riot"
