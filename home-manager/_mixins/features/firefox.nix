@@ -17,20 +17,26 @@ in {
     ];
 
     policies = {
-      DisableTelemetry = true;
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+
       DisableFirefoxStudies = true;
       DisablePocket = true;
       DisableProfileImport = true;
+      DisableFirefoxScreenshots = true;
+      DisableSetDesktopBackground = true;
+      DisableTelemetry = true;
+
+      DisplayBookmarksToolbar = "always "; # alternatives: "never" or "newtab"
+      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+
+      DontCheckDefaultBrowser = true;
       EnableTrackingProtection = {
-        Value= true;
+        Value = true;
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
       };
-      DisableFirefoxScreenshots = true;
-      DontCheckDefaultBrowser = true;
-      DisplayBookmarksToolbar = "always "; # alternatives: "never" or "newtab"
-      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
       SearchBar = "unified"; # alternative: "separate"
       ShowHomeButton = false;
 
@@ -38,6 +44,17 @@ in {
       OfferToSaveLogins = false;
 
       SearchSuggestEnabled = false;
+      TranslateEnabled = false;
+
+      UserMessaging = {
+        WhatsNew = false;
+        ExtensionRecommendations = false;
+        FeatureRecommendations = false;
+        UrlbarInterventions = false;
+        SkipOnboarding = true;
+        MoreFromMozilla = false;
+        Locked = true;
+      };
 
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
@@ -49,66 +66,77 @@ in {
         "@testpilot-containers" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel"
         };
 
         # NoScript
         "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/noscript/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "navbar"
         };
 
         # uBlock Origin
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel"
         };
 
         # Privacy Badger
         "jid1-MnnxcxisBPnSXQ@jetpack" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel"
         };
 
         # Plasma Integration
         "plasma-browser-integration@kde.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/plasma-integration/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "menupanel"
         };
 
         # Bitwarden
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "navbar"
         };
 
         # KeePassXC-Browser
         "keepassxc-browser@keepassxc.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "menupanel"
         };
 
         # Dark Reader
         "addon@darkreader.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/dark-reader/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "menupanel"
         };
 
         # Enhancer for YouTube
         "enhancerforyoutube@maximerf.addons.mozilla.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhancer-for-youtube/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "menupanel"
         };
 
         # SponsorBlock
         "sponsorBlocker@ajay.app" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "menupanel"
         };
 
         # NordVPN
         "nordvpnproxy@nordvpn.com" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/nordvpn-proxy-extension/latest.xpi";
           installation_mode = "normal_installed";
+          default_area = "menupanel"
         };
       };
 
