@@ -23,7 +23,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-software-center.url = "github:vlinkz/nix-software-center";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.3.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     plasma-manager = {
       url = "github:pjones/plasma-manager";
@@ -66,6 +66,12 @@
         inputs.nur.nixosModules.nur
         inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
+
+      defaultHomeModules = [
+        ./home
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      ];
     in
     rec {
       # Your custom packages
@@ -97,12 +103,7 @@
             username = "nekanu";
             hostid = "a69480bd";
           };
-          modules = [
-            ./nixos
-            inputs.grub-themes.nixosModules.default
-            inputs.nur.nixosModules.nur
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-          ];
+          modules = defaultSystemModules;
         };
 
         opportunity = nixpkgs.lib.nixosSystem {
@@ -114,12 +115,7 @@
             username = "nekanu";
             hostid = "2b927153";
           };
-          modules = [
-            ./nixos
-            inputs.grub-themes.nixosModules.default
-            inputs.nur.nixosModules.nur
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-          ];
+          modules = defaultSystemModules;
         };
 
         vm = nixpkgs.lib.nixosSystem {
@@ -131,12 +127,7 @@
             username = "nekanu";
             hostid = "49334979";
           };
-          modules = [
-            ./nixos
-            inputs.grub-themes.nixosModules.default
-            inputs.nur.nixosModules.nur
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-          ];
+          modules = defaultSystemModules;
         };
       };
 
@@ -152,10 +143,7 @@
             hostname = "harmony";
             username = "nekanu";
           };
-          modules = [ 
-            ./home-manager
-            inputs.plasma-manager.homeManagerModules.plasma-manager
-          ];
+          modules = defaultHomeModules;
         };
 
         "nekanu@opportunity" = inputs.home-manager.lib.homeManagerConfiguration {
@@ -167,10 +155,7 @@
             hostname = "opportunity";
             username = "nekanu";
           };
-          modules = [ 
-            ./home-manager
-            inputs.plasma-manager.homeManagerModules.plasma-manager
-          ];
+          modules = defaultHomeModules;
         };
 
         "nekanu@vm" = inputs.home-manager.lib.homeManagerConfiguration {
@@ -182,10 +167,7 @@
             hostname = "vm";
             username = "nekanu";
           };
-          modules = [ 
-            ./home-manager
-            inputs.plasma-manager.homeManagerModules.plasma-manager
-          ];
+          modules = defaultHomeModules;
         };
       };
     };

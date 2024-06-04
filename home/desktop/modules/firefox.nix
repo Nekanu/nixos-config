@@ -1,0 +1,180 @@
+{ inputs, desktopEnvironments, lib, pkgs, ... }: 
+let
+  lock-false = {
+    Value = false;
+    Status = "locked";
+  };
+  lock-true = {
+    Value = true;
+    Status = "locked";
+  };
+in {
+
+  programs.firefox = {
+    enable = true;
+    
+    nativeMessagingHosts = with pkgs; [
+      kdePackages.plasma-browser-integration
+    ];
+
+    policies = {
+      AutofillAddressEnabled = false;
+      AutofillCreditCardEnabled = false;
+
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisableProfileImport = true;
+      DisableFirefoxScreenshots = true;
+      DisableSetDesktopBackground = true;
+      DisableTelemetry = true;
+
+      DisplayBookmarksToolbar = "always "; # alternatives: "never" or "newtab"
+      DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+
+      DontCheckDefaultBrowser = true;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
+      SearchBar = "unified"; # alternative: "separate"
+      ShowHomeButton = false;
+
+      PasswordManagerEnabled = true;
+      OfferToSaveLogins = false;
+
+      SearchSuggestEnabled = false;
+      TranslateEnabled = false;
+
+      UserMessaging = {
+        WhatsNew = false;
+        ExtensionRecommendations = false;
+        FeatureRecommendations = false;
+        UrlbarInterventions = false;
+        SkipOnboarding = true;
+        MoreFromMozilla = false;
+        Locked = true;
+      };
+
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+
+      ExtensionSettings = {
+        "*".installation_mode = "allowed";
+
+        # Multi-Account Containers
+        "@testpilot-containers" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
+        };
+
+        # NoScript
+        "{73a6fe31-595d-460b-a920-fcc0f8843232}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/noscript/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "navbar";
+        };
+
+        # uBlock Origin
+        "uBlock0@raymondhill.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
+        };
+
+        # Privacy Badger
+        "jid1-MnnxcxisBPnSXQ@jetpack" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
+        };
+
+        # Plasma Integration
+        "plasma-browser-integration@kde.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/plasma-integration/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # Bitwarden
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "navbar";
+        };
+
+        # KeePassXC-Browser
+        "keepassxc-browser@keepassxc.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc-browser/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # Dark Reader
+        "addon@darkreader.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/dark-reader/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # Enhancer for YouTube
+        "enhancerforyoutube@maximerf.addons.mozilla.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhancer-for-youtube/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # SponsorBlock
+        "sponsorBlocker@ajay.app" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # NordVPN
+        "nordvpnproxy@nordvpn.com" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/nordvpn-proxy-extension/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+      };
+
+      Preferences = {
+        "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+        "browser.topsites.contile.enabled" = lock-false;
+        "browser.formfill.enable" = lock-false;
+        "browser.search.suggest.enabled" = lock-false;
+        "browser.search.suggest.enabled.private" = lock-false;
+        "browser.urlbar.suggest.searches" = lock-false;
+        "browser.urlbar.showSearchSuggestionsFirst" = lock-false;
+
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
+        "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
+        "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = lock-false;
+        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = lock-false;
+        "browser.newtabpage.activity-stream.section.highlights.includeVisited" = lock-false;
+        "browser.newtabpage.activity-stream.showSponsored" = lock-false;
+        "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
+
+        "extensions.pocket.enabled" = lock-false;
+        "extensions.screenshots.disabled" = lock-true;
+
+        "geo.enabled" = lock-false;
+
+        "media.peerconnection.enabled" = lock-false;
+
+        "privacy.resistFingerprinting" = lock-true;
+        "privacy.firstparty.isolate" = lock-true;
+        "privacy.trackingprotection.enabled" = lock-true;
+
+        "webgl.disabled" = lock-true;
+
+        "widget.use-xdg-desktop-portal.file-picker" = { Value = 1; Status = "locked"; };
+      };
+    };   
+  };
+}
