@@ -7,26 +7,20 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
   
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/95793cec-9fab-4830-a624-21ae31f71893";
-    fsType = "btrfs";
-    options = [ "subvol=@" ];
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/e047f27b-d68c-4632-94f0-3dd374497262";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
+    };
 
-  boot.initrd.luks.devices."luks-76561167-a53b-418a-9f75-303a2cbc3c9a".device = "/dev/disk/by-uuid/76561167-a53b-418a-9f75-303a2cbc3c9a";
+  boot.initrd.luks.devices."luks-76879fa9-8887-49d5-9d92-20e764a13d7c".device = "/dev/disk/by-uuid/76879fa9-8887-49d5-9d92-20e764a13d7c";
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/029E-CEA2";
-    fsType = "vfat";
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/35C7-919C";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/f65cd3a0-0a34-4214-b015-b77fd6236228";
-    fsType = "btrfs";
-    mountPoint = "/home";
-  };
-
-  boot.initrd.luks.devices."luks-7d36d3d4-2cb8-4f9a-b9ef-2ccf7d59e02d".device = "/dev/disk/by-uuid/7d36d3d4-2cb8-4f9a-b9ef-2ccf7d59e02d";
 
   swapDevices = [];
 
