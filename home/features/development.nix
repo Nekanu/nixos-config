@@ -2,20 +2,19 @@
 
   home.packages = with pkgs.unstable; [
 
+    jetbrains-toolbox
+
     # Python
     python312Full
     python312Packages.pip
 
     # C#
     dotnet-sdk_8
-    jetbrains.rider
 
     # Java
     jdk
-    jetbrains.idea-ultimate
 
     # C++ / Qt / KDE
-    jetbrains.clion
     qt6.full
     cmake
     gcc
