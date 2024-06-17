@@ -4,6 +4,5 @@
     "org.videolan.VLC"
     "org.blender.Blender"
     "org.gimp.GIMP"
-    "org.jdownloader.JDownloader"
   ];
 }

@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./bash.nix
     ./fish.nix
     ./git.nix
     ./xdg.nix

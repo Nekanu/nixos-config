@@ -1,6 +1,35 @@
 { config, desktop, lib, pkgs, rootPath, ... }: {
-  # programs.mangohud = {
-  #   enable = true;
-  #   enableSessionWide = true;
-  # };
+  
+  home.packages = with pkgs; [
+    steam
+    protontricks
+    vkBasalt
+    gamescope
+
+    # Epic Games and GOG launcher
+    heroic
+  ];
+
+  # Vulkan and OpenGL monitoring
+  programs.mangohud = {
+    enable = true;
+    enableSessionWide = true;
+  };
+
+
+  services.flatpak = {
+    packages = [
+      "org.prismlauncher.PrismLauncher"
+    ];
+
+    overrides = {
+      "org.prismlauncher.PrismLauncher".Context = {
+        filesystems = [
+          "/mnt/Games3/Minecraft/PrismLauncher/instances:rw"
+          "/mnt/Games3/Minecraft/PrismLauncher/mods:rw"
+          "/mnt/Games3/Minecraft/PrismLauncher/icons:rw"
+        ];
+      };
+    };
+  };
 }

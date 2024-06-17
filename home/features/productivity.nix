@@ -1,7 +1,4 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    ytdownloader
-  ];
 
   services.flatpak = { 
     packages = [
@@ -12,6 +9,7 @@
       "org.keepassxc.KeePassXC"
       "com.usebottles.bottles"
       "com.logseq.Logseq"
+      "io.github.aandrew_me.ytdn"
     ];
 
     overrides = {

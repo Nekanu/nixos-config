@@ -5,6 +5,7 @@ format = """
 $username\
 $hostname\
 $localip\
+$os\
 $shlvl\
 $singularity\
 $kubernetes\
@@ -14,49 +15,28 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-$hg_branch\
 $docker_context\
 $package\
-$buf\
 $c\
 $cmake\
-$cobol\
 $container\
-$daml\
 $dart\
 $deno\
 $dotnet\
-$elixir\
-$elm\
-$erlang\
 $golang\
-$haskell\
 $helm\
 $java\
-$julia\
 $kotlin\
 $lua\
-$nim\
 $nodejs\
-$ocaml\
-$perl\
-$php\
-$pulumi\
-$purescript\
 $python\
-$rlang\
-$red\
 $ruby\
 $rust\
 $scala\
-$swift\
 $terraform\
-$vlang\
 $vagrant\
-$zig\
 $nix_shell\
 $conda\
-$spack\
 $memory_usage\
 $aws\
 $gcloud\
@@ -88,16 +68,14 @@ error_symbol = "[✗](bold red) "
 [aws]
 symbol = "  "
 
-[buf]
-symbol = " "
-
 [c]
 symbol = " "
 
 [cmd_duration]
 format = "[ ⏱ $duration ]($style)"
 show_notifications = true
-min_time_to_notify = 300000
+min_time_to_notify = 100000
+min_time = 0
 
 [conda]
 symbol = " "
@@ -111,12 +89,6 @@ read_only = " 󰌾"
 [docker_context]
 symbol = " "
 
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
 [fill]
 symbol = "·"
 
@@ -125,12 +97,6 @@ symbol = " "
 
 [golang]
 symbol = " "
-
-[haskell]
-symbol = " "
-
-[hg_branch]
-symbol = " "
 
 [hostname]
 ssh_only = false
@@ -141,14 +107,8 @@ ssh_symbol = " "
 style = "#DF6B00"
 symbol = " "
 
-[julia]
-symbol = " "
-
 [memory_usage]
 symbol = "󰍛 "
-
-[nim]
-symbol = " "
 
 [nix_shell]
 symbol = " "
@@ -162,9 +122,6 @@ symbol = "󰏗 "
 [python]
 symbol = " "
 
-[spack]
-symbol = "🅢 "
-
 [rust]
 symbol = " "
 
@@ -174,6 +131,9 @@ symbol = ""
 format = "[$symbol $maybe_int$signal_name$common_meaning]($style) "
 map_symbol = true
 sigint_symbol = ""
+
+[sudo]
+disabled = false
 
 [username]
 show_always = true

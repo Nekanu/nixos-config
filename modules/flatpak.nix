@@ -26,10 +26,10 @@
       global = {
         Environment = {
           # Fix unthemed cursor in Flatpak apps
-          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+          XCURSOR_PATH = "/run/current-system/sw/share/icons:~/.nix-profile/share/icons/";
 
           # Force correct theme for some GTK apps
-          GTK_THEME = "Adwaita:dark";
+          GTK_THEME = "Breeze:dark";
         };
       };
     };

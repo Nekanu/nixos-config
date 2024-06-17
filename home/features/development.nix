@@ -4,6 +4,9 @@
 
     jetbrains-toolbox
 
+    # LaTeX
+    texliveMedium
+
     # Python
     python312Full
     python312Packages.pip
@@ -13,6 +16,7 @@
 
     # Java
     jdk
+    jmeter
 
     # C++ / Qt / KDE
     qt6.full
@@ -43,12 +47,15 @@
     # Designing
     plantuml
 
-    # Cryptography Engineering
-    pari
-    openssl
-
     # NixOS development
     nixos-generators
+    nixf
+    nixel
+    nixci
+    nix-diff
+    nix-health
+    nixpkgs-fmt
+    nix-index
   ];
 
   # Environment variables
@@ -58,7 +65,6 @@
   };
 
   services.flatpak.packages = [
-    "rest.insomnia.Insomnia"
     "com.getpostman.Postman"
   ];
 }

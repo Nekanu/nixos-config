@@ -54,18 +54,11 @@
       shellAliases = {
         cat = "bat --paging=never";
         # diff = "diffr";
-        glow = "glow --pager";
-        htop = "btm --basic --tree --hide_table_gap --dot_marker --mem_as_value";
-        ip = "ip --color --brief";
         less = "bat --paging=always";
         more = "bat --paging=always";
         open = "xdg-open";
         pubip = "curl -s ifconfig.me/ip";
-        top = "btm --basic --tree --hide_table_gap --dot_marker --mem_as_value";
         tree = "exa --tree";
-        moon = "curl -s wttr.in/Moon";
-        wttr = "curl -scurl -s wttr.in && curl -s v2.wttr.in";
-        wttr-bas = "curl -s wttr.in/basingstoke && curl -s v2.wttr.in/basingstoke";
       };
 
       shellInitLast = ''
