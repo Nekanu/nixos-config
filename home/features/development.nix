@@ -1,4 +1,4 @@
-{ config, desktop, lib, pkgs, rootPath, ... }: {
+{ config, desktop, lib, pkgs, rootPath, username, ... }: {
 
   home.packages = with pkgs.unstable; [
 
@@ -16,7 +16,6 @@
 
     # Java
     jdk
-    jmeter
 
     # C++ / Qt / KDE
     qt6.full
@@ -64,7 +63,12 @@
     PLANTUML_JAR = "${pkgs.plantuml}/lib/plantuml.jar";
   };
 
+  home.sessionPath = [
+    "/home/${username}/.local/share/JetBrains/Toolbox/scripts/"
+  ];
+
   services.flatpak.packages = [
     "com.getpostman.Postman"
+    "org.apache.jmeter"
   ];
 }
