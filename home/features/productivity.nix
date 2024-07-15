@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, username, ... }: {
 
   services.flatpak = { 
     packages = [
@@ -10,12 +10,20 @@
       "com.usebottles.bottles"
       "com.logseq.Logseq"
       "io.github.aandrew_me.ytdn"
+      "org.onlyoffice.desktopeditors"
+      "org.libreoffice.LibreOffice"
     ];
 
     overrides = {
       "org.keepassxc.KeePassXC".Context = {
         filesystems = [
           "~/.mozilla/native-messaging-hosts:rw" # Required for KeePassXC browser integration with Firefox
+        ];
+      };
+
+      "com.usebottles.bottles".Context = {
+        filesystems = [
+          "/run/media/${username}:rw"
         ];
       };
     };

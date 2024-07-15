@@ -41,14 +41,14 @@ in {
       SearchBar = "unified"; # alternative: "separate"
       ShowHomeButton = false;
 
-      PasswordManagerEnabled = true;
+      PasswordManagerEnabled = false;
       OfferToSaveLogins = false;
 
       SearchSuggestEnabled = false;
       TranslateEnabled = false;
 
       UserMessaging = {
-        WhatsNew = false;
+        WhatsNew = true;
         ExtensionRecommendations = false;
         FeatureRecommendations = false;
         UrlbarInterventions = false;

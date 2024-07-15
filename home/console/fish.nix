@@ -44,9 +44,8 @@
         nix-hash-sha256 = "nix-hash --flat --base32 --type sha256";
         nix-gc = "sudo nix-collect-garbage --delete-older-than 14d";
         
-        upgrade-system = "pushd $HOME/.config/nixos && nix flake update && popd && sudo nixos-rebuild switch --flake $HOME/.config/nixos && home-manager switch -b backup --flake $HOME/.config/nixos";
+        upgrade = "pushd $HOME/.config/nixos && nix flake update && popd && sudo nixos-rebuild switch --flake $HOME/.config/nixos && home-manager switch -b backup --flake $HOME/.config/nixos";
 
-        upgrade-config = "pushd $HOME/.config/nixos && nix flake update && popd";
         upgrade-home-manager = "home-manager switch -b backup --flake $HOME/.config/nixos";
         upgrade-nixos = "sudo nixos-rebuild switch --flake $HOME/.config/nixos";
       };

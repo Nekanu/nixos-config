@@ -1,9 +1,5 @@
 { config, lib, pkgs, ... }:
 {
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-  };
   hardware = {
     pulseaudio.enable = lib.mkForce false;
   };

@@ -20,6 +20,7 @@
   services.flatpak = {
     packages = [
       "org.prismlauncher.PrismLauncher"
+      "com.usebottles.bottles"
     ];
 
     overrides = {
@@ -28,6 +29,11 @@
           "/mnt/Games3/Minecraft/PrismLauncher/instances:rw"
           "/mnt/Games3/Minecraft/PrismLauncher/mods:rw"
           "/mnt/Games3/Minecraft/PrismLauncher/icons:rw"
+        ];
+      };
+      "com.usebottles.bottles".Context = {
+        filesystems = [
+          "/mnt/Games3:rw"
         ];
       };
     };

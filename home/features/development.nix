@@ -55,6 +55,10 @@
     nix-health
     nixpkgs-fmt
     nix-index
+
+    # Foundry VTT
+    nodejs_20
+    yarn
   ];
 
   # Environment variables

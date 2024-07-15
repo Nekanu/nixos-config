@@ -16,7 +16,6 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     unstable.vscode
-    libreoffice
     nextcloud-client
     kleopatra
     tor-browser-bundle-bin
