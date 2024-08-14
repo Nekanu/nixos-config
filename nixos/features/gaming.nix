@@ -2,9 +2,13 @@
   # Steam
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
+    # gamescopeSession.enable = true;
     extest.enable = true;
     remotePlay.openFirewall = true;
+
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
   };
 
   programs.gamescope = {
