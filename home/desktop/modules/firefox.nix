@@ -15,6 +15,7 @@ in {
     
     nativeMessagingHosts = with pkgs; [
       kdePackages.plasma-browser-integration
+      vdhcoapp
     ];
 
     policies = {
@@ -143,6 +144,13 @@ in {
         # NordVPN
         "nordvpnproxy@nordvpn.com" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/nordvpn-proxy-extension/latest.xpi";
+          installation_mode = "normal_installed";
+          default_area = "menupanel";
+        };
+
+        # Video Downloadhelper
+        "{b9db16a4-6edc-47ec-a1f4-b86292ed211d}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/video-downloadhelper/latest.xpi";
           installation_mode = "normal_installed";
           default_area = "menupanel";
         };

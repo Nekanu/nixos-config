@@ -19,6 +19,7 @@
       xorg.libpciaccess
 
       glib
+      glibc
       gtk2
       bzip2
       zlib

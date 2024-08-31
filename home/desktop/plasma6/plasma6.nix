@@ -3,11 +3,6 @@
   programs.plasma = {
     enable = true;
 
-    kwin.titlebarButtons = {
-      left = [  ];
-      right = [ "minimize" "maximize" "close" ];
-    };
-
     workspace = {
       clickItemTo = "select";
     };

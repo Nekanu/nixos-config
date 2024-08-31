@@ -12,7 +12,7 @@
     python312Packages.pip
 
     # C#
-    dotnet-sdk_8
+    #dotnet-sdk_8
 
     # Java
     jdk
@@ -31,12 +31,6 @@
     terraform-docs
     terraform-compliance
     terraform-inventory
-    nomad
-    nomad-autoscaler
-    nomad-pack
-    consul
-    vault
-    packer
 
     # Ansible
     ansible
@@ -59,6 +53,10 @@
     # Foundry VTT
     nodejs_20
     yarn
+
+    # Postman CLI
+    postman
+    jmeter
   ];
 
   # Environment variables
@@ -69,10 +67,13 @@
 
   home.sessionPath = [
     "/home/${username}/.local/share/JetBrains/Toolbox/scripts/"
+
+    # Dotnet SDK
+    "/home/${username}/.dotnet"
+    "/home/${username}/.dotnet/tools"
   ];
 
   services.flatpak.packages = [
-    "com.getpostman.Postman"
-    "org.apache.jmeter"
+    # "org.apache.jmeter"
   ];
 }
