@@ -56,7 +56,6 @@
 
     # Postman CLI
     postman
-    jmeter
   ];
 
   # Environment variables
@@ -74,6 +73,6 @@
   ];
 
   services.flatpak.packages = [
-    # "org.apache.jmeter"
+    "org.apache.jmeter"
   ];
 }

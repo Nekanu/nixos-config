@@ -14,7 +14,7 @@ flake-check:
     - nix flake check --extra-experimental-features 'nix-command flakes'
 
 # Run nix flake update to update the flake.lock file
-# Run this job only on scheduled pipeline runs and manual triggersTTTTTTTT
+# Run this job only on scheduled pipeline runs and manual triggers
 flake-update:
   stage: build
   image: nixos/nix:latest
