@@ -23,6 +23,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-software-center.url = "github:vlinkz/nix-software-center";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     plasma-manager = {
@@ -129,6 +131,19 @@
           };
           modules = defaultSystemModules;
         };
+
+        wsl-nixos = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs stateVersion rootPath config-repository;
+            desktopEnvironments = [ ];
+            additionalFeatures = [ "development" ];
+            hostname = "wsl-nixos";
+            username = "nekanu";
+            hostid = "48954894";
+          };
+          modules = defaultSystemModules
+            ++ [inputs.nixos-wsl.nixosModules.default];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -170,13 +185,13 @@
           modules = defaultHomeModules;
         };
 
-        "nekanu@wsl-ubuntu" = inputs.home-manager.lib.homeManagerConfiguration {
+        "nekanu@wsl-nixos" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ ];
             additionalFeatures = [ "development"];
-            hostname = "wsl-ubuntu";
+            hostname = "wsl-nixos";
             username = "nekanu";
           };
           modules = defaultHomeModules;
