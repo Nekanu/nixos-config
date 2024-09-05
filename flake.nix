@@ -169,6 +169,18 @@
           };
           modules = defaultHomeModules;
         };
+
+        "nekanu@wsl-ubuntu" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion rootPath config-repository;
+            desktopEnvironments = [ ];
+            additionalFeatures = [ "development"];
+            hostname = "wsl-ubuntu";
+            username = "nekanu";
+          };
+          modules = defaultHomeModules;
+        };
       };
     };
 }
