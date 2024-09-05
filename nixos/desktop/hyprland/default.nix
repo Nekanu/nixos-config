@@ -1,13 +1,13 @@
 { pkgs, ... }:
 {
   programs.hyprland = {
-    enable = true;
+    # enable = true;
 
-    xwayland.enable = true;
+    # xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
-    kitty
-    xdg-desktop-portal-hyprland
+    # kitty
+    #xdg-desktop-portal-hyprland
   ];
 }
