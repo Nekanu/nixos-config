@@ -137,7 +137,7 @@
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ ];
             additionalFeatures = [ "development" ];
-            hostname = "wsl-nixos";
+            hostname = "nixos";
             username = "nekanu";
             hostid = "48954894";
           };
