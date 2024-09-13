@@ -1,11 +1,11 @@
-{ config, desktop, lib, pkgs, rootPath, username, ... }: {
+{ config, desktop, lib, pkgs, rootPath, username, hostname, ... }: {
 
   home.packages = with pkgs.unstable; [
 
     jetbrains-toolbox
 
     # LaTeX
-    texliveMedium
+    texliveFull
 
     # Python
     python312Full
@@ -24,7 +24,6 @@
     kdePackages.extra-cmake-modules
 
     # HashiCorp toolchain
-    vagrant # Virtual machines
     terraform # Infrastructure as code
     terraform-ls
     terraform-lsp
@@ -56,6 +55,10 @@
 
     # Postman CLI
     postman
+  ]
+  # Do not install vagrant on WSL (it will fail)
+  ++ lib.optionals (hostname != "wsl-nixos") [
+    vagrant
   ];
 
   # Environment variables
