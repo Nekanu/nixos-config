@@ -17,8 +17,8 @@ let
 
   pcloud_22_11 = pkgs_22_11.pcloud.overrideAttrs (prev:
     let
-      version = "1.14.6";
-      code = "XZQDbs0Z4ET1VL0SIUuzr5ewR9LYuf6ssLRk";
+      version = "1.14.7";
+      code = "XZhPkU0Zh5gulxHfMn4j1dYBS4dh45iDQHby";
       # Archive link's codes: https://www.pcloud.com/release-notes/linux.html
       src = pkgs.fetchzip {
         url = "https://api.pcloud.com/getpubzip?code=${code}&filename=${prev.pname}-${version}.zip";
