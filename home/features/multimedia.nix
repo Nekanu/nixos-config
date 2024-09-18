@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  services.easyeffects = {
+    enable = true;
+  };
+
   services.flatpak.packages = [
     "com.spotify.Client"
     "org.videolan.VLC"
