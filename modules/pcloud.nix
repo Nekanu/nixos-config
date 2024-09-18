@@ -22,7 +22,7 @@ let
       # Archive link's codes: https://www.pcloud.com/release-notes/linux.html
       src = pkgs.fetchzip {
         url = "https://api.pcloud.com/getpubzip?code=${code}&filename=${prev.pname}-${version}.zip";
-        hash = "sha256-3HUVIDxeq7svzeWyZrxlE4TjZ8lOwT8bYgyRFRzGnmU=";
+        hash = "sha256-fzQVuCI3mK93Y3Fwzc0WM5rti0fTZhRm+Qj1CHC8CJ4=";
       };
 
       appimageContents = pkgs.appimageTools.extractType2 {
