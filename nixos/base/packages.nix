@@ -9,8 +9,6 @@
     home-manager
     killall
     man-pages
-    mergerfs
-    mergerfs-tools
     nano
     pciutils
     rsync
@@ -22,6 +20,7 @@
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     icu # for .NET
+    nix-du
   ];
 
   programs = {

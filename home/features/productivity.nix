@@ -1,5 +1,10 @@
 { pkgs, username, ... }: {
 
+  services.nextcloud-client = {
+    enable = true;
+    startInBackground = true;
+  };
+
   services.flatpak = { 
     packages = [
       "com.brave.Browser"

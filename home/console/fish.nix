@@ -43,11 +43,9 @@
         # https://github.com/NixOS/nixpkgs/issues/191128#issuecomment-1246030417
         nix-hash-sha256 = "nix-hash --flat --base32 --type sha256";
         nix-gc = "sudo nix-collect-garbage --delete-older-than 14d";
-        
-        upgrade = "pushd $HOME/.config/nixos && nix flake update && popd && sudo nixos-rebuild switch --flake $HOME/.config/nixos && home-manager switch -b backup --flake $HOME/.config/nixos";
 
-        upgrade-home-manager = "home-manager switch -b backup --flake $HOME/.config/nixos";
-        upgrade-nixos = "sudo nixos-rebuild switch --flake $HOME/.config/nixos";
+        bhm = "build-home-manager";
+        bn = "build-nixos";
       };
       
       shellAliases = {
@@ -58,6 +56,11 @@
         open = "xdg-open";
         pubip = "curl -s ifconfig.me/ip";
         tree = "exa --tree";
+
+        upgrade = "pushd $HOME/.config/nixos && nix flake update && popd && sudo nixos-rebuild switch --flake $HOME/.config/nixos && home-manager switch -b backup --flake $HOME/.config/nixos";
+
+        build-home-manager = "home-manager switch -b backup --flake $HOME/.config/nixos";
+        build-nixos = "sudo nixos-rebuild switch --flake $HOME/.config/nixos";
       };
 
       shellInitLast = ''

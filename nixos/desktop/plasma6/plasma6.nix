@@ -5,6 +5,7 @@
       elisa
       khelpcenter
       kate
+      discover
     ];
 
     systemPackages = with pkgs; [
@@ -15,6 +16,7 @@
       kdePackages.plasma-browser-integration
       kdePackages.krfb # VNC server for KDEconnect
       kdePackages.sddm-kcm
+      kdePackages.koi
 
       # plasma5-wallpapers-dynamic
       xdg-desktop-portal-kde

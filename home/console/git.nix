@@ -16,6 +16,7 @@
       userEmail = "development@nekanu.com";
 
       extraConfig = {
+        core.autocrlf = "input";
         commit.gpgsign = true;
         tag.gpgsign = true;
         gpg.format = "ssh";
