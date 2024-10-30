@@ -55,10 +55,6 @@
 
     # Postman CLI
     postman
-  ]
-  # Do not install vagrant on WSL (it will fail)
-  ++ lib.optionals (hostname != "wsl-nixos") [
-    vagrant
   ];
 
   # Environment variables
@@ -73,9 +69,5 @@
     # Dotnet SDK
     "/home/${username}/.dotnet"
     "/home/${username}/.dotnet/tools"
-  ];
-
-  services.flatpak.packages = [
-    "org.apache.jmeter"
   ];
 }

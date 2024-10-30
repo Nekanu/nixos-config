@@ -53,5 +53,12 @@
     };
   };
 
+  xdg = {
+    portal = {
+      configPackages = [ pkgs.xdg-desktop-portal-kde ];
+      extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    };
+  };
+
   i18n.inputMethod.fcitx5.plasma6Support = true;
 }

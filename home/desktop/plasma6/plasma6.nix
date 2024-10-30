@@ -11,7 +11,10 @@
     configFile."kcminputrc".Keyboard.NumLock.value = 0;
   };
 
-  home.packages = with pkgs; [
-    xdg-desktop-portal-kde
-  ];
+  xdg = {
+    portal = {
+      configPackages = [ pkgs.xdg-desktop-portal-kde ];
+      extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    };
+  };
 }

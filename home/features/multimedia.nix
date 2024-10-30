@@ -1,9 +1,6 @@
 { pkgs, ... }: {
-  services.easyeffects = {
-    enable = true;
-  };
-
   services.flatpak.packages = [
+    "com.github.wwmm.easyeffects"
     "com.spotify.Client"
     "org.videolan.VLC"
     "org.blender.Blender"

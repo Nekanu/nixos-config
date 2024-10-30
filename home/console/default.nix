@@ -61,7 +61,7 @@
       enableFishIntegration = true;
       enableZshIntegration = true;
 
-      icons = true;
+      icons = "auto";
       git = true;
     };
     fzf = {

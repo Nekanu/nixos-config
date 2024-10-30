@@ -1,5 +1,12 @@
 { config, ... }: 
 {
+  xdg = {
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+    };
+  };
+
   # Configure Flatpak
   services.flatpak = {
     enable = true;
