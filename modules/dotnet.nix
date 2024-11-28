@@ -21,7 +21,7 @@
   in
   {
     sessionVariables = {
-      DOTNET_ROOT = "${dotnet-combined}";
+      # DOTNET_ROOT = "${dotnet-combined}";
     };
     systemPackages = [
       dotnet-combined

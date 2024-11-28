@@ -1,6 +1,6 @@
 { config, pkgs, rootPath, ... }: {
   imports = [
-    ../../modules/dotnet.nix
+    # ../../modules/dotnet.nix
   ];
 
   programs.nix-ld.enable = true;
@@ -18,5 +18,9 @@
     xz
   ];
 
-  
+  networking.firewall = {
+    allowedTCPPorts = [ 
+      3000 # NodeJS
+     ];
+  };
 }

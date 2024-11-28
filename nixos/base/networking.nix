@@ -11,6 +11,8 @@
     firewall = {
       enable = true;
     };
+
+    nftables.enable = true;
   };
 
   # Workaround https://github.com/NixOS/nixpkgs/issues/180175

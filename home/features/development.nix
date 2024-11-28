@@ -12,7 +12,7 @@
     python312Packages.pip
 
     # C#
-    #dotnet-sdk_8
+    dotnet-sdk_8
 
     # Java
     jdk
