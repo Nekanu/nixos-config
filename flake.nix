@@ -65,7 +65,7 @@
       defaultSystemModules = [
         ./nixos
         inputs.grub-themes.nixosModules.default
-        inputs.nur.nixosModules.nur
+        inputs.nur.modules.nixos.default
         inputs.nix-flatpak.nixosModules.nix-flatpak
       ];
 
