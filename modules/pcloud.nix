@@ -26,7 +26,8 @@ let
       };
 
       appimageContents = pkgs.appimageTools.extractType2 {
-        name = "${prev.pname}-${version}";
+        pname = prev.pname;
+        version = version;
         src = "${src}/pcloud";
       };
     in
