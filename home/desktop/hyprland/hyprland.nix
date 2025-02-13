@@ -27,7 +27,7 @@
 
     font = {
       size = 12;
-      package = (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" ]; });
+      package = pkgs.nerd-fonts.caskaydia-cove;
       name = "CaskydiaCove Nerd Font";
     };
 
