@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 {
-  hardware = {
-    pulseaudio.enable = false;
-  };
   services = {
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       audio.enable = true;
