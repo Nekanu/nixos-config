@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   hardware = {
-    pulseaudio.enable = lib.mkForce false;
+    pulseaudio.enable = false;
   };
   services = {
     pipewire = {
@@ -30,6 +30,5 @@
 
   environment.systemPackages = with pkgs; [
     qpwgraph
-    pulseaudio
   ];
 }
