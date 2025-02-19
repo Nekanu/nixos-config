@@ -12,7 +12,7 @@
             content = {
               type = "filesystem";
               format = "vfat";
-              mountPoint = "/boot";
+              mountpoint = "/boot";
               mountOptions = [ "umask=0077" ];
             };
           };
@@ -26,15 +26,15 @@
                 extraArgs = [ "-f"];
                 subvolumes = {
                   "@" = {
-                    mountPoint = "/";
+                    mountpoint = "/";
                     mountOptions = [ "compress=zstd" "noatime" ];
                   };
                   "@home" = {
-                    mountPoint = "/home";
+                    mountpoint = "/home";
                     mountOptions = [ "compress=zstd" "noatime" ];
                   };
                   "@nix" = {
-                    mountPoint = "/nix";
+                    mountpoint = "/nix";
                     mountOptions = [ "compress=zstd" "noatime" ];
                   };
                 };
