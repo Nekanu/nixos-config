@@ -6,23 +6,6 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
-  
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e047f27b-d68c-4632-94f0-3dd374497262";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
-
-  boot.initrd.luks.devices."luks-76879fa9-8887-49d5-9d92-20e764a13d7c".device = "/dev/disk/by-uuid/76879fa9-8887-49d5-9d92-20e764a13d7c";
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/35C7-919C";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-
-  swapDevices = [];
 
   console = {
     enable = true;

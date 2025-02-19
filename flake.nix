@@ -12,6 +12,8 @@
 
     nur.url = github:nix-community/NUR;
 
+    disko.url = "github:nix-community/disko";
+
     # Version of nixpkgs where pCloud doesn't crash
     # See https://github.com/NixOS/nixpkgs/issues/226339
     nixpkgs-unstable-pcloud-ok.url = "github:NixOS/nixpkgs/e3652e0735fbec227f342712f180f4f21f0594f2";
@@ -64,6 +66,7 @@
 
       defaultSystemModules = [
         ./nixos
+        inputs.disko.nixosModules.disko
         inputs.grub-themes.nixosModules.default
         inputs.nur.modules.nixos.default
         inputs.nix-flatpak.nixosModules.nix-flatpak
