@@ -1,4 +1,10 @@
-{ hostname, lib, pkgs, ... }: {
+{
+  hostname,
+  lib,
+  pkgs,
+  ...
+}:
+{
 
   environment.systemPackages = with pkgs; [
     binutils

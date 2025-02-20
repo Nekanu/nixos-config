@@ -10,7 +10,7 @@
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
 
-    nur.url = github:nix-community/NUR;
+    nur.url = "github:nix-community/NUR";
 
     disko.url = "github:nix-community/disko";
 
@@ -50,7 +50,8 @@
     grub-themes.url = "github:vinceliuice/grub2-themes";
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -83,15 +84,21 @@
     rec {
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./pkgs { inherit pkgs; }
       );
       # Devshell for bootstrapping
       # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; }
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./shell.nix { inherit pkgs; }
       );
 
       # Your custom packages and modifications, exported as overlays
@@ -103,23 +110,47 @@
 
         harmony = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ "development" "gaming" "virtualisation" "nixos-generators" ];
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
+            desktopEnvironments = [
+              "plasma6"
+              "hyprland"
+            ];
+            additionalFeatures = [
+              "development"
+              "gaming"
+              "virtualisation"
+              "nixos-generators"
+            ];
             hostname = "harmony";
             username = "${username}";
             hostid = "a69480bd";
           };
           modules = defaultSystemModules ++ [
-            inputs.home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager
+            {
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
-                inherit inputs outputs stateVersion rootPath config-repository;
+                inherit
+                  inputs
+                  outputs
+                  stateVersion
+                  rootPath
+                  config-repository
+                  ;
                 desktopEnvironments = [ "plasma6" ];
-                additionalFeatures = [ "development" "gaming" ];
+                additionalFeatures = [
+                  "development"
+                  "gaming"
+                ];
                 hostname = "harmony";
                 username = "${username}";
               };
@@ -130,22 +161,41 @@
 
         opportunity = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
             desktopEnvironments = [ "plasma6" ];
-            additionalFeatures = [ "development" "virtualisation" ];
+            additionalFeatures = [
+              "development"
+              "virtualisation"
+            ];
             hostname = "opportunity";
             username = "${username}";
             hostid = "2b927153";
           };
           modules = defaultSystemModules ++ [
-            inputs.home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager
+            {
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
-                inherit inputs outputs stateVersion rootPath config-repository;
-                desktopEnvironments = [ "plasma6" "hyprland" ];
+                inherit
+                  inputs
+                  outputs
+                  stateVersion
+                  rootPath
+                  config-repository
+                  ;
+                desktopEnvironments = [
+                  "plasma6"
+                  "hyprland"
+                ];
                 additionalFeatures = [ "development" ];
                 hostname = "opportunity";
                 username = "${username}";
@@ -157,22 +207,41 @@
 
         vm = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
+            desktopEnvironments = [
+              "plasma6"
+              "hyprland"
+            ];
             additionalFeatures = [ "nixos-generators" ];
             hostname = "vm";
             username = "${username}";
             hostid = "49334979";
           };
           modules = defaultSystemModules ++ [
-            inputs.home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager
+            {
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
-                inherit inputs outputs stateVersion rootPath config-repository;
-                desktopEnvironments = [ "plasma6" "hyprland" ];
+                inherit
+                  inputs
+                  outputs
+                  stateVersion
+                  rootPath
+                  config-repository
+                  ;
+                desktopEnvironments = [
+                  "plasma6"
+                  "hyprland"
+                ];
                 additionalFeatures = [ "development" ];
                 hostname = "vm";
                 username = "${username}";
@@ -184,23 +253,37 @@
 
         wsl-nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
             desktopEnvironments = [ ];
             additionalFeatures = [ "development" ];
             hostname = "wsl-nixos";
             username = "${username}";
             hostid = "48954894";
           };
-          modules = defaultSystemModules
-            ++ [inputs.nixos-wsl.nixosModules.default]
+          modules =
+            defaultSystemModules
+            ++ [ inputs.nixos-wsl.nixosModules.default ]
             ++ [
-              inputs.home-manager.nixosModules.home-manager {
+              inputs.home-manager.nixosModules.home-manager
+              {
                 # home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users."${username}" = import ./home;
                 home-manager.backupFileExtension = "backup";
                 home-manager.extraSpecialArgs = {
-                  inherit inputs outputs stateVersion rootPath config-repository;
+                  inherit
+                    inputs
+                    outputs
+                    stateVersion
+                    rootPath
+                    config-repository
+                    ;
                   desktopEnvironments = [ ];
                   additionalFeatures = [ "development" ];
                   hostname = "wsl-nixos";
@@ -208,7 +291,7 @@
                 };
                 home-manager.sharedModules = defaultHomeModules;
               }
-          ];
+            ];
         };
       };
 
@@ -218,9 +301,21 @@
         "nekanu@harmony" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ "gaming" "development" ];
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
+            desktopEnvironments = [
+              "plasma6"
+              "hyprland"
+            ];
+            additionalFeatures = [
+              "gaming"
+              "development"
+            ];
             hostname = "harmony";
             username = "nekanu";
           };
@@ -230,7 +325,13 @@
         "nekanu@opportunity" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
             desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [ "development" ];
             hostname = "opportunity";
@@ -242,8 +343,17 @@
         "nekanu@vm" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
+            desktopEnvironments = [
+              "plasma6"
+              "hyprland"
+            ];
             additionalFeatures = [ ];
             hostname = "vm";
             username = "nekanu";
@@ -254,9 +364,15 @@
         "nekanu@wsl-nixos" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
+            inherit
+              inputs
+              outputs
+              stateVersion
+              rootPath
+              config-repository
+              ;
             desktopEnvironments = [ ];
-            additionalFeatures = [ "development"];
+            additionalFeatures = [ "development" ];
             hostname = "wsl-nixos";
             username = "nekanu";
           };

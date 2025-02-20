@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.flatpak.packages = [
     "com.github.wwmm.easyeffects"
     "com.spotify.Client"

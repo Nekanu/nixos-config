@@ -1,23 +1,36 @@
-{ config, desktopEnvironments, additionalFeatures, inputs, lib, outputs, pkgs, stateVersion, username, config-repository, ... }:
+{
+  config,
+  desktopEnvironments,
+  additionalFeatures,
+  inputs,
+  lib,
+  outputs,
+  pkgs,
+  stateVersion,
+  username,
+  config-repository,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
   # Only import desktop configuration if the host is desktop enabled
   # Only import user specific configuration if they have bespoke settings
-  imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
+  imports =
+    [
+      # If you want to use modules your own flake exports (from modules/home-manager):
+      # outputs.homeManagerModules.example
 
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
+      # Or modules exported from other flakes (such as nix-colors):
+      # inputs.nix-colors.homeManagerModules.default
 
-    # You can also split up your configuration and import pieces of it here:
-    ./console
-  ]
-  ++ lib.optional (desktopEnvironments != [ ]) ./desktop
-  ++ lib.optional (builtins.isPath (./. + "/users/${username}")) ./users/${username}
-  ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
+      # You can also split up your configuration and import pieces of it here:
+      ./console
+    ]
+    ++ lib.optional (desktopEnvironments != [ ]) ./desktop
+    ++ lib.optional (builtins.isPath (./. + "/users/${username}")) ./users/${username}
+    ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
 
   home = {
     username = username;
@@ -56,7 +69,10 @@ in
   nix = {
     package = lib.mkDefault pkgs.unstable.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };

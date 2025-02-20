@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./bash.nix
     ./fish.nix
@@ -31,6 +32,7 @@
       enableFishIntegration = true;
       enableZshIntegration = true;
     };
+
     bat = {
       enable = true;
       extraPackages = with pkgs.unstable.bat-extras; [
@@ -38,25 +40,27 @@
         prettybat
       ];
     };
+
     btop.enable = true;
+
     dircolors = {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
       enableZshIntegration = true;
     };
+
     direnv = {
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
 
-      nix-direnv = {
-        enable = true;
-      };
+      nix-direnv.enable = true;
     };
+
     eza = {
       enable = true;
-      
+
       enableBashIntegration = true;
       enableFishIntegration = true;
       enableZshIntegration = true;
@@ -64,6 +68,7 @@
       icons = "auto";
       git = true;
     };
+
     fzf = {
       enable = true;
 
@@ -71,10 +76,12 @@
       enableFishIntegration = true;
       enableZshIntegration = true;
     };
+
     gpg.enable = true;
     home-manager.enable = true;
     info.enable = true;
     jq.enable = true;
+
     zoxide = {
       enable = true;
       enableBashIntegration = true;

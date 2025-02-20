@@ -1,21 +1,30 @@
-{ pkgs, lib, system, ... }:
+{
+  pkgs,
+  lib,
+  system,
+  ...
+}:
 
 let
-  pkgs_22_11 = import
-    (pkgs.fetchFromGitHub {
-      owner = "nixos";
-      repo = "nixpkgs";
-      rev = "f7c1500e2eefa58f3c80dd046cba256e10440201";
-      hash = "sha256-sDd7QIcMbIb37nuqMrJElvuyE5eVgWuKGtIPP8IWwCc=";
-    })
-    {
-      system = "x86_64-linux";
-      config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "pcloud"
-      ];
-    };
+  pkgs_22_11 =
+    import
+      (pkgs.fetchFromGitHub {
+        owner = "nixos";
+        repo = "nixpkgs";
+        rev = "f7c1500e2eefa58f3c80dd046cba256e10440201";
+        hash = "sha256-sDd7QIcMbIb37nuqMrJElvuyE5eVgWuKGtIPP8IWwCc=";
+      })
+      {
+        system = "x86_64-linux";
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "pcloud"
+          ];
+      };
 
-  pcloud_22_11 = pkgs_22_11.pcloud.overrideAttrs (prev:
+  pcloud_22_11 = pkgs_22_11.pcloud.overrideAttrs (
+    prev:
     let
       version = "1.14.7";
       code = "XZhPkU0Zh5gulxHfMn4j1dYBS4dh45iDQHby";
@@ -34,7 +43,8 @@ let
     {
       inherit version;
       src = appimageContents;
-    });
+    }
+  );
 in
 
 {

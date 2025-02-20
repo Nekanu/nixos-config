@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.plasma = {
     configFile."konsolerc" = {
       "Desktop Entry"."DefaultProfile".value = "Default.profile";
@@ -8,10 +9,10 @@
       Background.Color.value = "35,38,39";
       BackgroundFaint.Color.value = "49,54,59";
       BackgroundIntense.Color.value = "0,0,0";
-      
+
       Color0.Color.value = "35,38,39";
       Color0Faint.Color.value = "49,54,59";
-      Color0Intense.Color.value = "127,140,141";  
+      Color0Intense.Color.value = "127,140,141";
 
       Color1.Color.value = "237,21,21";
       Color1Faint.Color.value = "120,50,40";
@@ -66,7 +67,7 @@
 
       CursorOptions = {
         CursorShape.value = "1";
-      };  
+      };
 
       General = {
         Name.value = "Default";

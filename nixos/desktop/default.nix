@@ -1,16 +1,24 @@
-{ inputs, desktopEnvironments, lib, pkgs, ... }: {
-  imports = [
-    ../base/pipewire.nix
-    ./modules/appimage.nix
-    ./modules/printing.nix
-    ./modules/sane.nix
-    ./modules/obs.nix
-    ./modules/yubico.nix
-    ../../modules/flatpak.nix
-    ../../modules/pcloud.nix
-  ]
-  # Include all desktop environments specified in the `desktopEnvironments` list.
-  ++ (map (element: (./. + "/${element}")) desktopEnvironments);
+{
+  inputs,
+  desktopEnvironments,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports =
+    [
+      ../base/pipewire.nix
+      ./modules/appimage.nix
+      ./modules/printing.nix
+      ./modules/sane.nix
+      ./modules/obs.nix
+      ./modules/yubico.nix
+      ../../modules/flatpak.nix
+      ../../modules/pcloud.nix
+    ]
+    # Include all desktop environments specified in the `desktopEnvironments` list.
+    ++ (map (element: (./. + "/${element}")) desktopEnvironments);
 
   boot.kernelParams = [ "quiet" ];
   boot.plymouth.enable = true;

@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  
+{ pkgs, ... }:
+{
   imports = [
     # ./hyprland.nix
   ];
@@ -23,7 +23,7 @@
     hyprland-workspaces # workspaces
     hyprlandPlugins.hyprbars
     hyprlandPlugins.hyprexpo
-    
+
     grimblast # screenshot
     cliphist # clipboard
     waybar

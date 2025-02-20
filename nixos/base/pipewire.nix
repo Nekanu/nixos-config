@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services = {
     pulseaudio.enable = false;
@@ -10,16 +15,16 @@
       alsa.support32Bit = true;
       jack.enable = true;
       pulse.enable = true;
-      
+
       wireplumber = {
         enable = true;
 
-        extraLv2Packages = with pkgs; [ 
+        extraLv2Packages = with pkgs; [
           lsp-plugins
         ];
       };
 
-      extraLv2Packages = with pkgs; [ 
+      extraLv2Packages = with pkgs; [
         lsp-plugins
       ];
     };

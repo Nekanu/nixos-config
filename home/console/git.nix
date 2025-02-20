@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs = {
     gh = {
       enable = true;
@@ -24,13 +25,8 @@
         user.defaultBranch = "main";
       };
 
-      lfs = {
-        enable = true;
-      };
-
-      difftastic = {
-        enable = true;
-      };
+      lfs.enable = true;
+      difftastic.enable = true;
     };
   };
 }

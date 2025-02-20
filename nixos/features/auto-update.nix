@@ -1,4 +1,5 @@
-{ config, config-repository, ...}: {
+{ config, config-repository, ... }:
+{
   system.autoUpgrade = {
     enable = true;
     dates = "02:00";

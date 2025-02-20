@@ -1,4 +1,12 @@
-{ config, inputs, lib, pkgs, username, modulesPath, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  username,
+  modulesPath,
+  ...
+}:
 {
   wsl.enable = true;
   wsl.defaultUser = username;

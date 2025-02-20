@@ -1,4 +1,10 @@
-{ config, pkgs, desktopEnvironments, ... }: {
+{
+  config,
+  pkgs,
+  desktopEnvironments,
+  ...
+}:
+{
   # Steam
   programs.steam = {
     enable = true;

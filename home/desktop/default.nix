@@ -1,7 +1,15 @@
-{ config, desktopEnvironments, lib, pkgs, rootPath, ... }: {
+{
+  config,
+  desktopEnvironments,
+  lib,
+  pkgs,
+  rootPath,
+  ...
+}:
+{
   imports = [
     ./modules/firefox.nix
-    
+
     ../features/communication.nix
     ../features/development.nix
     ../features/gaming.nix
@@ -10,8 +18,7 @@
     ../features/protonmail.nix
     ../features/syncthing.nix
     ../../modules/flatpak.nix
-  ]
-  ++ (map (desktop: (./. + "/${desktop}")) desktopEnvironments);
+  ] ++ (map (desktop: (./. + "/${desktop}")) desktopEnvironments);
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
@@ -60,4 +67,3 @@
     "XTerm*utf8" = true;
   };
 }
-

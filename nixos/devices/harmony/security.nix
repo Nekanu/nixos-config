@@ -1,14 +1,17 @@
-{ config, inputs, lib, pkgs, ... }:
-
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   security = {
 
     # lockKernelModules = true;
     protectKernelImage = true;
 
-    rtkit = {
-      enable = true;
-    };
+    rtkit.enable = true;
 
     sudo = {
       enable = true;

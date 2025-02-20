@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   boot = {
     consoleLogLevel = 3;
     initrd = {
@@ -15,16 +21,17 @@
     };
 
     # Enable TTYs
-    kernelParams = [
-      "console=tty1"
-    ];
+    kernelParams = [ "console=tty1" ];
 
     kernelModules = [
       "kvm-intel"
       "vhost_vsock"
     ];
     kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = [ "btrfs" "vfat" ];
+    supportedFilesystems = [
+      "btrfs"
+      "vfat"
+    ];
 
     loader = {
       efi.canTouchEfiVariables = true;

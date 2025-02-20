@@ -1,22 +1,19 @@
-{ inputs, pkgs, ... }: {
-  environment = {
-
-    systemPackages = with pkgs; [
-      xdg-desktop-portal-gnome
-    ];
-  };
+{ inputs, pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    xdg-desktop-portal-gnome
+  ];
 
   programs = {
+    dconf.enable = true;
     kdeconnect = {
       enable = true;
       package = pkgs.gnomeExtensions.gsconnect;
     };
-    dconf.enable = true;
   };
 
   services = {
     flatpak.enable = true;
-
     xserver = {
       enable = true;
       displayManager = {

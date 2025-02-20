@@ -1,5 +1,11 @@
-{ config, inputs, lib, pkgs, username, ... }:
-
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  username,
+  ...
+}:
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -7,6 +13,16 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
+
+  fileSystems."/mnt/Games1" = {
+    device = "/dev/disk/by-label/Games1";
+    fsType = "btrfs";
+    options = [
+      "exec"
+      "rw"
+      "nofail"
+    ];
+  };
 
   fileSystems."/mnt/Games3" = {
     device = "/dev/disk/by-label/Games3";
@@ -29,24 +45,18 @@
   #   ];
   # };
 
-  console = {
-    enable = true;
-  };
+  console.enable = true;
 
-  hardware = {
-    graphics = {
-      enable = true;
-    };
-  };
+  hardware.graphics.enable = true;
 
   services.fwupd.enable = true;
 
   networking = {
     useDHCP = lib.mkDefault true;
-    
+
     networkmanager = {
       enable = true;
-      insertNameservers = ["192.168.178.8"];
+      insertNameservers = [ "192.168.178.8" ];
     };
   };
 

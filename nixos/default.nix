@@ -1,15 +1,31 @@
-{ config, desktopEnvironments, additionalFeatures, hostname, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, config-repository, ... }: {
+{
+  config,
+  desktopEnvironments,
+  additionalFeatures,
+  hostname,
+  inputs,
+  lib,
+  modulesPath,
+  outputs,
+  pkgs,
+  stateVersion,
+  username,
+  config-repository,
+  ...
+}:
+{
   # Import host specific boot and hardware configurations.
   # Only include desktop components if one is supplied.
   # - https://nixos.wiki/wiki/Nix_Language:_Tips_%26_Tricks#Coercing_a_relative_path_with_interpolated_variables_to_an_absolute_path_.28for_imports.29
-  imports = [
-    (./. + "/devices/${hostname}")
-    (modulesPath + "/installer/scan/not-detected.nix")
-    ./base
-    ./users
-  ]
-  ++ lib.optional (desktopEnvironments != [ ]) ./desktop
-  ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
+  imports =
+    [
+      (./. + "/devices/${hostname}")
+      (modulesPath + "/installer/scan/not-detected.nix")
+      ./base
+      ./users
+    ]
+    ++ lib.optional (desktopEnvironments != [ ]) ./desktop
+    ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
 
   nixpkgs = {
     # You can add overlays here

@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   # Enable V4L2 loopback device and kernel module
   boot.kernelModules = [ "v4l2loopback" ];
 

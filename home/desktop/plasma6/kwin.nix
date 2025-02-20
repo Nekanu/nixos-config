@@ -1,10 +1,15 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.plasma = {
 
     kwin = {
       titlebarButtons = {
-        left = [  ];
-        right = [ "minimize" "maximize" "close" ];
+        left = [ ];
+        right = [
+          "minimize"
+          "maximize"
+          "close"
+        ];
       };
 
       effects = {

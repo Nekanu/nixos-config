@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   programs.plasma = {
     window-rules = [
       {
@@ -8,7 +9,7 @@
           title = "Picture-In-Picture";
         };
         apply = {
-          
+
         };
       }
     ];

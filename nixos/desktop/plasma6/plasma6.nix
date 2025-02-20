@@ -1,5 +1,5 @@
-{ input, pkgs, ... }: {
-
+{ input, pkgs, ... }:
+{
   environment = {
     plasma6.excludePackages = with pkgs.kdePackages; [
       elisa
@@ -16,9 +16,7 @@
       kdePackages.plasma-browser-integration
       kdePackages.krfb # VNC server for KDEconnect
       kdePackages.sddm-kcm
-      kdePackages.koi
 
-      # plasma5-wallpapers-dynamic
       xdg-desktop-portal-kde
     ];
   };
@@ -31,19 +29,15 @@
   services = {
     flatpak.enable = true;
 
-    # xserver = {
-    #   enable = true;
-    # };
-
     displayManager = {
-        defaultSession = "plasma";
+      defaultSession = "plasma";
 
-        sddm = {
-          enable = true;
-          autoNumlock = true;
-          wayland.enable = true;
-        };
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+        wayland.enable = true;
       };
+    };
 
     desktopManager = {
       plasma6 = {

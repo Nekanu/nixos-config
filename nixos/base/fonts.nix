@@ -11,12 +11,12 @@
 
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;
-    packages = with pkgs; [ 
+    packages = with pkgs; [
       # Microsoft fonts
       corefonts
       vistafonts
 
-      terminus_font 
+      terminus_font
       nerd-fonts.caskaydia-cove
     ];
   };

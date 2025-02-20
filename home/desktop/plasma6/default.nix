@@ -1,5 +1,18 @@
-{ config, desktopEnvironments, additionalFeatures, hostname, inputs, lib, modulesPath, outputs, pkgs, stateVersion, username, ... }: {
-  
+{
+  config,
+  desktopEnvironments,
+  additionalFeatures,
+  hostname,
+  inputs,
+  lib,
+  modulesPath,
+  outputs,
+  pkgs,
+  stateVersion,
+  username,
+  ...
+}:
+{
   imports = [
     #./dolphin.nix
     #./file-associations.nix

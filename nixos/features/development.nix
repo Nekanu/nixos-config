@@ -1,4 +1,10 @@
-{ config, pkgs, rootPath, ... }: {
+{
+  config,
+  pkgs,
+  rootPath,
+  ...
+}:
+{
   imports = [
     # ../../modules/dotnet.nix
   ];
@@ -17,10 +23,4 @@
     libxml2
     xz
   ];
-
-  networking.firewall = {
-    allowedTCPPorts = [ 
-      3000 # NodeJS
-     ];
-  };
 }

@@ -1,4 +1,12 @@
-{ config, desktopEnvironments, lib, pkgs, rootPath, ... }: {
+{
+  config,
+  desktopEnvironments,
+  lib,
+  pkgs,
+  rootPath,
+  ...
+}:
+{
   programs.plasma = {
     shortcuts = {
       # Add a shortcut to launch the system monitor

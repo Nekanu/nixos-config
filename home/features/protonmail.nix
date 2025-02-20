@@ -1,8 +1,10 @@
-{ config, pkgs, username, ... }:
 {
-  home.packages = with pkgs; [
-    protonmail-bridge
-  ];
+  config,
+  pkgs,
+  ...
+}:
+{
+  home.packages = with pkgs; [ protonmail-bridge ];
 
   systemd.user.services."protonmail-bridge" = {
     Unit = {

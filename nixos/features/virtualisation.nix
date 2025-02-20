@@ -1,4 +1,11 @@
-{ config, hostname, lib, pkgs, ... }: {
+{
+  config,
+  hostname,
+  lib,
+  pkgs,
+  ...
+}:
+{
   #https://nixos.wiki/wiki/Podman
 
   environment.systemPackages = with pkgs; [

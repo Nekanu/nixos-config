@@ -1,4 +1,15 @@
-{ config, desktop, lib, pkgs, rootPath, username, hostname, ... }: {
+{
+  config,
+  desktop,
+  lib,
+  pkgs,
+  rootPath,
+  username,
+  hostname,
+  ...
+}:
+{
+  services.flatpak.packages = [ "app.freelens.Freelens" ];
 
   home.packages = with pkgs.unstable; [
 
@@ -35,6 +46,7 @@
     nix-health
     nixpkgs-fmt
     nix-index
+    nixfmt-rfc-style
 
     # Foundry VTT
     nodejs_20

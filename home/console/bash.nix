@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -15,6 +16,6 @@
       pubip = "curl -s ifconfig.me/ip";
       top = "btop";
       tree = "exa --tree";
-    };   
+    };
   };
 }

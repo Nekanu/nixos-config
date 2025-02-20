@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nano.syntaxHighlight = true;
   programs.nano.nanorc = ''
     set autoindent   # Auto indent

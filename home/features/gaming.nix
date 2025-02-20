@@ -1,5 +1,13 @@
-{ config, desktop, lib, pkgs, rootPath, ... }: {
-  
+{
+  config,
+  desktop,
+  lib,
+  pkgs,
+  rootPath,
+  ...
+}:
+{
+
   home.packages = with pkgs; [
     steam
     protontricks
@@ -15,7 +23,6 @@
     enable = true;
     enableSessionWide = true;
   };
-
 
   services.flatpak = {
     packages = [

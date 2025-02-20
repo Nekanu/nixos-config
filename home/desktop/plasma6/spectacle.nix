@@ -1,6 +1,7 @@
-{ config, username, ... }: {
+{ config, username, ... }:
+{
   programs.plasma = {
-    
+
     spectacle.shortcuts = {
       launch = "Meta+S";
 
@@ -21,7 +22,7 @@
     configFile."spectaclerc" = {
       "General"."autoSaveImage".value = true;
       "General"."clipboardGroup".value = "PostScreenshotCopyImage";
-      
+
       "Save"."defaultSaveLocation".value = "file:///home/${username}/Pictures/Screenshots";
     };
   };

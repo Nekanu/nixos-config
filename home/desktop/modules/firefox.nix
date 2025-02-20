@@ -1,4 +1,10 @@
-{ inputs, desktopEnvironments, lib, pkgs, ... }: 
+{
+  inputs,
+  desktopEnvironments,
+  lib,
+  pkgs,
+  ...
+}:
 let
   lock-false = {
     Value = false;
@@ -8,11 +14,12 @@ let
     Value = true;
     Status = "locked";
   };
-in {
+in
+{
 
   programs.firefox = {
     enable = true;
-    
+
     nativeMessagingHosts = with pkgs; [
       kdePackages.plasma-browser-integration
       vdhcoapp
@@ -150,7 +157,10 @@ in {
       };
 
       Preferences = {
-        "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+        "browser.contentblocking.category" = {
+          Value = "strict";
+          Status = "locked";
+        };
         "browser.topsites.contile.enabled" = lock-false;
         "browser.formfill.enable" = lock-false;
         "browser.search.suggest.enabled" = lock-false;
@@ -181,8 +191,11 @@ in {
 
         "webgl.disabled" = lock-true;
 
-        "widget.use-xdg-desktop-portal.file-picker" = { Value = 1; Status = "locked"; };
+        "widget.use-xdg-desktop-portal.file-picker" = {
+          Value = 1;
+          Status = "locked";
+        };
       };
-    };   
+    };
   };
 }

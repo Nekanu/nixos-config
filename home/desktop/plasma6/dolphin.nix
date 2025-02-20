@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.plasma = {
     configFile."dolphinrc" = {
       DetailsMode = {
@@ -29,9 +30,9 @@
       PreviewSettings = {
         Plugins.value = "audiothumbnail,blenderthumbnail,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs";
       };
-      
+
       "KFileDialog Settings"."Places Icons Auto-resize".value = false;
-      "KFileDialog Settings"."Places Icons Static Size".value = 22;  
+      "KFileDialog Settings"."Places Icons Static Size".value = 22;
     };
 
     configFile."kdeglobals" = {

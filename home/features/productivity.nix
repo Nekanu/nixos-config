@@ -1,11 +1,11 @@
-{ pkgs, username, ... }: {
-
+{ pkgs, username, ... }:
+{
   services.nextcloud-client = {
     enable = true;
     startInBackground = true;
   };
 
-  services.flatpak = { 
+  services.flatpak = {
     packages = [
       "com.brave.Browser"
       "org.mozilla.Thunderbird"

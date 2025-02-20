@@ -1,4 +1,11 @@
-{config, config-repository, pkgs, username, ...}: {
+{
+  config,
+  config-repository,
+  pkgs,
+  username,
+  ...
+}:
+{
   systemd.user.timers."home-manager-upgrade" = {
     Unit.Description = "Upgrade home-manager";
 
