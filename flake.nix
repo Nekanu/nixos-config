@@ -114,6 +114,7 @@
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
+              home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
                 inherit inputs outputs stateVersion rootPath config-repository;
                 desktopEnvironments = [ "plasma6" ];
@@ -140,6 +141,7 @@
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
+              home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
                 inherit inputs outputs stateVersion rootPath config-repository;
                 desktopEnvironments = [ "plasma6" "hyprland" ];
@@ -166,6 +168,7 @@
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
+              home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
                 inherit inputs outputs stateVersion rootPath config-repository;
                 desktopEnvironments = [ "plasma6" "hyprland" ];
@@ -194,6 +197,7 @@
                 # home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users."${username}" = import ./home;
+                home-manager.backupFileExtension = "backup";
                 home-manager.extraSpecialArgs = {
                   inherit inputs outputs stateVersion rootPath config-repository;
                   desktopEnvironments = [ ];
