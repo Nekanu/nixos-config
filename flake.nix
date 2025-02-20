@@ -155,7 +155,7 @@
           ];
         };
 
-        vm = inputs.nixpkgs-stable.lib.nixosSystem {
+        vm = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" "hyprland" ];
