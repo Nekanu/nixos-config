@@ -137,7 +137,22 @@
             username = "${username}";
             hostid = "2b927153";
           };
-          modules = defaultSystemModules;
+          modules = defaultSystemModules ++ [
+            inputs.home-manager.nixosModules.home-manager {
+              # home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${username}" = import ./home;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs stateVersion rootPath config-repository;
+                desktopEnvironments = [ "plasma6" "hyprland" ];
+                additionalFeatures = [ "development" ];
+                hostname = "opportunity";
+                username = "${username}";
+              };
+              home-manager.sharedModules = defaultHomeModules;
+            }
+          ];
         };
 
         vm = nixpkgs.lib.nixosSystem {

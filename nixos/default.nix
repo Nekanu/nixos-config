@@ -62,5 +62,10 @@
     };
   };
 
+  # Apply 15 minute timeout to home-manager service (Installing flatpaks can take a while)
+  systemd.services = if builtins.hasAttr "home-manager-${username}" config.systemd.services then {
+    "home-manager-${username}".serviceConfig.TimeoutStartSec = pkgs.lib.mkForce 900;
+  } else { };
+
   system.stateVersion = stateVersion;
 }
