@@ -5,7 +5,7 @@
 
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
@@ -56,7 +56,7 @@
       forAllSystems = nixpkgs.lib.genAttrs [
         "x86_64-linux"
       ];
-      stateVersion = "23.11";
+      stateVersion = "24.11";
       rootPath = ./.;
       nur-modules = import inputs.nur rec {
         nurpkgs = nixpkgs.legacyPackages.x86_64-linux;
