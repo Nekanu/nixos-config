@@ -110,7 +110,7 @@
             hostid = "a69480bd";
           };
           modules = defaultSystemModules ++ [
-            home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager {
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
@@ -136,7 +136,7 @@
             hostid = "2b927153";
           };
           modules = defaultSystemModules ++ [
-            home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager {
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
@@ -162,7 +162,7 @@
             hostid = "49334979";
           };
           modules = defaultSystemModules ++ [
-            home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager {
               # home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users."${username}" = import ./home;
@@ -190,7 +190,7 @@
           modules = defaultSystemModules
             ++ [inputs.nixos-wsl.nixosModules.default]
             ++ [
-              home-manager.nixosModules.home-manager {
+              inputs.home-manager.nixosModules.home-manager {
                 # home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users."${username}" = import ./home;
