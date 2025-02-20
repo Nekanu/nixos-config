@@ -64,6 +64,8 @@
       };
       config-repository = "gitlab:Nekanu/nixos-config";
 
+      username = "nekanu";
+
       defaultSystemModules = [
         ./nixos
         inputs.disko.nixosModules.disko
@@ -73,7 +75,6 @@
       ];
 
       defaultHomeModules = [
-        ./home
         inputs.plasma-manager.homeManagerModules.plasma-manager
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
       ];
@@ -103,12 +104,26 @@
           specialArgs = {
             inherit inputs outputs stateVersion rootPath config-repository;
             desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ "development" "gaming" "virtualisation" ];
+            additionalFeatures = [ "development" "gaming" "virtualisation" "nixos-generators" ];
             hostname = "harmony";
-            username = "nekanu";
+            username = "${username}";
             hostid = "a69480bd";
           };
-          modules = defaultSystemModules;
+          modules = defaultSystemModules ++ [
+            home-manager.nixosModules.home-manager {
+              # home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${username}" = import ./home;
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs stateVersion rootPath config-repository;
+                desktopEnvironments = [ "plasma6" ];
+                additionalFeatures = [ "development" "gaming" ];
+                hostname = "harmony";
+                username = "${username}";
+              };
+              home-manager.sharedModules = defaultHomeModules;
+            }
+          ];
         };
 
         opportunity = nixpkgs.lib.nixosSystem {
@@ -117,10 +132,24 @@
             desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [ "development" "virtualisation" ];
             hostname = "opportunity";
-            username = "nekanu";
+            username = "${username}";
             hostid = "2b927153";
           };
-          modules = defaultSystemModules;
+          modules = defaultSystemModules ++ [
+            home-manager.nixosModules.home-manager {
+              # home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${username}" = import ./home;
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs stateVersion rootPath config-repository;
+                desktopEnvironments = [ "plasma6" "hyprland" ];
+                additionalFeatures = [ "development" ];
+                hostname = "opportunity";
+                username = "${username}";
+              };
+              home-manager.sharedModules = defaultHomeModules;
+            }
+          ];
         };
 
         vm = nixpkgs.lib.nixosSystem {
@@ -129,10 +158,24 @@
             desktopEnvironments = [ "plasma6" "hyprland" ];
             additionalFeatures = [ "nixos-generators" ];
             hostname = "vm";
-            username = "nekanu";
+            username = "${username}";
             hostid = "49334979";
           };
-          modules = defaultSystemModules;
+          modules = defaultSystemModules ++ [
+            home-manager.nixosModules.home-manager {
+              # home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${username}" = import ./home;
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs stateVersion rootPath config-repository;
+                desktopEnvironments = [ "plasma6" "hyprland" ];
+                additionalFeatures = [ "development" ];
+                hostname = "vm";
+                username = "${username}";
+              };
+              home-manager.sharedModules = defaultHomeModules;
+            }
+          ];
         };
 
         wsl-nixos = nixpkgs.lib.nixosSystem {
@@ -141,63 +184,26 @@
             desktopEnvironments = [ ];
             additionalFeatures = [ "development" ];
             hostname = "wsl-nixos";
-            username = "nekanu";
+            username = "${username}";
             hostid = "48954894";
           };
           modules = defaultSystemModules
-            ++ [inputs.nixos-wsl.nixosModules.default];
-        };
-      };
-
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "nekanu@harmony" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ "gaming" "development" ];
-            hostname = "harmony";
-            username = "nekanu";
-          };
-          modules = defaultHomeModules;
-        };
-
-        "nekanu@opportunity" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" ];
-            additionalFeatures = [ "development" ];
-            hostname = "opportunity";
-            username = "nekanu";
-          };
-          modules = defaultHomeModules;
-        };
-
-        "nekanu@vm" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
-            additionalFeatures = [ ];
-            hostname = "vm";
-            username = "nekanu";
-          };
-          modules = defaultHomeModules;
-        };
-
-        "nekanu@wsl-nixos" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion rootPath config-repository;
-            desktopEnvironments = [ ];
-            additionalFeatures = [ "development"];
-            hostname = "wsl-nixos";
-            username = "nekanu";
-          };
-          modules = defaultHomeModules;
+            ++ [inputs.nixos-wsl.nixosModules.default]
+            ++ [
+              home-manager.nixosModules.home-manager {
+                # home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users."${username}" = import ./home;
+                home-manager.extraSpecialArgs = {
+                  inherit inputs outputs stateVersion rootPath config-repository;
+                  desktopEnvironments = [ ];
+                  additionalFeatures = [ "development" ];
+                  hostname = "wsl-nixos";
+                  username = "${username}";
+                };
+                home-manager.sharedModules = defaultHomeModules;
+              }
+          ];
         };
       };
     };
