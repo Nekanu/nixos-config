@@ -23,19 +23,6 @@
     gcc
     kdePackages.extra-cmake-modules
 
-    # HashiCorp toolchain
-    terraform # Infrastructure as code
-    terraform-ls
-    terraform-lsp
-    terraform-docs
-    terraform-compliance
-    terraform-inventory
-
-    # Ansible
-    ansible
-    ansible-lint
-    ansible-doctor
-
     # Designing
     plantuml
 
@@ -52,9 +39,6 @@
     # Foundry VTT
     nodejs_20
     yarn
-
-    # Postman CLI
-    postman
   ];
 
   # Environment variables
