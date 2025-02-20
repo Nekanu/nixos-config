@@ -8,25 +8,6 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-label/System";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/BOOT";
-      fsType = "vfat";
-    };
-
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-label/Home";
-      fsType = "btrfs";
-    };
-
   fileSystems."/mnt/Games3" = {
     device = "/dev/disk/by-label/Games3";
     fsType = "btrfs";
