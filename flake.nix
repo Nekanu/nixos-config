@@ -97,11 +97,6 @@
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit nixpkgs inputs; };
 
-      install-iso = inputs.nixos-generators.nixosGenerate {
-        system = "x86_64-linux";
-        mo
-      };
-
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
