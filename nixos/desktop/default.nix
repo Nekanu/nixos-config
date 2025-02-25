@@ -15,7 +15,6 @@
       ./modules/scanning.nix
       ./modules/yubico.nix
       ../../modules/flatpak.nix
-      ../../modules/pcloud.nix
     ]
     # Include all desktop environments specified in the `desktopEnvironments` list.
     ++ (map (element: (./. + "/${element}")) desktopEnvironments);
