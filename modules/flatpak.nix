@@ -1,9 +1,16 @@
-{ config, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   xdg = {
     portal = {
       enable = true;
       xdgOpenUsePortal = true;
+      config.common.default = lib.mkOptionDefault "*";
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };
 

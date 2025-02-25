@@ -24,7 +24,7 @@
   home.packages = with pkgs; [
     unstable.vscode
     nextcloud-client
-    kleopatra
+    kdePackages.kleopatra
     tor-browser-bundle-bin
   ];
 
@@ -65,10 +65,5 @@
     "XTerm.termName" = "xterm-256color";
     "XTerm*locale" = false;
     "XTerm*utf8" = true;
-  };
-
-  xdg = {
-    portal.xdgOpenUsePortal = true;
-    portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

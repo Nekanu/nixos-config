@@ -10,8 +10,6 @@
     # File Manager
     xfce.thunar
 
-    #xdg-desktop-portal-hyprland
-
     hyprpaper # wallpaper
     hyprdim # dim inactive windows
     hyprshot # screenshot

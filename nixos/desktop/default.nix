@@ -28,6 +28,6 @@
     pcloud
     gparted
 
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
   ];
 }

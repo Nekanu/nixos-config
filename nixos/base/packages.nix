@@ -18,8 +18,6 @@
     v4l-utils
     wget
     xdg-utils
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
     icu # for .NET
     nix-du
   ];

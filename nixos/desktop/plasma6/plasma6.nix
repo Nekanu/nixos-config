@@ -15,8 +15,6 @@
       kdePackages.plasma-browser-integration
       kdePackages.krfb # VNC server for KDEconnect
       kdePackages.sddm-kcm
-
-      xdg-desktop-portal-kde
     ];
   };
 
@@ -48,8 +46,9 @@
 
   xdg = {
     portal = {
-      configPackages = [ pkgs.xdg-desktop-portal-kde ];
-      extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+      config.common.default = "kde";
+      configPackages = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     };
   };
 
