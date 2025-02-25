@@ -14,10 +14,6 @@
 
     disko.url = "github:nix-community/disko";
 
-    # Version of nixpkgs where pCloud doesn't crash
-    # See https://github.com/NixOS/nixpkgs/issues/226339
-    nixpkgs-unstable-pcloud-ok.url = "github:NixOS/nixpkgs/e3652e0735fbec227f342712f180f4f21f0594f2";
-
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
