@@ -1,5 +1,8 @@
 # Ignore Dolphin's directory configuration files
 .directory
 
+# DirEnv
+.direnv/
+
 result/
 result

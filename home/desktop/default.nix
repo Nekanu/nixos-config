@@ -66,4 +66,9 @@
     "XTerm*locale" = false;
     "XTerm*utf8" = true;
   };
+
+  xdg = {
+    portal.xdgOpenUsePortal = true;
+    portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 }

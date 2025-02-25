@@ -1,5 +1,4 @@
 {
-  inputs,
   desktopEnvironments,
   lib,
   pkgs,
@@ -10,9 +9,10 @@
     [
       ../base/pipewire.nix
       ./modules/appimage.nix
-      ./modules/printing.nix
-      ./modules/sane.nix
+      ./modules/ausweisapp.nix
       ./modules/obs.nix
+      ./modules/printing.nix
+      ./modules/scanning.nix
       ./modules/yubico.nix
       ../../modules/flatpak.nix
       ../../modules/pcloud.nix
@@ -31,6 +31,4 @@
 
     xwaylandvideobridge
   ];
-
-  # programs.ssh.askPassword = lib.mkForce "${pkgs.x11_ssh_askpass}/libexec/x11-ssh-askpass";
 }

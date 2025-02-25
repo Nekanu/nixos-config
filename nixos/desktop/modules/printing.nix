@@ -1,4 +1,4 @@
-{ rootPath, pkgs, ... }:
+{ pkgs, ... }:
 {
   services = {
 

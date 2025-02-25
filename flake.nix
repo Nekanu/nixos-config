@@ -48,10 +48,18 @@
     };
 
     grub-themes.url = "github:vinceliuice/grub2-themes";
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      systems,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -80,6 +88,10 @@
         inputs.plasma-manager.homeManagerModules.plasma-manager
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
       ];
+
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+
+      treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     rec {
       # Your custom packages
@@ -379,5 +391,16 @@
           modules = defaultHomeModules;
         };
       };
+
+      checks = eachSystem (pkgs: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+          };
+        };
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
     };
+
 }

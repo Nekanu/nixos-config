@@ -1,11 +1,5 @@
+{ pkgs, ... }:
 {
-  hostname,
-  lib,
-  pkgs,
-  ...
-}:
-{
-
   environment.systemPackages = with pkgs; [
     binutils
     curl
@@ -30,11 +24,7 @@
     nix-du
   ];
 
-  programs = {
-    dconf.enable = true;
-
-    fish.enable = true;
-  };
+  programs.dconf.enable = true;
 
   # Allow mounting of drives without sudo
   services = {

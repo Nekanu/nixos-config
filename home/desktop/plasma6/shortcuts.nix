@@ -1,11 +1,4 @@
-{
-  config,
-  desktopEnvironments,
-  lib,
-  pkgs,
-  rootPath,
-  ...
-}:
+{ ... }:
 {
   programs.plasma = {
     shortcuts = {

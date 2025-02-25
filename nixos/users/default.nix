@@ -1,10 +1,4 @@
-{
-  config,
-  username,
-  lib,
-  pkgs,
-  ...
-}:
+{ username, ... }:
 {
   imports = [
     ./root

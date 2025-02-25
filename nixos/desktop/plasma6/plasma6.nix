@@ -1,4 +1,4 @@
-{ input, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment = {
     plasma6.excludePackages = with pkgs.kdePackages; [
@@ -9,7 +9,6 @@
     ];
 
     systemPackages = with pkgs; [
-      # kdePackages.lightly
       kdePackages.filelight
       kdePackages.qtstyleplugin-kvantum
       kdePackages.ksshaskpass

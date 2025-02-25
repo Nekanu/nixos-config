@@ -23,6 +23,7 @@
       (modulesPath + "/installer/scan/not-detected.nix")
       ./base
       ./users
+      ./console
     ]
     ++ lib.optional (desktopEnvironments != [ ]) ./desktop
     ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
@@ -68,7 +69,6 @@
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     optimise.automatic = true;
-    package = pkgs.unstable.nix;
     settings = {
       auto-optimise-store = true;
       experimental-features = [

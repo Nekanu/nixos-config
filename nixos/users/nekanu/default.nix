@@ -9,11 +9,6 @@ let
   ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
-  # Only include desktop components if one is supplied.
-  imports = [
-    ./packages-console.nix
-  ] ++ lib.optional (desktopEnvironments != [ ]) ./packages-desktop.nix;
-
   users.users.nekanu = {
     description = "Nekanu";
     extraGroups =
@@ -26,8 +21,9 @@ in
         "nordvpn"
       ]
       ++ ifExists [
-        "docker"
-        "podman"
+        "adbusers" # Android Debug Bridge
+        "docker" # Docker
+        "podman" # Podman
         "vboxusers"
         "libvirtd"
         "gaming"
@@ -39,4 +35,6 @@ in
     packages = [ pkgs.home-manager ];
     shell = pkgs.fish;
   };
+
+  programs.fish.enable = true;
 }

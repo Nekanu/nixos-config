@@ -1,5 +1,6 @@
-{config, ... }: {
+{ ... }:
+{
   install-iso = nixos-generators.nixosGenerate {
-    format = "install-iso"
+    format = "install-iso";
   };
 }

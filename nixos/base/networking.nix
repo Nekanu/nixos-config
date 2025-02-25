@@ -1,9 +1,4 @@
-{
-  hostname,
-  config,
-  pkgs,
-  ...
-}:
+{ hostname, ... }:
 {
   # Use passed in hostid and hostname to configure basic networking
   networking = {
