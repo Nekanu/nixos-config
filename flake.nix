@@ -392,6 +392,8 @@
         };
       };
 
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
       checks = eachSystem (pkgs: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
           src = ./.;

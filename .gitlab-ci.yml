@@ -1,46 +1,45 @@
 stages:
-  - test
-  - build
+    - test
+    - build
 
 # Run nix flake check to ensure that the flake is valid
 flake-check:
-  stage: test
-  # Run this job only on commits to main or on merge requests to main
-  rules:
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
-    - if: $CI_COMMIT_BRANCH == "main"
-  image: nixos/nix:latest
-  script:
-    - nix flake check --extra-experimental-features 'nix-command flakes'
+    stage: test
+    # Run this job only on commits to main or on merge requests to main
+    rules:
+        - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+        - if: $CI_COMMIT_BRANCH == "main"
+    image: nixos/nix:latest
+    script:
+        - nix flake check --extra-experimental-features 'nix-command flakes' --no-build --all-systems
 
 # Run nix flake update to update the flake.lock file
 # Run this job only on scheduled pipeline runs and manual triggers
 flake-update:
-  stage: build
-  image: nixos/nix:latest
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "schedule"
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
-      when: manual
-  script:
-    - nix flake update --extra-experimental-features 'nix-command flakes'
+    stage: build
+    image: nixos/nix:latest
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "schedule"
+        - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+          when: manual
+    script:
+        - nix flake update --extra-experimental-features 'nix-command flakes'
 
-    # Configure git
-    - git config user.email "nix-update.development@nekanu.com"
-    - git config user.name "Nix-Update-Bot"
-    - git remote set-url --push origin "https://$UPDATE_BOT_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git"
+        # Configure git
+        - git config user.email "nix-update.development@nekanu.com"
+        - git config user.name "Nix-Update-Bot"
+        - git remote set-url --push origin "https://$UPDATE_BOT_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git"
 
-    # Create a new branch from main named nix-update-$CI_JOB_ID, publish it and create a merge request back to main 
-    - git checkout -b "nix-update-$CI_JOB_ID"
-    - git add flake.lock
-    - git commit -m "Update flake.lock"
-    - |
-      git push -u origin nix-update-$CI_JOB_ID \
-      -o merge_request.create \
-      -o merge_request.target=main \
-      -o merge_request.title="Update flake.lock" \
-      -o merge_request.label="dependencies,automated" \
-      -o merge_request.merge_when_pipeline_succeeds=true \
-      -o merge_request.remove_source_branch=true \
-      -o ci.skip
-
+        # Create a new branch from main named nix-update-$CI_JOB_ID, publish it and create a merge request back to main
+        - git checkout -b "nix-update-$CI_JOB_ID"
+        - git add flake.lock
+        - git commit -m "Update flake.lock"
+        - |
+            git push -u origin nix-update-$CI_JOB_ID \
+            -o merge_request.create \
+            -o merge_request.target=main \
+            -o merge_request.title="Update flake.lock" \
+            -o merge_request.label="dependencies,automated" \
+            -o merge_request.merge_when_pipeline_succeeds=true \
+            -o merge_request.remove_source_branch=true \
+            -o ci.skip

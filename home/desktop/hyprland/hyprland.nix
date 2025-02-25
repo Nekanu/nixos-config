@@ -53,7 +53,7 @@
 
       decoration = {
         shadow_offset = "0 5";
-        active_opacity = 0.90;
+        active_opacity = 0.9;
         inactive_opacity = 0.82;
         rounding = 8;
         dim_inactive = false;
