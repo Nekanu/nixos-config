@@ -2,8 +2,6 @@
   config,
   inputs,
   lib,
-  pkgs,
-  username,
   ...
 }:
 {
@@ -56,10 +54,6 @@
 
     networkmanager = {
       enable = true;
-      insertNameservers = [
-        "192.168.178.8"
-        "192.168.178.9"
-      ];
     };
   };
 

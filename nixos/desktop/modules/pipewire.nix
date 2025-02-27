@@ -8,7 +8,6 @@
 
       alsa.enable = true;
       alsa.support32Bit = true;
-      jack.enable = true;
       pulse.enable = true;
 
       wireplumber = {
@@ -18,10 +17,6 @@
           lsp-plugins
         ];
       };
-
-      extraLv2Packages = with pkgs; [
-        lsp-plugins
-      ];
     };
   };
   security.rtkit.enable = true;

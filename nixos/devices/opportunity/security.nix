@@ -1,14 +1,7 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, ... }:
 {
   security = {
-
-    # lockKernelModules = true;
+    lockKernelModules = true;
     protectKernelImage = true;
 
     rtkit = {

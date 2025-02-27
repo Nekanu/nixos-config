@@ -8,13 +8,12 @@
       discover
     ];
 
-    systemPackages = with pkgs; [
-      kdePackages.filelight
-      kdePackages.qtstyleplugin-kvantum
-      kdePackages.ksshaskpass
-      kdePackages.plasma-browser-integration
-      kdePackages.krfb # VNC server for KDEconnect
-      kdePackages.sddm-kcm
+    systemPackages = with pkgs.kdePackages; [
+      filelight
+      ksshaskpass
+      plasma-browser-integration
+      krfb # VNC server for KDEconnect
+      sddm-kcm
     ];
   };
 
@@ -41,14 +40,6 @@
         enable = true;
         enableQt5Integration = true;
       };
-    };
-  };
-
-  xdg = {
-    portal = {
-      config.common.default = "kde";
-      configPackages = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     };
   };
 

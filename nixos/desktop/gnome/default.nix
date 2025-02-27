@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal-gnome
@@ -33,6 +33,8 @@
 
   xdg = {
     portal = {
+      config.common.default = lib.mkOptionDefault "gtk";
+      configPackages = [ pkgs.xdg-desktop-portal-gtk ];
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };

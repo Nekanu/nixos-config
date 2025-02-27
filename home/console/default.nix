@@ -13,7 +13,6 @@
     # https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/
     packages = with pkgs.unstable; [
       ffmpeg-headless # Terminal video encoder
-      nixpkgs-fmt # Code format Nix
       nixpkgs-review # Nix code review
       nodePackages.prettier # Code format
       rclone # Terminal cloud storage client

@@ -1,8 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   services.pcscd.enable = true;
 
-  services.flatpak.packages = [
-    "com.yubico.yubioath"
+  environment.systemPackages = with pkgs; [
+    yubioath-flutter
   ];
 }

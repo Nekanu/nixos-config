@@ -127,7 +127,6 @@
               ;
             desktopEnvironments = [
               "plasma6"
-              "hyprland"
             ];
             additionalFeatures = [
               "development"

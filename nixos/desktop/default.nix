@@ -7,10 +7,10 @@
 {
   imports =
     [
-      ../base/pipewire.nix
       ./modules/appimage.nix
       ./modules/ausweisapp.nix
       ./modules/obs.nix
+      ./modules/pipewire.nix
       ./modules/printing.nix
       ./modules/scanning.nix
       ./modules/yubico.nix

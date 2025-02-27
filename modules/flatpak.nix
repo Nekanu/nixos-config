@@ -5,15 +5,6 @@
   ...
 }:
 {
-  xdg = {
-    portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      config.common.default = lib.mkOptionDefault "*";
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
-  };
-
   # Configure Flatpak
   services.flatpak = {
     enable = true;

@@ -7,7 +7,6 @@
 
     shellAliases = {
       cat = "bat --paging=never";
-      # diff = "diffr";
       less = "bat --paging=always";
       more = "bat --paging=always";
     };

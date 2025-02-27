@@ -1,13 +1,6 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, ... }:
 {
   security = {
-
     # lockKernelModules = true;
     protectKernelImage = true;
 

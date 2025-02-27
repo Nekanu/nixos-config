@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.hyprland = {
     enable = true;
@@ -7,6 +7,11 @@
 
   environment.systemPackages = with pkgs; [
     kitty
-    xdg-desktop-portal-hyprland
   ];
+
+  xdg.portal = {
+    config.common.default = lib.mkOptionDefault "*";
+    configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
 }
