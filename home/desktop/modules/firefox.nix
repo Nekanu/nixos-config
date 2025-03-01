@@ -10,10 +10,8 @@ let
   };
 in
 {
-
   programs.firefox = {
     enable = true;
-    # package = pkgs.librewolf;
 
     nativeMessagingHosts = with pkgs; [
       kdePackages.plasma-browser-integration
@@ -190,6 +188,46 @@ in
           Value = 1;
           Status = "locked";
         };
+
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = lock-true; # Enable userChrome.css
+      };
+    };
+
+    profiles = {
+      primary = {
+        isDefault = true;
+        id = 0;
+        userChrome = ''
+          /* Hide tab bar in FF Quantum */
+          @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
+            #TabsToolbar {
+              visibility: collapse !important;
+              margin-bottom: 21px !important;
+            }
+
+            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+              visibility: collapse !important;
+            }
+          }
+        '';
+      };
+
+      secondary = {
+        isDefault = false;
+        id = 1;
+        userChrome = ''
+          /* Hide tab bar in FF Quantum */
+          @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
+            #TabsToolbar {
+              visibility: collapse !important;
+              margin-bottom: 21px !important;
+            }
+
+            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+              visibility: collapse !important;
+            }
+          }
+        '';
       };
     };
   };
