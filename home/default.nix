@@ -27,7 +27,6 @@ in
       ./console
     ]
     ++ lib.optional (desktopEnvironments != [ ]) ./desktop
-    ++ lib.optional (builtins.isPath (./. + "/users/${username}")) ./users/${username}
     ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
 
   home = {

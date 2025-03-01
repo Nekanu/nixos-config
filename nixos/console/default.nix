@@ -3,6 +3,7 @@
   imports = [
     ./bash.nix
     ./nano.nix
+    ./zsh.nix
   ];
 
   programs = {

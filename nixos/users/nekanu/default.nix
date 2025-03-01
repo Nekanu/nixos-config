@@ -27,8 +27,8 @@ in
     isNormalUser = true;
     openssh.authorizedKeys.keys = [ ];
     packages = [ pkgs.home-manager ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
 }

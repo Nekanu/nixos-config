@@ -1,11 +1,13 @@
 { pkgs, ... }:
 {
   imports = [
+    ./atuin.nix
     ./bash.nix
-    ./fish.nix
     ./git.nix
-    ./xdg.nix
+    ./kitty.nix
     ./starship.nix
+    ./xdg.nix
+    ./zsh.nix
   ];
 
   home = {
@@ -23,10 +25,8 @@
   };
 
   programs = {
-    atuin = {
+    autojump = {
       enable = true;
-      package = pkgs.unstable.atuin;
-
       enableBashIntegration = true;
       enableFishIntegration = true;
       enableZshIntegration = true;
@@ -80,6 +80,14 @@
     home-manager.enable = true;
     info.enable = true;
     jq.enable = true;
+
+    thefuck = {
+      enable = true;
+      enableInstantMode = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+    };
 
     zoxide = {
       enable = true;
