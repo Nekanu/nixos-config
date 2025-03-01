@@ -1,4 +1,4 @@
-{ config, config-repository, ... }:
+{ config-repository, ... }:
 {
   system.autoUpgrade = {
     enable = true;

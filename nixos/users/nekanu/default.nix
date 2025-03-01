@@ -1,10 +1,4 @@
-{
-  config,
-  desktopEnvironments,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 let
   ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in

@@ -24,4 +24,8 @@
 
     fzf.fuzzyCompletion = true;
   };
+
+  environment.systemPackages = [
+    pkgs.tldr # Simplified Man Pages
+  ];
 }

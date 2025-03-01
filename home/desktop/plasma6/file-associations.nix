@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 let
   associations = {
     "text/html".value = "firefox.desktop";

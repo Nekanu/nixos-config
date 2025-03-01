@@ -1,38 +1,16 @@
+{ pkgs, username, ... }:
 {
-  config,
-  desktop,
-  lib,
-  pkgs,
-  rootPath,
-  username,
-  hostname,
-  ...
-}:
-{
-  services.flatpak.packages = [ "app.freelens.Freelens" ];
+  services.flatpak.packages = [
+    "app.freelens.Freelens" # Kubernetes IDE
+  ];
 
   home.packages = with pkgs.unstable; [
 
     jetbrains-toolbox
 
-    # LaTeX
-    texliveFull
-
     # Python
     python312Full
     python312Packages.pip
-
-    # C#
-    dotnet-sdk_8
-
-    # Java
-    jdk
-
-    # C++ / Qt / KDE
-    qt6.full
-    cmake
-    gcc
-    kdePackages.extra-cmake-modules
 
     # Designing
     plantuml
@@ -48,9 +26,9 @@
     nix-index
     nixfmt-rfc-style
 
-    # Foundry VTT
-    nodejs_20
-    yarn
+    # Kubernetes
+    kubectl
+    kubernetes-helm
   ];
 
   # Environment variables

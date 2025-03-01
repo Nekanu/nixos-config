@@ -10,7 +10,6 @@
   pkgs,
   stateVersion,
   username,
-  config-repository,
   ...
 }:
 {

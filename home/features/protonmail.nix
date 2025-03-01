@@ -1,11 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [ protonmail-bridge ];
 
+  # ProtonMail Bridge In Background
   systemd.user.services."protonmail-bridge" = {
     Unit = {
       Description = "ProtonMail Bridge";

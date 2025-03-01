@@ -1,6 +1,5 @@
 {
   desktopEnvironments,
-  lib,
   pkgs,
   ...
 }:

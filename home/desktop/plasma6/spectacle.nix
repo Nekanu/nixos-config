@@ -1,4 +1,4 @@
-{ config, username, ... }:
+{ username, ... }:
 {
   programs.plasma = {
 

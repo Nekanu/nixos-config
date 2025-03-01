@@ -1,10 +1,4 @@
-{
-  inputs,
-  desktopEnvironments,
-  lib,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 let
   lock-false = {
     Value = false;
@@ -19,6 +13,7 @@ in
 
   programs.firefox = {
     enable = true;
+    # package = pkgs.librewolf;
 
     nativeMessagingHosts = with pkgs; [
       kdePackages.plasma-browser-integration

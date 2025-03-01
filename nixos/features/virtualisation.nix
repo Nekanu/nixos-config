@@ -1,10 +1,4 @@
-{
-  config,
-  hostname,
-  lib,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   #https://nixos.wiki/wiki/Podman
 

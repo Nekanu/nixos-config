@@ -1,9 +1,6 @@
 {
-  config,
   desktopEnvironments,
-  lib,
   pkgs,
-  rootPath,
   ...
 }:
 {
@@ -24,7 +21,6 @@
   home.packages = with pkgs; [
     unstable.vscode
     nextcloud-client
-    kdePackages.kleopatra
     tor-browser-bundle-bin
   ];
 

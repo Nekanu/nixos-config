@@ -3,12 +3,9 @@
 
   inputs = {
 
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
 
     nur.url = "github:nix-community/NUR";
 
@@ -18,9 +15,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nix-software-center.url = "github:vlinkz/nix-software-center";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -37,7 +33,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # Generator
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,15 +53,9 @@
     }@inputs:
     let
       inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "x86_64-linux"
-      ];
+      forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
       stateVersion = "24.11";
       rootPath = ./.;
-      nur-modules = import inputs.nur rec {
-        nurpkgs = nixpkgs.legacyPackages.x86_64-linux;
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      };
       config-repository = "gitlab:Nekanu/nixos-config";
 
       username = "nekanu";
@@ -89,7 +78,7 @@
 
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
-    rec {
+    {
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
       packages = forAllSystems (
@@ -98,15 +87,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         import ./pkgs { inherit pkgs; }
-      );
-      # Devshell for bootstrapping
-      # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        import ./shell.nix { inherit pkgs; }
       );
 
       # Your custom packages and modifications, exported as overlays
@@ -125,45 +105,17 @@
               rootPath
               config-repository
               ;
-            desktopEnvironments = [
-              "plasma6"
-            ];
+            desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [
               "development"
               "gaming"
               "virtualisation"
-              "nixos-generators"
             ];
             hostname = "harmony";
             username = "${username}";
             hostid = "a69480bd";
           };
-          modules = defaultSystemModules ++ [
-            inputs.home-manager.nixosModules.home-manager
-            {
-              # home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${username}" = import ./home;
-              home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  outputs
-                  stateVersion
-                  rootPath
-                  config-repository
-                  ;
-                desktopEnvironments = [ "plasma6" ];
-                additionalFeatures = [
-                  "development"
-                  "gaming"
-                ];
-                hostname = "harmony";
-                username = "${username}";
-              };
-              home-manager.sharedModules = defaultHomeModules;
-            }
-          ];
+          modules = defaultSystemModules;
         };
 
         opportunity = nixpkgs.lib.nixosSystem {
@@ -184,32 +136,7 @@
             username = "${username}";
             hostid = "2b927153";
           };
-          modules = defaultSystemModules ++ [
-            inputs.home-manager.nixosModules.home-manager
-            {
-              # home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${username}" = import ./home;
-              home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  outputs
-                  stateVersion
-                  rootPath
-                  config-repository
-                  ;
-                desktopEnvironments = [
-                  "plasma6"
-                  "hyprland"
-                ];
-                additionalFeatures = [ "development" ];
-                hostname = "opportunity";
-                username = "${username}";
-              };
-              home-manager.sharedModules = defaultHomeModules;
-            }
-          ];
+          modules = defaultSystemModules;
         };
 
         vm = nixpkgs.lib.nixosSystem {
@@ -225,37 +152,12 @@
               "plasma6"
               "hyprland"
             ];
-            additionalFeatures = [ "nixos-generators" ];
+            additionalFeatures = [ ];
             hostname = "vm";
             username = "${username}";
             hostid = "49334979";
           };
-          modules = defaultSystemModules ++ [
-            inputs.home-manager.nixosModules.home-manager
-            {
-              # home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${username}" = import ./home;
-              home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  outputs
-                  stateVersion
-                  rootPath
-                  config-repository
-                  ;
-                desktopEnvironments = [
-                  "plasma6"
-                  "hyprland"
-                ];
-                additionalFeatures = [ "development" ];
-                hostname = "vm";
-                username = "${username}";
-              };
-              home-manager.sharedModules = defaultHomeModules;
-            }
-          ];
+          modules = defaultSystemModules;
         };
 
         wsl-nixos = nixpkgs.lib.nixosSystem {
@@ -273,32 +175,7 @@
             username = "${username}";
             hostid = "48954894";
           };
-          modules =
-            defaultSystemModules
-            ++ [ inputs.nixos-wsl.nixosModules.default ]
-            ++ [
-              inputs.home-manager.nixosModules.home-manager
-              {
-                # home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users."${username}" = import ./home;
-                home-manager.backupFileExtension = "backup";
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    inputs
-                    outputs
-                    stateVersion
-                    rootPath
-                    config-repository
-                    ;
-                  desktopEnvironments = [ ];
-                  additionalFeatures = [ "development" ];
-                  hostname = "wsl-nixos";
-                  username = "${username}";
-                };
-                home-manager.sharedModules = defaultHomeModules;
-              }
-            ];
+          modules = defaultSystemModules ++ [ inputs.nixos-wsl.nixosModules.default ];
         };
       };
 
@@ -315,10 +192,7 @@
               rootPath
               config-repository
               ;
-            desktopEnvironments = [
-              "plasma6"
-              "hyprland"
-            ];
+            desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [
               "gaming"
               "development"
@@ -397,6 +271,10 @@
           };
         };
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
+
+      devShells = eachSystem (pkgs: {
+        default = pkgs.mkShell { packages = with pkgs; [ nixd ]; };
       });
     };
 

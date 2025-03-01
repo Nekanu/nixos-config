@@ -1,13 +1,5 @@
+{ pkgs, ... }:
 {
-  config,
-  desktop,
-  lib,
-  pkgs,
-  rootPath,
-  ...
-}:
-{
-
   home.packages = with pkgs; [
     steam
     protontricks
@@ -40,6 +32,7 @@
       };
       "com.usebottles.bottles".Context = {
         filesystems = [
+          "/mnt/Games1:rw"
           "/mnt/Games3:rw"
         ];
       };

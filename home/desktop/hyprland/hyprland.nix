@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
     # Terminal
@@ -134,30 +129,26 @@
       ];
     };
 
-    extraConfig =
-      let
-        workspaceCount = 8;
-      in
-      ''
-        # workspace
-        ${builtins.concatStringsSep "\n" (
-          builtins.map
-            (n: ''
-              workspace = ${n},monitor:${if ((lib.strings.charToInt n) >= 5) then "DP-2" else "DP-1"}
-              bind = $mainMod, ${n}, workspace, ${n}
-              bind = $mainMod SHIFT, ${n}, movetoworkspace, ${n}
-            '')
-            [
-              "1"
-              "2"
-              "3"
-              "4"
-              "5"
-              "6"
-              "7"
-              "8"
-            ]
-        )}
-      '';
+    extraConfig = ''
+      # workspace
+      ${builtins.concatStringsSep "\n" (
+        builtins.map
+          (n: ''
+            workspace = ${n},monitor:${if ((lib.strings.charToInt n) >= 5) then "DP-2" else "DP-1"}
+            bind = $mainMod, ${n}, workspace, ${n}
+            bind = $mainMod SHIFT, ${n}, movetoworkspace, ${n}
+          '')
+          [
+            "1"
+            "2"
+            "3"
+            "4"
+            "5"
+            "6"
+            "7"
+            "8"
+          ]
+      )}
+    '';
   };
 }
