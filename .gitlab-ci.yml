@@ -11,7 +11,7 @@ flake-check:
         - if: $CI_COMMIT_BRANCH == "main"
     image: nixos/nix:latest
     script:
-        - nix flake check --no-build --show-trace --extra-experimental-features 'nix-command flakes'
+        - nix flake check --show-trace --extra-experimental-features 'nix-command flakes'
 
 # Run nix flake update to update the flake.lock file
 # Run this job only on scheduled pipeline runs and manual triggers
