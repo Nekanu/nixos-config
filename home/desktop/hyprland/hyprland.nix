@@ -22,21 +22,6 @@
     cliphist # clipboard
   ];
 
-  programs.kitty = {
-    enable = true;
-
-    font = {
-      size = 12;
-      package = pkgs.nerd-fonts.caskaydia-cove;
-      name = "CaskydiaCove Nerd Font";
-    };
-
-    shellIntegration = {
-      enableFishIntegration = true;
-      enableBashIntegration = true;
-    };
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
 

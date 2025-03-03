@@ -5,7 +5,6 @@
     package = pkgs.unstable.atuin;
 
     enableBashIntegration = true;
-    enableFishIntegration = true;
     enableZshIntegration = true;
 
     settings = {

@@ -8,6 +8,10 @@ let
     Value = true;
     Status = "locked";
   };
+  user-true = {
+    Value = true;
+    Status = "user";
+  };
 in
 {
   programs.firefox = {
@@ -189,7 +193,7 @@ in
           Status = "locked";
         };
 
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = lock-true; # Enable userChrome.css
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = user-true; # Enable userChrome.css
       };
     };
 

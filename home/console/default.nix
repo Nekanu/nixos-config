@@ -28,7 +28,6 @@
     autojump = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
     };
 
@@ -45,7 +44,6 @@
     dircolors = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
     };
 
@@ -61,7 +59,6 @@
       enable = true;
 
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
 
       icons = "auto";
@@ -72,7 +69,6 @@
       enable = true;
 
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
     };
 
@@ -85,15 +81,15 @@
       enable = true;
       enableInstantMode = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
     };
 
     zoxide = {
       enable = true;
       enableBashIntegration = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
+
+      options = [ "--cmd cd" ]; # Replace cd with zoxide
     };
   };
 
