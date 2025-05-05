@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs.unstable; [
+    glab
+  ];
+
   programs = {
     gh = {
       enable = true;
