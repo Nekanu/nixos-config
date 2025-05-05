@@ -15,7 +15,13 @@
       ];
     };
 
-    command-not-found.enable = true;
+    command-not-found.enable = false; # Explicitly disable command-not-found to use nix-index instead (it was enabled whyever)
+
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
 
     direnv = {
       enable = true;

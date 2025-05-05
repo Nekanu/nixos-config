@@ -274,7 +274,20 @@
       });
 
       devShells = eachSystem (pkgs: {
-        default = pkgs.mkShell { packages = with pkgs; [ nixd ]; };
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            nixd
+            nixos-generators
+            nixf
+            nixel
+            nixci
+            nix-diff
+            nix-health
+            nixpkgs-fmt
+            nix-index
+            nixfmt-rfc-style
+          ];
+        };
       });
     };
 

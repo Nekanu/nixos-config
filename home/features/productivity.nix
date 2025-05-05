@@ -1,5 +1,10 @@
-{ username, ... }:
+{ pkgs, username, ... }:
 {
+  home.packages = with pkgs.unstable; [
+    tor-browser-bundle-bin
+    libreoffice
+  ];
+
   services.nextcloud-client = {
     enable = true;
     startInBackground = true;
@@ -10,13 +15,10 @@
       "com.vivaldi.Vivaldi" # Web browser
       "org.mozilla.Thunderbird" # Email client
       # "com.ulduzsoft.Birdtray" # Thunderbird tray icon
-      "org.remmina.Remmina" # Remote desktop client
       "org.keepassxc.KeePassXC" # Password manager
       "com.usebottles.bottles" # Wine compatibility layer
       "com.logseq.Logseq" # Note-taking app
-      "io.github.aandrew_me.ytdn" # YouTube downloader
       "org.onlyoffice.desktopeditors" # Office suite
-      "org.libreoffice.LibreOffice" # Office suite
     ];
 
     overrides = {
@@ -28,6 +30,7 @@
 
       "com.usebottles.bottles".Context = {
         filesystems = [
+          "home:rw" # Allow access to home directory
           "/run/media/${username}:rw" # Allow access to removable media
         ];
       };

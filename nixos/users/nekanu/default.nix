@@ -7,20 +7,20 @@ in
     description = "Nekanu";
     extraGroups =
       [
-        "audio"
         "networkmanager"
         "users"
-        "video"
         "wheel"
-        "nordvpn"
       ]
       ++ ifExists [
+        "audio"
+        "video"
+        "nordvpn" # NordVPN
         "adbusers" # Android Debug Bridge
         "docker" # Docker
         "podman" # Podman
-        "vboxusers"
-        "libvirtd"
-        "gaming"
+        "vboxusers" # VirtualBox
+        "libvirtd" # libvirt
+        "gaming" # Access to gaming disks
       ];
     # mkpasswd -m sha-512
     initialHashedPassword = "$y$j9T$ENNuzed4KTBwkim/kZdz.1$F2B.I7CWGmZOYYWBhTdHz8TmbyON7ZshktYD8/pqPE/";

@@ -6,6 +6,7 @@
 {
   imports = [
     ./modules/firefox.nix
+    ./modules/zed-editor.nix
 
     ../features/communication.nix
     ../features/development.nix
@@ -20,8 +21,7 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     unstable.vscode
-    nextcloud-client
-    tor-browser-bundle-bin
+    unstable.zed-editor
   ];
 
   xresources.properties = {

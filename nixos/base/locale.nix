@@ -19,8 +19,8 @@
   };
 
   # Configure keymap in X11
-  services.xserver.xkb.layout = "de";
+  services.xserver.xkb.layout = "eu";
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "us"; # Use "us" for US layout but with AltGr for international characters
 }

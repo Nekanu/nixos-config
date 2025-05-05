@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     steam
     protontricks
+    protonup-qt
     vkBasalt
     gamescope
 
@@ -12,8 +13,8 @@
 
   # Vulkan and OpenGL monitoring
   programs.mangohud = {
-    enable = true;
-    enableSessionWide = true;
+    #enable = true;
+    #enableSessionWide = true;
   };
 
   services.flatpak = {

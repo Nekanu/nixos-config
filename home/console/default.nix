@@ -77,9 +77,15 @@
     info.enable = true;
     jq.enable = true;
 
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+
     thefuck = {
       enable = true;
-      enableInstantMode = true;
+      enableInstantMode = false;
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
@@ -97,7 +103,7 @@
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentryPackage = pkgs.pinentry-qt;
+      pinentry.package = pkgs.pinentry-qt;
     };
   };
 

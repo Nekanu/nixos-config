@@ -1,7 +1,7 @@
 { ... }:
 {
   security = {
-    # lockKernelModules = true;
+    #lockKernelModules = true;  # Locking kernel modules somehow disables IPv4
     protectKernelImage = true;
 
     rtkit.enable = true;

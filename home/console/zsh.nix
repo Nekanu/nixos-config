@@ -1,4 +1,7 @@
 { ... }:
+let
+  configDir = "$HOME/.config/nixos";
+in
 {
   programs.zsh = {
     enable = true;
@@ -31,9 +34,9 @@
       pubip = "curl -s ifconfig.me/ip";
       tree = "exa --tree";
 
-      build-nixos = "sudo nixos-rebuild switch --flake $HOME/.config/nixos";
-      build-home-manager = "home-manager switch -b backup --flake $HOME/.config/nixos";
-      upgrade = "pushd $HOME/.config/nixos && nix flake update && popd && build-nixos && build-home-manager";
+      build-nixos = "sudo nixos-rebuild switch --flake ${configDir}";
+      build-home-manager = "home-manager switch -b backup --flake ${configDir}";
+      upgrade = "nix flake update --flake ${configDir} && build-nixos && build-home-manager";
     };
 
     oh-my-zsh = {
@@ -43,7 +46,6 @@
         "autojump"
         "colored-man-pages"
         "colorize"
-        "command-not-found"
         "common-aliases"
         "cp"
         "direnv"
@@ -59,7 +61,6 @@
         "podman"
         "starship"
         "systemd"
-        "thefuck"
         "tldr"
         "zsh-interactive-cd"
       ];
