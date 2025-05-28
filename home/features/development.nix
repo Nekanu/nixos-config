@@ -2,10 +2,13 @@
 {
   services.flatpak.packages = [
     "app.freelens.Freelens" # Kubernetes IDE
+    "me.iepure.devtoolbox" # DevToolbox
   ];
 
   home.packages = with pkgs.unstable; [
     jetbrains-toolbox
+    minikube
+    docker-machine-kvm2
   ];
 
   home.sessionPath = [

@@ -19,6 +19,7 @@
       "com.usebottles.bottles" # Wine compatibility layer
       "com.logseq.Logseq" # Note-taking app
       "org.onlyoffice.desktopeditors" # Office suite
+      "me.proton.Mail"
     ];
 
     overrides = {

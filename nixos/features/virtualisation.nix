@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   #https://nixos.wiki/wiki/Podman
 
@@ -28,7 +28,22 @@
     };
 
     libvirtd = {
-      enable = true;
+      enable = false;
+
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          packages = [
+            (pkgs.OVMF.override {
+              secureBoot = true;
+              tpmSupport = true;
+            }).fd
+          ];
+        };
+      };
     };
 
     waydroid = {
@@ -37,5 +52,10 @@
   };
 
   # Required for libvirtd
-  programs.virt-manager.enable = true;
+  programs.virt-manager.enable = false;
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ username ];
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 }

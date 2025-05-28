@@ -110,6 +110,7 @@
               "development"
               "gaming"
               "virtualisation"
+              "drawing"
             ];
             hostname = "harmony";
             username = "${username}";
@@ -131,6 +132,7 @@
             additionalFeatures = [
               "development"
               "virtualisation"
+              "drawing"
             ];
             hostname = "opportunity";
             username = "${username}";
@@ -196,6 +198,7 @@
             additionalFeatures = [
               "gaming"
               "development"
+              "drawing"
             ];
             hostname = "harmony";
             username = "nekanu";
@@ -214,7 +217,10 @@
               config-repository
               ;
             desktopEnvironments = [ "plasma6" ];
-            additionalFeatures = [ "development" ];
+            additionalFeatures = [
+              "development"
+              "drawing"
+            ];
             hostname = "opportunity";
             username = "nekanu";
           };
@@ -277,6 +283,7 @@
         default = pkgs.mkShell {
           packages = with pkgs; [
             nixd
+            nil
             nixos-generators
             nixf
             nixel

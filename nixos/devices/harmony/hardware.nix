@@ -46,6 +46,7 @@
   console.enable = true;
 
   hardware.graphics.enable = true;
+  hardware.bluetooth.enable = true;
 
   services.fwupd.enable = true;
 

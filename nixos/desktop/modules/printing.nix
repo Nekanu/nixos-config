@@ -14,7 +14,7 @@
       drivers = [
         pkgs.gutenprint
         (pkgs.writeTextDir "share/cups/model/oki-mc853.ppd" (
-          builtins.readFile ../../../modules/printing/drivers/oki-mc853.ppd
+          builtins.readFile ../../../modules/drivers/printing/oki-mc853.ppd
         ))
       ];
     };

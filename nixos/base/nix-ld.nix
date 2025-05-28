@@ -22,6 +22,7 @@
     glib
     glibc
     gtk2
+    gtk3
     bzip2
     zlib
     gdk-pixbuf
@@ -122,5 +123,7 @@
     pipewire # immersed-vr wayland support
 
     icu
+
+    libgbm
   ];
 }

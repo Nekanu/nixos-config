@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   services.ollama = {
     enable = true;
     package = pkgs.unstable.ollama;
@@ -10,73 +9,89 @@
     enable = true;
     package = pkgs.unstable.zed-editor;
 
-    extensions = [
-      "nix"
-      "html"
-      "dockerfile"
-      "docker-compose"
-      "intellij-newui-theme"
-    ];
+    # extensions = [
+    #   "nix"
+    #   "html"
+    #   "dockerfile"
+    #   "docker-compose"
+    #   "intellij-newui-theme"
+    # ];
 
-    userSettings = {
-      telemetry = {
-        metrics = false;
-        diagnostics = false;
-      };
+    # userSettings = {
+    #   telemetry = {
+    #     metrics = false;
+    #     diagnostics = false;
+    #   };
 
-      show_whitespaces = "all";
+    #   show_whitespaces = "all";
 
-      base_keymap = "VSCode";
+    #   base_keymap = "VSCode";
 
-      ui_font_size = 16;
-      buffer_font_size = 16;
-      tab_size = 2;
-      theme = {
-        mode = "system";
-        light = "Ayu Light";
-        dark = "Ayu Dark";
-      };
+    #   ui_font_size = 14;
+    #   buffer_font_size = 14;
+    #   buffer_font_family = "CaskaydiaCove Nerd Font Mono";
 
-      icon_theme = {
-        mode = "system";
-        light = "JetBrains New UI Icons (Light)";
-        dark = "JetBrains New UI Icons (Dark)";
-      };
+    #   tab_size = 2;
 
-      vim_mode = false;
+    #   soft_wrap = "preferred_line_length";
+    #   preferred_line_length = 120;
 
-      load_direnv = "direct";
+    #   theme = {
+    #     mode = "system";
+    #     light = "Ayu Light";
+    #     dark = "Ayu Dark";
+    #   };
 
-      autosave = "on_focus_change";
-      restore_on_startup = "last_workspace";
-      tabs = {
-        git_status = true;
-        file_icons = true;
-        collaboration_panel = {
-          dock = "right";
-        };
-      };
+    #   icon_theme = {
+    #     mode = "system";
+    #     light = "JetBrains New UI Icons (Light)";
+    #     dark = "JetBrains New UI Icons (Dark)";
+    #   };
 
-      assistant = {
-        default_model = {
-          provider = "ollama";
-          model = "mistral:latest";
-        };
-        version = "2";
-      };
+    #   vim_mode = false;
 
-      terminal = {
-        dock = "bottom";
-        copy_on_select = false;
-      };
+    #   load_direnv = "direct";
 
-      lsp = {
-        nix = {
-          binary = {
-            path_lookup = true;
-          };
-        };
-      };
-    };
+    #   bottom_dock_layout = "right_aligned";
+
+    #   autosave = "on_focus_change";
+    #   restore_on_startup = "last_workspace";
+    #   tabs = {
+    #     git_status = true;
+    #     file_icons = true;
+    #     collaboration_panel = {
+    #       dock = "right";
+    #     };
+    #   };
+
+    #   assistant = {
+    #     default_model = {
+    #       provider = "ollama";
+    #       model = "mistral:latest";
+    #     };
+    #     version = "2";
+    #   };
+
+    #   terminal = {
+    #     dock = "bottom";
+    #     copy_on_select = false;
+    #   };
+
+    #   lsp = {
+    #     nix = {
+    #       binary = {
+    #         path_lookup = true;
+    #       };
+    #     };
+
+    #     nixd = {
+    #       settings = {
+    #         diagnostic = {
+    #           suppress = [ "sema-extra-with" ];
+    #         };
+    #       };
+    #     };
+    #   };
+    # };
   };
 }

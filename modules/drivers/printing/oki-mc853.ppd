@@ -1119,7 +1119,7 @@ globaldict /OK@_CustLimitChk true put
 
 *OKResolution FINE/Fine/Detail(600x1200): "
  /DriverOps /ProcSet 2 copy resourcestatus{
-  pop pop findresource 
+  pop pop findresource
   dup /headresolution 2 copy known{
    get exec 600 eq{[600 1200]}{[1200 1200]}ifelse
   }{pop pop [600 1200]}ifelse
@@ -1129,7 +1129,7 @@ globaldict /OK@_CustLimitChk true put
 
 *OKResolution NORMAL/Normal (600x600): "
  /DriverOps /ProcSet 2 copy resourcestatus{
-  pop pop findresource 
+  pop pop findresource
   [600 600] 600 1 0 2 6 -1 roll /setokresolution get exec
  }{pop pop}ifelse"
 *End
@@ -1379,7 +1379,7 @@ globaldict /OK@_AlwaysPrHT 2 copy known
 *OKOverPrint False/Off: "
  globaldict /OK@_K_OVP false put
  /ColorRendering /ProcSet 2 copy resourcestatus{
-  pop pop findresource 
+  pop pop findresource
   globaldict /OK@_ColorSelect 2 copy known not { pop pop pop }{
    get 1 le {1}{0} ifelse exch /setblackpreservation get exec
  }ifelse
@@ -1388,7 +1388,7 @@ globaldict /OK@_AlwaysPrHT 2 copy known
 *OKOverPrint True/On: "
  globaldict /OK@_K_OVP true put
  /ColorRendering /ProcSet 2 copy resourcestatus{
-  pop pop findresource 
+  pop pop findresource
   globaldict /OK@_ColorSelect 2 copy known not { pop pop pop }{
    get 1 le {1}{0} ifelse exch /setblackpreservation get exec
  }ifelse

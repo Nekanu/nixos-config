@@ -20,8 +20,7 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    unstable.vscode
-    unstable.zed-editor
+    unstable.vscodium
   ];
 
   xresources.properties = {
