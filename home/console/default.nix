@@ -83,13 +83,6 @@
       enableZshIntegration = true;
     };
 
-    thefuck = {
-      enable = true;
-      enableInstantMode = false;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
-
     zoxide = {
       enable = true;
       enableBashIntegration = true;
