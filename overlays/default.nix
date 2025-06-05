@@ -22,6 +22,13 @@
     };
   };
 
+  stable-packages = final: _prev: {
+    stable = import inputs.nixpkgs-stable {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
+
   # Make NUR packages available under 'pkgs.nur'
   # nur = final: _prev: {
   #   nur = import inputs.nur.repos.nur {

@@ -23,6 +23,7 @@
       ./base
       ./users
       ./console
+      ./features/envfs.nix
     ]
     ++ lib.optional (desktopEnvironments != [ ]) ./desktop
     ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
@@ -34,6 +35,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
       inputs.nur.overlays.default
 
       # You can also add overlays exported from other flakes:
