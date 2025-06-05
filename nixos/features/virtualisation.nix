@@ -7,9 +7,6 @@
     podman-compose
     podman-tui
     podman-desktop
-
-    distrobox
-    distrobox-tui
   ];
 
   virtualisation = {
@@ -56,6 +53,7 @@
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
+  
   users.extraGroups.vboxusers.members = [ username ];
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 }
