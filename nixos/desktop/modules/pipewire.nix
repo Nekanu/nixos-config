@@ -21,6 +21,8 @@
   };
   security.rtkit.enable = true;
 
+  programs.dconf.enable = true; # Necessary for EasyEffects
+
   environment.systemPackages = with pkgs; [
     qpwgraph
   ];
