@@ -1,14 +1,22 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
-  # Enable V4L2 loopback device and kernel module
-  boot.kernelModules = [ "v4l2loopback" ];
-
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-
   programs.adb.enable = true; # Android Debug Bridge is used by DroidCam for USB connection
 
-  services.flatpak.packages = [
-    "com.obsproject.Studio"
-    "com.obsproject.Studio.Plugin.DroidCam"
-  ];
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-vkcapture
+      obs-vaapi
+      obs-gstreamer
+      obs-pipewire-audio-capture
+      obs-advanced-masks
+      obs-backgroundremoval
+      obs-noise
+      obs-replay-source
+      obs-tuna
+      waveform
+      droidcam-obs
+    ];
+  };
 }
