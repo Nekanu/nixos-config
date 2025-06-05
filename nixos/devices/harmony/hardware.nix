@@ -45,7 +45,16 @@
 
   console.enable = true;
 
-  hardware.graphics.enable = true;
+  hardware.amdgpu = {
+    opencl.enable = true;
+
+    amdvlk = {
+      enable = true;
+      supportExperimental.enable = true;
+      support32Bit.enable = true;
+    };
+  };
+
   hardware.bluetooth.enable = true;
 
   services.fwupd.enable = true;
