@@ -6,7 +6,9 @@
   ];
 
   home.packages = with pkgs.unstable; [
-    jetbrains-toolbox
+    #jetbrains-toolbox
+    jetbrains.rider
+
     minikube
     docker-machine-kvm2
   ];

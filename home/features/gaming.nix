@@ -3,9 +3,6 @@
   home.packages = with pkgs; [
     steam
     protontricks
-    protonup-qt
-    vkBasalt
-    gamescope
 
     # Epic Games and GOG launcher
     heroic
@@ -13,7 +10,7 @@
 
   # Vulkan and OpenGL monitoring
   programs.mangohud = {
-    #enable = true;
+    enable = true;
     #enableSessionWide = true;
   };
 
