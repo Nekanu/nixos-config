@@ -13,6 +13,10 @@ in
     syntaxHighlighting.enable = true;
     enableVteIntegration = true;
 
+    sessionVariables = {
+      NIX_BUILD_SHELL = "zsh"; # Use ZSH also for nix-shells (but may break things)
+    };
+
     zsh-abbr = {
       enable = true;
       abbreviations = {
