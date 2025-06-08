@@ -66,6 +66,7 @@
         inputs.grub-themes.nixosModules.default
         inputs.nur.modules.nixos.default
         inputs.nix-flatpak.nixosModules.nix-flatpak
+        self.nixosModules.generatorFormats
       ];
 
       defaultHomeModules = [
@@ -79,8 +80,10 @@
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
-      # Your custom packages
-      # Acessible through 'nix build', 'nix shell', etc
+      devShells = eachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+
       packages = forAllSystems (
         system:
         let
@@ -89,7 +92,14 @@
         import ./pkgs { inherit pkgs; }
       );
 
-      # Your custom packages and modifications, exported as overlays
+      # Make all generator formats available to nixosConfigurations
+      nixosModules.generatorFormats = {
+        imports = [
+          inputs.nixos-generators.nixosModules.all-formats
+        ];
+        nixpkgs.hostPlatform = "x86_64-linux";
+      };
+
       overlays = import ./overlays { inherit nixpkgs inputs; };
 
       # NixOS configuration entrypoint
@@ -170,14 +180,35 @@
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [ ];
             additionalFeatures = [ "development" ];
             hostname = "wsl-nixos";
-            username = "${username}";
             hostid = "48954894";
           };
-          modules = defaultSystemModules ++ [ inputs.nixos-wsl.nixosModules.default ];
+          modules = defaultSystemModules ++ [
+            inputs.nixos-wsl.nixosModules.default
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit
+                  inputs
+                  outputs
+                  stateVersion
+                  rootPath
+                  config-repository
+                  username
+                  ;
+                desktopEnvironments = [ ];
+                additionalFeatures = [ "development" ];
+                hostname = "wsl-nixos";
+              };
+              home-manager.sharedModules = defaultHomeModules;
+            }
+          ];
         };
       };
 
@@ -247,27 +278,7 @@
           };
           modules = defaultHomeModules;
         };
-
-        "nekanu@wsl-nixos" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {
-            inherit
-              inputs
-              outputs
-              stateVersion
-              rootPath
-              config-repository
-              ;
-            desktopEnvironments = [ ];
-            additionalFeatures = [ "development" ];
-            hostname = "wsl-nixos";
-            username = "nekanu";
-          };
-          modules = defaultHomeModules;
-        };
       };
-
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
       checks = eachSystem (pkgs: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
@@ -278,24 +289,5 @@
         };
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
       });
-
-      devShells = eachSystem (pkgs: {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            nixd
-            nil
-            nixos-generators
-            nixf
-            nixel
-            nixci
-            nix-diff
-            nix-health
-            nixpkgs-fmt
-            nix-index
-            nixfmt-rfc-style
-          ];
-        };
-      });
     };
-
 }
