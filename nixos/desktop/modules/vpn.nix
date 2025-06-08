@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.nur.modules.nixos.default
@@ -14,7 +19,6 @@
 
   # Enable the service
   services.nordvpn.enable = true;
-
 
   services.tor.client.enable = true;
 }

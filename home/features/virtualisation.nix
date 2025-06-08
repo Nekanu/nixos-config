@@ -1,10 +1,11 @@
-{...}: {
+{ ... }:
+{
   programs.distrobox = {
     enable = true;
     enableSystemdUnit = false;
     containers = {
       ubuntu = {
-        image = "ubuntu:latest"
+        image = "ubuntu:latest";
       };
 
       arch = {

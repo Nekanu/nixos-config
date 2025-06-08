@@ -1,7 +1,5 @@
 { pkgs, username, ... }:
 {
-  #https://nixos.wiki/wiki/Podman
-
   environment.systemPackages = with pkgs; [
     buildah
     podman-compose
@@ -10,11 +8,6 @@
   ];
 
   virtualisation = {
-    # docker = {
-    #   enable = true;
-    #   enableOnBoot = true;
-    # };
-
     podman = {
       enable = true;
 
@@ -53,7 +46,7 @@
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  
+
   users.extraGroups.vboxusers.members = [ username ];
   boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 }
