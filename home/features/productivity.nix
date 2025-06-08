@@ -13,7 +13,10 @@
   services.flatpak = {
     packages = [
       "com.vivaldi.Vivaldi" # Web browser
-      "org.mozilla.Thunderbird" # Email client
+      {
+        appId = "org.mozilla.Thunderbird";
+        origin = "flathub-beta";
+      } # Email client (Beta due to Tray support)
       # "com.ulduzsoft.Birdtray" # Thunderbird tray icon
       "org.keepassxc.KeePassXC" # Password manager
       "com.usebottles.bottles" # Wine compatibility layer
