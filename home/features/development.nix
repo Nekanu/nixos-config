@@ -11,6 +11,9 @@
 
     minikube
     docker-machine-kvm2
+
+    kubectl
+    kubernetes-helm
   ];
 
   home.sessionPath = [
