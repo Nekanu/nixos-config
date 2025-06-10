@@ -141,7 +141,6 @@
             desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [
               "development"
-              "virtualisation"
               "drawing"
             ];
             hostname = "opportunity";
