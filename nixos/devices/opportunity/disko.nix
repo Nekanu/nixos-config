@@ -1,7 +1,4 @@
-{
-  disks ? [ "/dev/nvme0n1" ],
-  ...
-}:
+{ disks, ... }:
 {
   disko.devices = {
     disk.main = {

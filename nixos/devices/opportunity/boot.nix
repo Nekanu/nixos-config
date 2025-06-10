@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ disks, pkgs, ... }:
 {
   boot = {
     consoleLogLevel = 3;
@@ -35,6 +35,7 @@
         enable = true;
         efiSupport = true;
         useOSProber = true;
+        devices = [ (builtins.elemAt disks 0) ];
         default = "saved";
       };
 

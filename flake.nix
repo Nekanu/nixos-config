@@ -146,6 +146,7 @@
             ];
             hostname = "opportunity";
             hostid = "2b927153";
+            disks = [ "/dev/nvme0n1" ];
           };
           modules = defaultSystemModules;
         };
