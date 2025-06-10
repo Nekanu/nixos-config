@@ -137,6 +137,7 @@
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [
@@ -144,7 +145,6 @@
               "drawing"
             ];
             hostname = "opportunity";
-            username = "${username}";
             hostid = "2b927153";
           };
           modules = defaultSystemModules;
@@ -158,6 +158,7 @@
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [
               "plasma6"
@@ -165,7 +166,6 @@
             ];
             additionalFeatures = [ ];
             hostname = "vm";
-            username = "${username}";
             hostid = "49334979";
           };
           modules = defaultSystemModules;

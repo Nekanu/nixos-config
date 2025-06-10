@@ -32,10 +32,9 @@
       efi.canTouchEfiVariables = true;
 
       grub = {
-        enable = lib.mkDefault true;
+        enable = true;
         efiSupport = true;
         useOSProber = true;
-        device = "nodev";
         default = "saved";
       };
 
@@ -46,7 +45,7 @@
         screen = "1080p";
       };
 
-      timeout = lib.mkDefault 5;
+      timeout = 5;
     };
   };
 }
