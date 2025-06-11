@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   # Steam
   programs.steam = {
@@ -10,6 +10,8 @@
     protontricks.enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
+
+  users.users."${username}".extraGroups = [ "gamemode" ];
 
   programs.gamemode.enable = true;
 
