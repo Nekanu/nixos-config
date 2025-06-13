@@ -6,16 +6,9 @@
     enable = true;
     enableVirtualCamera = true;
     plugins = with pkgs.obs-studio-plugins; [
-      obs-vkcapture
       obs-vaapi
       obs-gstreamer
       obs-pipewire-audio-capture
-      obs-advanced-masks
-      obs-backgroundremoval
-      obs-noise
-      obs-replay-source
-      obs-tuna
-      waveform
       droidcam-obs
     ];
   };
