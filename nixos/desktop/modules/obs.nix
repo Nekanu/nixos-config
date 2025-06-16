@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.adb.enable = true; # Android Debug Bridge is used by DroidCam for USB connection
 
