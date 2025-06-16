@@ -84,7 +84,7 @@
       };
 
       bindm = [
-        "$mod, w, killactive"
+        "$mod, q, killactive"
         "$mod ALT, Left, workspace, r-100"
         "$mod SHIFT, Left, movetoworkspace, r-1"
         "$mod , Right, workspace, r+1"
@@ -97,7 +97,7 @@
         "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         ", Print, exec, grimblast --notify copysave area"
         "$mod, SUPER_L, exec, pkill rofi || rofi -show combi"
-        ", exec, kitty"
+        "$mod, t, exec, kitty"
         "$mod, e, exec, thunar"
       ];
 
