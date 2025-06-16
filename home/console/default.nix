@@ -7,6 +7,7 @@
     ./kitty.nix
     ./starship.nix
     ./xdg.nix
+    ./vim
     ./zsh.nix
   ];
 

@@ -21,6 +21,11 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,6 +78,7 @@
         ./home
         inputs.plasma-manager.homeManagerModules.plasma-manager
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
+        inputs.nixvim.homeModules.nixvim
       ];
 
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
