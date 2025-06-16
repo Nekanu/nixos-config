@@ -60,18 +60,17 @@ in
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      #allowUnfreePredicate = (_: true);
     };
   };
 
   nix = {
-    package = lib.mkDefault pkgs.unstable.nix;
+    package = lib.mkDefault pkgs.nix;
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
       ];
-      warn-dirty = false;
     };
   };
 }
