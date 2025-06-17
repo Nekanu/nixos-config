@@ -121,7 +121,10 @@
               rootPath
               config-repository
               ;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
+            desktopEnvironments = [
+              "plasma6"
+              "hyprland"
+            ];
             additionalFeatures = [
               "development"
               "gaming"
@@ -231,7 +234,10 @@
               rootPath
               config-repository
               ;
-            desktopEnvironments = [ "plasma6" "hyprland" ];
+            desktopEnvironments = [
+              "plasma6"
+              "hyprland"
+            ];
             additionalFeatures = [
               "gaming"
               "development"
