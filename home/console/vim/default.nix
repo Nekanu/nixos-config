@@ -1,10 +1,30 @@
 {
+  imports = [
+    ./lsp.nix
+    ./plugins
+  ];
+
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
 
-    colorschemes.gruvbox.enable = true;
+    colorschemes.one.enable = true;
 
-    lsp = import ./lsp.nix;
-    plugins = import ./plugins;
+    opts = {
+      number = true; # Line Numbers
+      relativenumber = true;
+
+      mouse = "a";
+      showmode = false;
+      breakindent = true;
+
+      undofile = true;
+
+      clipboard = {
+        providers.wl-copy.enable = true;
+
+        register = "unnamedplus";
+      };
+    };
   };
 }

@@ -84,6 +84,14 @@
       enableZshIntegration = true;
     };
 
+    ripgrep = {
+      enable = true;
+      arguments = [
+        "--max-columns-preview"
+        "--colors=line:style:bold"
+      ];
+    };
+
     zoxide = {
       enable = true;
       enableBashIntegration = true;
