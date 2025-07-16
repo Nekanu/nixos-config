@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    ./modules/chromium.nix
     ./modules/firefox.nix
     ./modules/zed-editor.nix
 
@@ -20,7 +21,7 @@
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    unstable.vscodium
+    unstable.vscode
   ];
 
   xresources.properties = {
