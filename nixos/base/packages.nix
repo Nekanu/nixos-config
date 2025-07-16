@@ -5,8 +5,6 @@
     curl
     desktop-file-utils
     file
-    gdb
-    git
     home-manager
     killall
     man-pages

@@ -24,6 +24,6 @@
   programs.dconf.enable = true; # Necessary for EasyEffects
 
   environment.systemPackages = with pkgs; [
-    qpwgraph
+    qpwgraph # Patchbay GUI
   ];
 }
