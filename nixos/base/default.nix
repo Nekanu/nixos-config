@@ -6,6 +6,5 @@
     ./networking.nix
     ./nix-ld.nix
     ./packages.nix
-    ./ssh.nix
   ];
 }

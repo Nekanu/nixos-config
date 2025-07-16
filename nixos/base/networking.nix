@@ -4,14 +4,8 @@
   networking = {
     hostName = hostname;
 
-    networkmanager = {
-      enable = true;
-    };
-
-    firewall = {
-      enable = true;
-    };
-
+    networkmanager.enable = true;
+    firewall.enable = true;
     nftables.enable = true;
   };
 

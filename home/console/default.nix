@@ -15,13 +15,11 @@
     # A Modern Unix experience
     # https://jvns.ca/blog/2022/04/12/a-list-of-new-ish--command-line-tools/
     packages = with pkgs.unstable; [
-      ffmpeg-headless # Terminal video encoder
       nixpkgs-review # Nix code review
-      nodePackages.prettier # Code format
       rclone # Terminal cloud storage client
       shellcheck # Code lint Shell
       shfmt # Code format Shell
-      puppet-bolt
+      nixd
     ];
   };
 
@@ -74,7 +72,6 @@
     };
 
     gpg.enable = true;
-    home-manager.enable = true;
     info.enable = true;
     jq.enable = true;
 
@@ -101,13 +98,7 @@
     };
   };
 
-  services = {
-    gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-      pinentry.package = pkgs.pinentry-qt;
-    };
-  };
+  services.ssh-agent.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
