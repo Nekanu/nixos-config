@@ -14,6 +14,7 @@
       plasma-browser-integration
       krfb # VNC server for KDEconnect
       sddm-kcm
+      plymouth-kcm
     ];
   };
 

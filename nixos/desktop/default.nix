@@ -8,7 +8,7 @@
     [
       ./modules/appimage.nix
       ./modules/ausweisapp.nix
-      ./modules/vpn.nix
+      #./modules/vpn.nix
       ./modules/obs.nix
       ./modules/pipewire.nix
       ./modules/printing.nix
@@ -21,6 +21,7 @@
 
   boot.kernelParams = [
     "quiet"
+    "loglevel=2"
     "splash"
     "boot.shell_on_fail"
     "udev.log_priority=3"
@@ -29,14 +30,16 @@
 
   boot.plymouth = {
     enable = true;
-    theme = "black_hud";
-    themePackages = with pkgs; [
-      # By default we would install all themes
-      (adi1090x-plymouth-themes.override {
-        selected_themes = [ "black_hud" ];
-      })
-    ];
+    # theme = "black_hud";
+    # themePackages = with pkgs; [
+    #   # By default we would install all themes
+    #   (adi1090x-plymouth-themes.override {
+    #     selected_themes = [ "black_hud" ];
+    #   })
+    # ];
   };
+  boot.initrd.verbose = false;
+  boot.initrd.systemd.enable = true;
 
   programs.xwayland.enable = true;
 
