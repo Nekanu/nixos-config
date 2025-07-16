@@ -66,6 +66,9 @@
         inputs.nur.modules.nixos.default
         inputs.nix-flatpak.nixosModules.nix-flatpak
         self.nixosModules.generatorFormats
+        {
+          _module.args.myLib = import ./lib/nixos-library.nix;
+        }
       ];
 
       defaultHomeModules = [
