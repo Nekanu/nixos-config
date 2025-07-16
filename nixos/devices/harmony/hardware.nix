@@ -12,6 +12,17 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
+  fileSystems."/mnt/Data1" = {
+    device = "/dev/disk/by-label/Data1";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "exec"
+      "nofail"
+      "gid=${toString config.users.groups.gaming.gid}"
+    ];
+  };
+
   fileSystems."/mnt/Games1" = {
     device = "/dev/disk/by-label/Games1";
     fsType = "btrfs";
