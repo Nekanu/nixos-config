@@ -1,5 +1,9 @@
 { pkgs, username, ... }:
 {
+  imports = [
+    ../modules/dotnet.nix
+  ];
+
   services.flatpak.packages = [
     "app.freelens.Freelens" # Kubernetes IDE
     "me.iepure.devtoolbox" # DevToolbox
@@ -14,13 +18,15 @@
 
     kubectl
     kubernetes-helm
+
+    nil
   ];
 
   home.sessionPath = [
     "/home/${username}/.local/share/JetBrains/Toolbox/scripts/"
 
     # Dotnet SDK
-    "/home/${username}/.dotnet"
-    "/home/${username}/.dotnet/tools"
+    #"/home/${username}/.dotnet"
+    #"/home/${username}/.dotnet/tools"
   ];
 }

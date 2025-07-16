@@ -1,13 +1,14 @@
 { pkgs, ... }:
 {
-  environment =
+  home =
     let
       dotnet-combined =
         (
           with pkgs.dotnetCorePackages;
           combinePackages [
-            dotnet_8.sdk
-            dotnet_8.runtime
+            sdk_8_0-bin
+            sdk_9_0-bin
+            sdk_10_0-bin
           ]
         ).overrideAttrs
           (
@@ -33,7 +34,7 @@
       sessionVariables = {
         # DOTNET_ROOT = "${dotnet-combined}";
       };
-      systemPackages = [
+      packages = [
         dotnet-combined
       ];
     };
