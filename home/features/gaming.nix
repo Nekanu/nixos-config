@@ -9,9 +9,18 @@
   ];
 
   # Vulkan and OpenGL monitoring
-  programs.mangohud = {
-    enable = true;
-    #enableSessionWide = true;
+  programs = {
+    lutris = {
+      enable = true;
+      protonPackages = [
+        pkgs.proton-ge-bin
+      ];
+    };
+
+    mangohud = {
+      enable = true;
+      #enableSessionWide = true;
+    };
   };
 
   services.flatpak = {
