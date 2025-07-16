@@ -114,6 +114,7 @@
               "hyprland"
             ];
             additionalFeatures = [
+              "ai"
               "development"
               "gaming"
               "virtualisation"
