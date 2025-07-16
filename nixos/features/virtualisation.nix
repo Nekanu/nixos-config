@@ -7,46 +7,58 @@
     podman-desktop
   ];
 
-  virtualisation = {
-    podman = {
-      enable = true;
+  ####### Docker #######
 
-      autoPrune.enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
+  # virtualisation.docker = {
+  #   enable = true;
+  #   enableOnBoot = true;
+  # };
 
-    libvirtd = {
-      enable = false;
+  # users.groups.docker.members = [ username ];
 
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = true;
-        swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          packages = [
-            (pkgs.OVMF.override {
-              secureBoot = true;
-              tpmSupport = true;
-            }).fd
-          ];
-        };
+  ####### Podman #######
+
+  virtualisation.podman = {
+    enable = true;
+
+    autoPrune.enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
+  users.groups.podman.members = [ username ];
+
+  ####### Libvirt ########
+
+  virtualisation.libvirtd = {
+    enable = true;
+
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [
+          (pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
       };
-    };
-
-    waydroid = {
-      enable = true;
     };
   };
 
+  users.groups.libvirtd.members = [ username ];
+
   # Required for libvirtd
-  programs.virt-manager.enable = false;
+  programs.virt-manager.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  ####### VirtualBox ########
 
-  users.extraGroups.vboxusers.members = [ username ];
-  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
+
+  #boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 }
