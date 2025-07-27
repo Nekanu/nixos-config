@@ -286,12 +286,6 @@
       };
 
       checks = eachSystem (pkgs: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${pkgs.system}.run {
-          src = ./.;
-          hooks = {
-            nixfmt-rfc-style.enable = true;
-          };
-        };
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
       });
     };

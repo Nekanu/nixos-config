@@ -17,7 +17,8 @@
     ../features/protonmail.nix
     ../features/syncthing.nix
     ../../modules/flatpak.nix
-  ] ++ (map (desktop: (./. + "/${desktop}")) desktopEnvironments);
+  ]
+  ++ (map (desktop: (./. + "/${desktop}")) desktopEnvironments);
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
