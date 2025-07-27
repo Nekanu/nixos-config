@@ -16,17 +16,16 @@
   # Import host specific boot and hardware configurations.
   # Only include desktop components if one is supplied.
   # - https://nixos.wiki/wiki/Nix_Language:_Tips_%26_Tricks#Coercing_a_relative_path_with_interpolated_variables_to_an_absolute_path_.28for_imports.29
-  imports =
-    [
-      (./. + "/devices/${hostname}")
-      (modulesPath + "/installer/scan/not-detected.nix")
-      ./base
-      ./users
-      ./console
-      ./features/envfs.nix
-    ]
-    ++ lib.optional (desktopEnvironments != [ ]) ./desktop
-    ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
+  imports = [
+    (./. + "/devices/${hostname}")
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./base
+    ./users
+    ./console
+    ./features/envfs.nix
+  ]
+  ++ lib.optional (desktopEnvironments != [ ]) ./desktop
+  ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
 
   nixpkgs = {
     # You can add overlays here
@@ -34,8 +33,9 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-      outputs.overlays.stable-packages
+      outputs.overlays.nixpkgs-stable
+      outputs.overlays.nixpkgs-unstable
+      outputs.overlays.nixpkgs-master
       inputs.nur.overlays.default
 
       # You can also add overlays exported from other flakes:

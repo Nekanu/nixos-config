@@ -9,9 +9,9 @@
     "me.iepure.devtoolbox" # DevToolbox
   ];
 
-  home.packages = with pkgs.unstable; [
+  home.packages = with pkgs; [
     #jetbrains-toolbox
-    jetbrains.rider
+    master.jetbrains.rider
 
     minikube
     docker-machine-kvm2

@@ -15,19 +15,18 @@ in
 {
   # Only import desktop configuration if the host is desktop enabled
   # Only import user specific configuration if they have bespoke settings
-  imports =
-    [
-      # If you want to use modules your own flake exports (from modules/home-manager):
-      # outputs.homeManagerModules.example
+  imports = [
+    # If you want to use modules your own flake exports (from modules/home-manager):
+    # outputs.homeManagerModules.example
 
-      # Or modules exported from other flakes (such as nix-colors):
-      # inputs.nix-colors.homeManagerModules.default
+    # Or modules exported from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModules.default
 
-      # You can also split up your configuration and import pieces of it here:
-      ./console
-    ]
-    ++ lib.optional (desktopEnvironments != [ ]) ./desktop
-    ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
+    # You can also split up your configuration and import pieces of it here:
+    ./console
+  ]
+  ++ lib.optional (desktopEnvironments != [ ]) ./desktop
+  ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
 
   home = {
     username = username;
@@ -41,8 +40,9 @@ in
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-      outputs.overlays.stable-packages
+      outputs.overlays.nixpkgs-stable
+      outputs.overlays.nixpkgs-unstable
+      outputs.overlays.nixpkgs-master
       inputs.nur.overlays.default
 
       # You can also add overlays exported from other flakes:
