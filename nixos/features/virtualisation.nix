@@ -2,32 +2,32 @@
 {
   environment.systemPackages = with pkgs; [
     buildah
-    podman-compose
-    podman-tui
-    podman-desktop
+    # podman-compose
+    # podman-tui
+    # podman-desktop
   ];
 
   ####### Docker #######
 
-  # virtualisation.docker = {
-  #   enable = true;
-  #   enableOnBoot = true;
-  # };
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
 
-  # users.groups.docker.members = [ username ];
+  users.groups.docker.members = [ username ];
 
   ####### Podman #######
 
-  virtualisation.podman = {
-    enable = true;
+  # virtualisation.podman = {
+  #   enable = true;
 
-    autoPrune.enable = true;
-    dockerCompat = true;
-    dockerSocket.enable = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
+  #   autoPrune.enable = true;
+  #   dockerCompat = true;
+  #   dockerSocket.enable = true;
+  #   defaultNetwork.settings.dns_enabled = true;
+  # };
 
-  users.groups.podman.members = [ username ];
+  # users.groups.podman.members = [ username ];
 
   ####### Libvirt ########
 
