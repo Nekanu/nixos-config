@@ -19,7 +19,7 @@
     ./base
     ./users
     ./console
-    ./features/envfs.nix
+    ./modules
   ]
   ++ lib.optional (desktopEnvironments != [ ]) ./desktop
   ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
