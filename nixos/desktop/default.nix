@@ -5,13 +5,7 @@
 }:
 {
   imports = [
-    ./modules/appimage.nix
-    ./modules/ausweisapp.nix
-    ./modules/obs.nix
-    ./modules/pipewire.nix
-    ./modules/printing.nix
-    ./modules/scanning.nix
-    ./modules/yubico.nix
+    ./modules
     ../../modules/flatpak.nix
   ]
   # Include all desktop environments specified in the `desktopEnvironments` list.
