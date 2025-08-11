@@ -2,14 +2,12 @@
   description = "Nekanu's NixOS configuration";
 
   inputs = {
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     nur.url = "github:nix-community/NUR";
-
     disko.url = "github:nix-community/disko";
 
     home-manager = {
@@ -53,7 +51,6 @@
     }@inputs:
     let
       inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
       stateVersion = "25.05";
       rootPath = ./.;
       config-repository = "gitlab:Nekanu/nixos-config";
@@ -79,6 +76,15 @@
         inputs.nixvim.homeModules.nixvim
       ];
 
+      defaultOverlays = [
+        outputs.overlays.additions
+        outputs.overlays.modifications
+        outputs.overlays.nixpkgs-stable
+        outputs.overlays.nixpkgs-unstable
+        outputs.overlays.nixpkgs-master
+        inputs.nur.overlays.default
+      ];
+
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
       treefmtEval = eachSystem (pkgs: inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
@@ -88,8 +94,6 @@
 
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-
       # Make all generator formats available to nixosConfigurations
       nixosModules.generatorFormats = {
         imports = [
@@ -97,6 +101,8 @@
         ];
         nixpkgs.hostPlatform = "x86_64-linux";
       };
+
+      packages = eachSystem (pkgs: import ./pkgs pkgs);
 
       overlays = import ./overlays { inherit nixpkgs inputs; };
 
@@ -107,11 +113,13 @@
         harmony = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [
               "plasma6"
@@ -125,7 +133,6 @@
               "drawing"
             ];
             hostname = "harmony";
-            username = "${username}";
             hostid = "a69480bd";
           };
           modules = defaultSystemModules;
@@ -134,6 +141,7 @@
         opportunity = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
@@ -156,6 +164,7 @@
         vm = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
@@ -177,6 +186,7 @@
         wsl-nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
@@ -197,6 +207,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit
+                  defaultOverlays
                   inputs
                   outputs
                   stateVersion
@@ -221,11 +232,13 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [
               "plasma6"
@@ -234,10 +247,10 @@
             additionalFeatures = [
               "gaming"
               "development"
+              "distrobox"
               "drawing"
             ];
             hostname = "harmony";
-            username = "nekanu";
           };
           modules = defaultHomeModules;
         };
@@ -246,11 +259,13 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [ "plasma6" ];
             additionalFeatures = [
@@ -258,7 +273,6 @@
               "drawing"
             ];
             hostname = "opportunity";
-            username = "nekanu";
           };
           modules = defaultHomeModules;
         };
@@ -267,11 +281,13 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit
+              defaultOverlays
               inputs
               outputs
               stateVersion
               rootPath
               config-repository
+              username
               ;
             desktopEnvironments = [
               "plasma6"
@@ -279,7 +295,6 @@
             ];
             additionalFeatures = [ ];
             hostname = "vm";
-            username = "nekanu";
           };
           modules = defaultHomeModules;
         };

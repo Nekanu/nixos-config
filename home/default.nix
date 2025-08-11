@@ -1,9 +1,10 @@
 {
+  config,
+  defaultOverlays,
   desktopEnvironments,
   additionalFeatures,
   inputs,
   lib,
-  outputs,
   pkgs,
   stateVersion,
   username,
@@ -13,8 +14,6 @@ let
   inherit (pkgs.stdenv) isDarwin;
 in
 {
-  # Only import desktop configuration if the host is desktop enabled
-  # Only import user specific configuration if they have bespoke settings
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -35,42 +34,46 @@ in
   };
 
   nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.nixpkgs-stable
-      outputs.overlays.nixpkgs-unstable
-      outputs.overlays.nixpkgs-master
-      inputs.nur.overlays.default
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      #allowUnfreePredicate = (_: true);
-    };
+    config.allowUnfree = true;
+    overlays = defaultOverlays;
   };
 
   nix = {
     package = lib.mkDefault pkgs.nix;
+
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
       ];
+    };
+
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 14d";
+    };
+  };
+
+  editorconfig = {
+    enable = true;
+    settings = {
+      "*" = {
+        charset = "utf-8";
+        end_of_line = "lf";
+        trim_trailing_whitespace = true;
+        insert_final_newline = true;
+        max_line_width = 120;
+        indent_style = "space";
+        indent_size = 4;
+      };
     };
   };
 }

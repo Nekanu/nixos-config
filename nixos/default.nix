@@ -1,21 +1,18 @@
 {
   config,
+  defaultOverlays,
   desktopEnvironments,
   additionalFeatures,
   hostname,
   inputs,
   lib,
   modulesPath,
-  outputs,
   pkgs,
   stateVersion,
   username,
   ...
 }:
 {
-  # Import host specific boot and hardware configurations.
-  # Only include desktop components if one is supplied.
-  # - https://nixos.wiki/wiki/Nix_Language:_Tips_%26_Tricks#Coercing_a_relative_path_with_interpolated_variables_to_an_absolute_path_.28for_imports.29
   imports = [
     (./. + "/devices/${hostname}")
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -28,31 +25,8 @@
   ++ (map (feature: (./. + "/features/${feature}.nix")) additionalFeatures);
 
   nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.nixpkgs-stable
-      outputs.overlays.nixpkgs-unstable
-      outputs.overlays.nixpkgs-master
-      inputs.nur.overlays.default
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
+    config.allowUnfree = true;
+    overlays = defaultOverlays;
   };
 
   nix = {
