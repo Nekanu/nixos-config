@@ -9,9 +9,15 @@
     "me.iepure.devtoolbox" # DevToolbox
   ];
 
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${pkgs.jetbrains-toolbox}/share/applications/jetbrains-toolbox.desktop"
+    ];
+  };
+
   home.packages = with pkgs; [
-    #jetbrains-toolbox
-    master.jetbrains.rider
+    master.jetbrains-toolbox
 
     minikube
     docker-machine-kvm2
@@ -20,13 +26,15 @@
     kubernetes-helm
 
     nil
+
+    clang
   ];
 
   home.sessionPath = [
     "/home/${username}/.local/share/JetBrains/Toolbox/scripts/"
 
     # Dotnet SDK
-    #"/home/${username}/.dotnet"
-    #"/home/${username}/.dotnet/tools"
+    "/home/${username}/.dotnet"
+    "/home/${username}/.dotnet/tools"
   ];
 }
