@@ -1,8 +1,12 @@
-{ ... }:
 {
   security = {
     #lockKernelModules = true;  # Locking kernel modules somehow disables IPv4
     protectKernelImage = true;
+
+    apparmor.enable = true;
+
+    auditd.enable = true;
+    audit.enable = true;
 
     rtkit.enable = true;
 
@@ -10,13 +14,6 @@
       enable = true;
       execWheelOnly = true;
       wheelNeedsPassword = true;
-    };
-  };
-
-  users.groups = {
-    "gaming" = {
-      name = "gaming";
-      gid = 8462;
     };
   };
 }

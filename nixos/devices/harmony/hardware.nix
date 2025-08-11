@@ -12,6 +12,13 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
+  users.groups = {
+    gaming = {
+      name = "gaming";
+      gid = 8462;
+    };
+  };
+
   fileSystems."/mnt/Data1" = {
     device = "/dev/disk/by-label/Data1";
     fsType = "ntfs-3g";

@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./fonts.nix
@@ -6,5 +5,6 @@
     ./networking.nix
     ./nix-ld.nix
     ./packages.nix
+    ./security.nix
   ];
 }

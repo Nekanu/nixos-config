@@ -5,17 +5,7 @@
 }:
 {
   imports = [
-    ./modules/chromium.nix
-    ./modules/firefox.nix
-    ./modules/zed-editor.nix
-
-    ../features/communication.nix
-    ../features/development.nix
-    ../features/gaming.nix
-    ../features/multimedia.nix
-    ../features/productivity.nix
-    ../features/protonmail.nix
-    ../features/syncthing.nix
+    ./modules
     ../../modules/flatpak.nix
   ]
   ++ (map (desktop: (./. + "/${desktop}")) desktopEnvironments);

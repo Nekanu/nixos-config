@@ -1,8 +1,10 @@
-{ hostname, ... }:
+{ hostid, hostname, ... }:
 {
   # Use passed in hostid and hostname to configure basic networking
   networking = {
     hostName = hostname;
+    useDHCP = true;
+    hostId = hostid;
 
     networkmanager.enable = true;
     firewall.enable = true;

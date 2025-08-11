@@ -7,7 +7,6 @@
   imports = [
     ./modules/appimage.nix
     ./modules/ausweisapp.nix
-    #./modules/vpn.nix
     ./modules/obs.nix
     ./modules/pipewire.nix
     ./modules/printing.nix
@@ -27,24 +26,16 @@
     "rd.systemd.show_status=auto"
   ];
 
-  boot.plymouth = {
-    enable = true;
-    # theme = "black_hud";
-    # themePackages = with pkgs; [
-    #   # By default we would install all themes
-    #   (adi1090x-plymouth-themes.override {
-    #     selected_themes = [ "black_hud" ];
-    #   })
-    # ];
-  };
   boot.initrd.verbose = false;
   boot.initrd.systemd.enable = true;
+  boot.plymouth = {
+    enable = true;
+  };
 
   programs.xwayland.enable = true;
 
   environment.systemPackages = with pkgs; [
     gparted
-
     kdePackages.xwaylandvideobridge
   ];
 }

@@ -1,4 +1,3 @@
-{ ... }:
 {
   programs.plasma = {
     configFile."konsolerc" = {

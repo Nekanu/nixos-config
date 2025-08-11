@@ -12,7 +12,6 @@ in
     ++ ifExists [
       "audio"
       "video"
-      "nordvpn" # NordVPN
       "gaming" # Access to gaming disks
     ];
     # mkpasswd -m sha-512
