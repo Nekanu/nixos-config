@@ -1,6 +1,7 @@
+{ modulesPath, ... }:
 {
   imports = [
-    ./boot.nix
-    ./hardware.nix
+    (modulesPath + "/profiles/qemu-guest.nix")
+    (modulesPath + "/virtualisation/qemu-vm.nix")
   ];
 }
