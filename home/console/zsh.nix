@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 let
   configDir = "$HOME/.config/nixos";
 in
@@ -69,5 +69,15 @@ in
         "zsh-interactive-cd"
       ];
     };
+
+    initContent = lib.mkOrder 550 ''
+      ni() {
+        if [ -z "$1" ]; then
+          echo "Usage: ni <package>"
+          return 1
+        fi
+        nix profile install "nixpkgs#$1"
+      }
+    '';
   };
 }
