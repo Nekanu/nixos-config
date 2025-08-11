@@ -4,7 +4,20 @@
     tor-browser-bundle-bin
     libreoffice
     keepassxc
+    pcloud
   ];
+
+  xdg.autostart = {
+    enable = true;
+    entries = [
+      "${pkgs.pcloud}/share/applications/pcloud.desktop"
+      "${pkgs.keepassxc}/share/applications/keepassxc.desktop"
+    ];
+  };
+
+  programs.obsidian = {
+    enable = true;
+  };
 
   services.nextcloud-client = {
     enable = true;

@@ -5,7 +5,6 @@
     enable = true;
     extest.enable = true;
     remotePlay.openFirewall = true;
-
     protontricks.enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
@@ -19,7 +18,6 @@
 
   environment.systemPackages = with pkgs.unstable; [
     mangohud
-
     heroic # Epic Games Store
   ];
 }

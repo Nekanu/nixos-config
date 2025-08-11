@@ -20,6 +20,16 @@
           ];
         };
       };
+
+      "dev.vencord.Vesktop" = {
+        Context = {
+          filesystems = [
+            "!host"
+            "xdg-download:rw"
+            "xdg-pictures:ro"
+          ];
+        };
+      };
     };
   };
 }

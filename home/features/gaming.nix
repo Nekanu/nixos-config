@@ -15,6 +15,18 @@
       protonPackages = [
         pkgs.proton-ge-bin
       ];
+
+      winePackages = [
+        pkgs.wineWow64Packages.full
+      ];
+
+      extraPackages = with pkgs; [
+        mangohud
+        winetricks
+        gamescope
+        gamemode
+        umu-launcher
+      ];
     };
 
     mangohud = {

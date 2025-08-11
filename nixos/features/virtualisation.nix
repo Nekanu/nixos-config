@@ -1,7 +1,6 @@
 { pkgs, username, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    buildah
+  environment.systemPackages = [
     # podman-compose
     # podman-tui
     # podman-desktop
@@ -36,7 +35,7 @@
 
     qemu = {
       package = pkgs.qemu_kvm;
-      runAsRoot = true;
+      runAsRoot = false;
       swtpm.enable = true;
       ovmf = {
         enable = true;
