@@ -5,8 +5,9 @@
     loadModels = [
       "mistral:7b"
       "deepseek-r1:8b"
-      "gemma3n:e4b"
-      "codellama:7b"
+      "llama3.1:8b"
+      "qwen2.5-coder:1.5b-base"
+      "nomic-embed-text:latest"
     ];
   };
 }
