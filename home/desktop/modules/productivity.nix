@@ -1,10 +1,19 @@
-{ pkgs, username, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
+let
+  flatpakAppLauncherDir = "${config.xdg.dataHome}/flatpak/exports/share/applications";
+in
 {
   home.packages = with pkgs.unstable; [
     tor-browser-bundle-bin
     libreoffice
     keepassxc
     pcloud
+    remmina
   ];
 
   xdg.autostart = {
@@ -12,6 +21,8 @@
     entries = [
       "${pkgs.pcloud}/share/applications/pcloud.desktop"
       "${pkgs.keepassxc}/share/applications/keepassxc.desktop"
+      # Flatpak apps
+      "${flatpakAppLauncherDir}/org.mozilla.Thunderbird.desktop"
     ];
   };
 

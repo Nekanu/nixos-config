@@ -193,7 +193,7 @@ in
         "privacy.firstparty.isolate" = lock-true;
         "privacy.trackingprotection.enabled" = lock-true;
 
-        "webgl.disabled" = lock-true;
+        #"webgl.disabled" = user-true;
 
         "widget.use-xdg-desktop-portal.file-picker" = {
           Value = 1;
