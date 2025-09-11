@@ -2,9 +2,11 @@
 {
   services.flatpak = {
     packages = [
-      "org.signal.Signal"
-      "im.riot.Riot" # Element Client (Matrix)
       "dev.vencord.Vesktop" # Discord
+      "io.github.milkshiift.GoofCord" # Alternative Discord Client
+      "im.riot.Riot" # Element Client (Matrix)
+      "org.signal.Signal"
+      "com.ktechpit.whatsie" # WhatsApp
     ];
 
     overrides = {

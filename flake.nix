@@ -71,7 +71,7 @@
 
       defaultHomeModules = [
         ./home
-        inputs.plasma-manager.homeManagerModules.plasma-manager
+        inputs.plasma-manager.homeModules.plasma-manager
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
         inputs.nixvim.homeModules.nixvim
       ];
